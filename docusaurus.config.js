@@ -1,8 +1,8 @@
 module.exports = {
   title: 'Interoperability Test Platform',
   tagline: 'Testing Mobile Money Operations',
-  url: 'https://https://gsmainclusivetechlab.github.io/',
-  baseUrl: 'interop-docs/',
+  url: 'https://gsmainclusivetechlab.github.io',
+  baseUrl: '/interop-docs/',
   favicon: 'img/favicon.ico',
   organizationName: 'gsmainclusivetechlab', // Usually your GitHub org/user name.
   projectName: 'interop-docs', // Usually your repo name.
