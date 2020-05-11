@@ -1,7 +1,7 @@
 ---
 id: doc1
-title: Guia de Estilo
-sidebar_label: Guia de Estilo
+title: Style Guide
+sidebar_label: Style Guide
 ---
 
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
@@ -12,13 +12,13 @@ To serve as an example page when styling markdown based Docusaurus sites.
 
 ## Headers
 
-# H1 - Create the best documentation 1
+# H1 - Create the best documentation
 
-## H2 - Create the best documentation 2
+## H2 - Create the best documentation
 
-### H3 - Create the best documentation 3
+### H3 - Create the best documentation
 
-#### H4 - Create the best documentation 4
+#### H4 - Create the best documentation
 
 ##### H5 - Create the best documentation
 
