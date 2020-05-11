@@ -1,16 +1,16 @@
 module.exports = {
-  title: 'Interoperability Test Platform',
-  tagline: 'Testing Mobile Money Operations',
-  url: 'https://gsmainclusivetechlab.github.io/interop-docs/',
+  title: 'My Site',
+  tagline: 'The tagline of my site',
+  url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'gsmainclusivetechlab', // Usually your GitHub org/user name.
-  projectName: 'interop-docs', // Usually your repo name.
+  organizationName: 'facebook', // Usually your GitHub org/user name.
+  projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'ITP',
+      title: 'My Site',
       logo: {
-        alt: 'ITP Logo',
+        alt: 'My Site Logo',
         src: 'img/logo.svg',
       },
       links: [
