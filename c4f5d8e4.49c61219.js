@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[21],{157:function(a,n,e){"use strict";e.r(n);var t=e(0),r=e.n(t),c=(e(172),e(173),e(171),e(169),e(181)),o=e(174);e(158),r.a.Fragment,r.a.Fragment,r.a.Fragment,r.a.Fragment,r.a.Fragment,r.a.Fragment;n.default=function(){return r.a.createElement(c.a,{to:Object(o.a)("/doc1")})}}}]);
