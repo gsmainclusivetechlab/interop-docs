@@ -1,6 +1,6 @@
 ---
 id: doc1
-title: Style Guide
+title: Style Guide / Teste
 sidebar_label: Style Guide
 ---
 
@@ -12,17 +12,17 @@ To serve as an example page when styling markdown based Docusaurus sites.
 
 ## Headers
 
-# H1 - Create the best documentation
+# H1 - Create the best documentation 1
 
-## H2 - Create the best documentation
+## H2 - Create the best documentation 2
 
-### H3 - Create the best documentation
+### H3 - Create the best documentation 3
 
-#### H4 - Create the best documentation
+#### H4 - Create the best documentation 4
 
-##### H5 - Create the best documentation
+##### H5 - Create the best documentation 5
 
-###### H6 - Create the best documentation
+###### H6 - Create the best documentation 6
 
 ---
 
