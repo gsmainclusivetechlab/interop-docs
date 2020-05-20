@@ -3,7 +3,10 @@ import classnames from 'classnames';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+<<<<<<< HEAD
 import {Redirect} from '@docusaurus/router';
+=======
+>>>>>>> 126239e916885a9c5c4833fc6f800b285e157800
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
@@ -56,7 +59,50 @@ function Feature({imageUrl, title, description}) {
 }
 
 function Home() {
+<<<<<<< HEAD
   return <Redirect to={useBaseUrl('/intro')} />;
 }
 
 export default Home;
+=======
+  const context = useDocusaurusContext();
+  const {siteConfig = {}} = context;
+  return (
+    <Layout
+      title={`Hello from ${siteConfig.title}`}
+      description="Description will go into a meta tag in <head />">
+      <header className={classnames('hero hero--primary', styles.heroBanner)}>
+        <div className="container">
+          <h1 className="hero__title">{siteConfig.title}</h1>
+          <p className="hero__subtitle">{siteConfig.tagline}</p>
+          <div className={styles.buttons}>
+            <Link
+              className={classnames(
+                'button button--outline button--secondary button--lg',
+                styles.getStarted,
+              )}
+              to={useBaseUrl('docs/doc1')}>
+              Get Started
+            </Link>
+          </div>
+        </div>
+      </header>
+      <main>
+        {features && features.length && (
+          <section className={styles.features}>
+            <div className="container">
+              <div className="row">
+                {features.map((props, idx) => (
+                  <Feature key={idx} {...props} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+      </main>
+    </Layout>
+  );
+}
+
+export default Home;
+>>>>>>> 126239e916885a9c5c4833fc6f800b285e157800
