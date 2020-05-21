@@ -1,10 +1,6 @@
 ---
 id: doc1
-<<<<<<< HEAD
 title: Style Guide / Teste
-=======
-title: Style Guide
->>>>>>> 126239e916885a9c5c4833fc6f800b285e157800
 sidebar_label: Style Guide
 ---
 
@@ -16,7 +12,6 @@ To serve as an example page when styling markdown based Docusaurus sites.
 
 ## Headers
 
-<<<<<<< HEAD
 # H1 - Create the best documentation 1
 
 ## H2 - Create the best documentation 2
@@ -28,19 +23,6 @@ To serve as an example page when styling markdown based Docusaurus sites.
 ##### H5 - Create the best documentation 5
 
 ###### H6 - Create the best documentation 6
-=======
-# H1 - Create the best documentation
-
-## H2 - Create the best documentation
-
-### H3 - Create the best documentation
-
-#### H4 - Create the best documentation
-
-##### H5 - Create the best documentation
-
-###### H6 - Create the best documentation
->>>>>>> 126239e916885a9c5c4833fc6f800b285e157800
 
 ---
 
