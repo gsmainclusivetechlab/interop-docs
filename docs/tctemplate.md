@@ -13,6 +13,16 @@ They are:
 
 TABELA
 
+| Name | Description | Example |
+|:-----|:------------|---------|
+|name|The name of the Test Case that will be shown to users. Names may not be unique. So it is possible to have Test Cases with the same name. |Authorized Transaction by Payer FSP|
+|use_case|The name of the Use Case that the Use Case is related to. Names may not be unique. So it is possible to have Use Cases with the same name. |Merchant-Initiated Merchant Payment|
+|behavior| Shows the type of the Test Case, i.e. the folder inside the Use Case for the Test Case. Folders are Happy flow and Unhappy flow. |<ul><li>positive</li><li>negative</li></ul>|
+|description| Just the description of the Test Case. Some business background of what we are trying to achieve in this case. |The Service Provider wants to test if he is capable of receiving a transaction from a different wallet...|
+|precondition| An additional area where specific values that should be used to execute a Test Case can be put. Test Case may require using some defined amounts| - Amount should be the value "1001". - Debit party should be identified by account identifier "msisdn" with the value "+33555123456".|
+|components| The list of Components that the Test Case is applicable for. Some Test Cases can be applicable for MMOs only (P2P transfer) or contain some specific errors that can only be received by SUT and not handled by it. |- Service Provider - Mobile Money Operator 1 - Mobile Money Operator 2 Or any combination of them|
+|test_steps| Indicates the start of Test Steps data.| |
+
 The whole Test Case info may look like:
 
 ```yaml
