@@ -1,7 +1,7 @@
 ---
-id: testcases
-title: Guide for Test Case Scenarios
-sidebar_label: Test Cases
+id: tclist
+title: ITP Test Case List
+sidebar_label: Test Cases List
 ---
 
 ## Table of Contents
@@ -16,23 +16,26 @@ sidebar_label: Test Cases
 
 ### ITP Test Cases <a name="what"></a>
 
-Write some introduction for this documentation
+A seguir são listados todos os casos de testes atualmente disponíveis na plataforma ITP. A medida que novos casos de testes são criados a documentação, e portanto a lista, é atualizada. A lista de casos de teste está dividida por caso de uso e contém os seguintes atributos:
+
+**Test Case Code:** **Código que identifica o caso de testes em relação aos demais**
+
+**Test Case Scenario:** Atributos que definem as características do caso de testes em questão
+
+**Results:** O campo resultados indica o comportamento esperado para o caso de testes em validação. Tal comportamento está relacionado a uma transação aprovada ou não. Quando se tratar de uma transação não aprovada este atributo determina o motivo da não realização da transação.
+
+**Status:** Resultados esperados após a execução do caso de testes. O resultado indica se o path avaliado é um happy flow ou unhappy flow
+
+**Error Number:** Indica o número do erro corrente para o caso de testes. Através do número é possível saber a qual categoria o erro pertence em relação à API ao qual está relacionado.
 
 ### List of Teste Cases <a name="tc"></a>
 
-#### Use Case: Merchant Payment <a name="mp"></a>
+#### Merchant-Initiated Merchant Payment <a name="mimp"></a>
 
-##### Merchant-Initiated Merchant Payment <a name="mimp"></a>
+#### Payer-Initiated Merchant Payment <a name="pimp"></a>
 
-##### Payer-Initiated Merchant Payment <a name="pimp"></a>
+#### Use Case: Peer-2-Peer <a name="p2p"></a>
 
-#### Use Case: P2P transference <a name="p2p"></a>
-
-P2P use cases may involve different types of scenarios depending on the amount type, the fees involved and if the FSP needs to get a participant location from an Account Lookup System (ALS).
-
-There are two types of amount type in a P2P transaction. **SEND**: In this type of amount, the payer defines that the total amount he/she is paying and all fees must to be taken from this amount. **RECEIVE**: In this type, the payer defines the total amount the payee must to receive. Thus, the fees involved in the transaction may increase the final amount the payer has to send.
-
-In relation to the fees/comissions information the transaction can be **Non-Disclosing**, when the PayerFSP does not informes the PayeeFSP about the fees and comission involved in the transaction or **Disclosing** when it does.
 
 | Teste Case | Test Scenario | Results | Status | Error|
 |------------|---------------|---------|--------|-----:|

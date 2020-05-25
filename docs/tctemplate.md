@@ -4,6 +4,7 @@ title: Test Case Template
 sidebar_label: TC Template
 ---
 
+
 This manual describes how to fill in the Test Case .yaml, what fields it should contain and how they are used in ITP.
 
 ## Test Case data

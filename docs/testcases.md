@@ -16,33 +16,12 @@ ITP Test Cases approach all diferent paths related to a specific use case to val
 
 ##### Payer-Initiated Merchant Payment <a name="pimp"></a>
 
-#### Use Case: P2P transference <a name="p2p"></a>
+#### Use Case: Peer-2-Peer <a name="p2p"></a>
 
-| Teste Case | Test Scenario | Results | Status | Error|
-|------------|---------------|---------|--------|-----:|
-|P2P0100|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Aproved|Pass|-|
-|P2P0110|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Rejected Quote|Fail|5103|
-|P2P0140|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Rejected|Fail|400|
-|P2P0141|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Rejected|Fail|401|
-|P2P0144|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Rejected|Fail|450|
-|P2P0150|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Aproved|Fail|150|
-|P2P0200|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Aproved|Pass|-|
-|P2P0210|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected Quote|Fail|5103|
-|P2P0240|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected|Fail|400|
-|P2P0241|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected|Fail|401|
-|P2P0244|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected|Fail|404|
-|P2P0250|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected|Fail|500|
-|P2P0300|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Aproved|Pass|-|
-|P2P0310|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected Quote|Fail|5103|
-|P2P0340|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected|Fail|400|
-|P2P0341|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected|Fail|401|
-|P2P0344|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected|Fail|404|
-|P2P0350|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected|Fail|500|
-|P2P0400|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Aproved|Pass|-|
-|P2P0410|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected Quote|Fail|5103|
-|P2P0440|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected|Fail|400|
-|P2P0441|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected|Fail|401|
-|P2P0444|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected|Fail|404|
-|P2P0450|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected|Fail|500|
+P2P use cases may involve different types of scenarios depending on the amount type, the fees involved and if the FSP needs to get a participant location from an Account Lookup System (ALS).
+
+There are two types of amount type in a P2P transaction. **SEND**: In this type of amount, the payer defines that the total amount he/she is paying and all fees must to be taken from this amount. **RECEIVE**: In this type, the payer defines the total amount the payee must to receive. Thus, the fees involved in the transaction may increase the final amount the payer has to send.
+
+In relation to the fees/comissions information the transaction can be **Non-Disclosing**, when the PayerFSP does not informes the PayeeFSP about the fees and comission involved in the transaction or **Disclosing** when it does.
 
 #### Use Case: P2P TESTE <a name="teste"></a>

@@ -13,48 +13,31 @@ sidebar_label: Use Cases
 
 ### ITP Use Cases <a name="what"></a>
 
-The **ITP Use Cases** are used to capture the system requirements documenting the action of external actors <sup>[1](#myfootnote1)</sup> interacting with a system to achieve a specific goal. They map the business and user requisites to demonstrate precisely what to expect from the system. A use case makes possible the understanding of all possible paths through a given user/system interaction. Theses paths include both basic and alternative flows. The basic path (also called happy flow) is the main one and comply with all user needs. Alternative paths include several other situations that are related to the use case, even if they are not frequent or desired (unhappy paths), such as errors for example. In the documentation below it is possible to see all the use cases available in the Interoperability Test Platform. Through this documentation it is possible to understand what types of requirements and its different paths are under test by the platform. To understand better the behaviour of the different tests please see the guide for ITP test cases.
+The **ITP Use Cases** are used to capture the system requirements documenting the action of external actors <sup>[1](#myfootnote1)</sup> interacting with a system to achieve a specific goal. They map the business and user requisites to demonstrate precisely what to expect from the system. A Use Case (UC) makes possible the understanding of all possible paths through a given user/system interaction. Theses paths include both basic and alternative flows. The basic path (also called happy flow) is the main one and comply with all user needs. Alternative paths include several other situations that are related to the use case, even if they are not frequent or desired (unhappy flow), such as errors for example. Through this documentation  it is possible to understand more about the use cases and see all the use cases available in the Interoperability Test Platform. Also, it is possible to understand what types of requirements are related to the UC and the different paths under test by the platform. In way to a better understanding about the behaviour of the different use cases paths, please see the guide for ITP test cases.
 
-### List of Use Cases <a name="uc"></a>
+### What an ITP Use Case represents
 
-1. UC100 - [Merchant-Initiated Merchant Payment](#mimp)
-2. UC101 - [Payer-Initiated Merchant Payment](#pimp)
-3. UC200 - [P2P Transfer]()
-4. UC300 - [International Remmitance]()
+The use cases represents the Mobile Money transactions types available for testing in the platform. Each use case is composed by a set of elements which are used to represent the type of use case. These elements are: the **scenario** where the UC refers to, the **initiator party** of the transaction, and the **type**, containing the classification of the initiator part. Além dos elementos mencionados, cada transação é composta por uma ou várias ações definidas pelos serviços disponíveis nas APIS. The transaction elements and transaction actions are decribed below.
 
-### Use Cases Description <a name="ucdescription"></a>
+### Transaction Elements
 
-#### UC100 - Merchant-Initiated Merchant Payment <a name="mimp"></a>
+**Transaction Scenarios:** A Transaction Scenario represents one of the several ways of using mobile money and is directly related to the objective that the use case validates.
 
-|Use Case Name:| Merchant-Initiated Merchant Payment |
-|-:|:-|
-|Sumary:| insert text |
-|Actors:| insert text |
-|Preconditions:| insert text |
-|Description:| insert text |
-|Exceptions:| insert text |
-|Postconditions:| insert text |
+**Initiator Party:** The Initiator Party specifies the actor<sup>[1](#myfootnote1)</sup> who initiate the transaction.
 
-#### UC100 - Payer-Initiated Merchant Payment <a name="pimp"></a>
+**Initiator Type:** The start of the transaction can occur from different sources that are defined by Initiator Type. This source also determines the types of transactions that can occur.
 
-|Use Case Name:| Payer-Initiated Merchant Payment |
-|-:|:-|
-|Sumary:| insert text |
-|Actors:| insert text |
-|Preconditions:| insert text |
-|Description:| insert text |
-|Exceptions:| insert text |
-|Postconditions:| insert text |
+|Transaction Scenarios|Initiator Party|Initiator Type|
+|:-------------------:|:-------------:|:------------:|
+|Transfer|Payer|Consumer|
+|Deposit|Payee|Business|
+|Withdrar|Service Provider|Device|
+|Payment|Mobile Money Operator|Agent|
+|Refund| - | - |
 
-### How to Create New Use Cases <a name="createuc"></a>
+### Transaction Actions
 
-
-
-
-
-
-
-
+Table with all Actions such as Participant / Party / Quote / Transfer etc...
 
 
 <a name="myfootnote1">1 </a>: Actors are usually considered as humans and/or external systems.
