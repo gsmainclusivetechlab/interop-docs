@@ -8,33 +8,32 @@ sidebar_label: Test Cases List
 
 1. [ITP Test Cases](#what)
 2. [List of Test Cases](#tc)
-   1. [Use Case: Merchant Payment](#mp)
-   2. [Merchant-Initiated Merchant Payment](#mimp)
-   3. [Payer-Initiated Merchant Payment](#pimp)
-   4. [Peer-2-Peer](#p2p)
-3. teste
+   1. [Merchant-Initiated Merchant Payment](#mimp)
+   2. [Payer-Initiated Merchant Payment](#pimp)
+   3. [Peer-2-Peer](#p2p)
+   4. [Peer-2-Peer](#ir)
 
-### ITP Test Cases <a name="what"></a>
+## ITP Test Cases <a name="what"></a>
 
-A seguir são listados todos os casos de testes atualmente disponíveis na plataforma ITP. A medida que novos casos de testes são criados a documentação, e portanto a lista, é atualizada. A lista de casos de teste está dividida por caso de uso e contém os seguintes atributos:
+All test cases currently available on the ITP platform are listed below. As new test cases are created, the documentation, and therefore the list, is updated. The list of test cases is divided by use case and contains the following attributes:
 
-**Test Case Code:** **Código que identifica o caso de testes em relação aos demais**
+**Test Case Code:** Code that identifies the test case in relation to the others. The TC code contains the acronym. The code consists of two parts: an acronym that is directly related to the use case, and a code that differentiates tests for the test group to which it belongs (e.g. P2P0057 is the test case 0057 for the use case P2P).
 
-**Test Case Scenario:** Atributos que definem as características do caso de testes em questão
+**Test Case Scenario:** This field is made up of properties that define the scenario in which the test case is being executed. Through these properties we can obtain specific information necessary for a better characterization of the transaction, such as: involved fees and commissions, use of account lookup system, provider supported currencies, etc.
 
-**Results:** O campo resultados indica o comportamento esperado para o caso de testes em validação. Tal comportamento está relacionado a uma transação aprovada ou não. Quando se tratar de uma transação não aprovada este atributo determina o motivo da não realização da transação.
+**Results:** The results field indicates the expected behavior for test cases under validation. Such behavior is related to the transaction being approved or not. When dealing with a not approved transaction, the value of this attribute allows a better understanding of the reason for not carrying out the transaction.
 
-**Status:** Resultados esperados após a execução do caso de testes. O resultado indica se o path avaliado é um happy flow ou unhappy flow
+**Status:** Expected results after running the test case. The result indicates whether the evaluated path is a happy flow or unhappy flow.
 
-**Error Number:** Indica o número do erro corrente para o caso de testes. Através do número é possível saber a qual categoria o erro pertence em relação à API ao qual está relacionado.
+**Error Number:** Indicates the number of the current error for the test case. Through this number it is possible to know which category the error belongs to in relation to the API to which it is related (e.g. 3208 - Transfer ID not found).
 
-### List of Teste Cases <a name="tc"></a>
+## List of Teste Cases <a name="tc"></a>
 
-#### Merchant-Initiated Merchant Payment <a name="mimp"></a>
+### Merchant-Initiated Merchant Payment <a name="mimp"></a>
 
-#### Payer-Initiated Merchant Payment <a name="pimp"></a>
+### Payer-Initiated Merchant Payment <a name="pimp"></a>
 
-#### Use Case: Peer-2-Peer <a name="p2p"></a>
+### Use Case: Peer-2-Peer <a name="p2p"></a>
 
 
 | Teste Case | Test Scenario | Results | Status | Error|
@@ -65,4 +64,4 @@ A seguir são listados todos os casos de testes atualmente disponíveis na plata
 |P2P0450|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected|Fail|500|
 |P2P0500|P2P transference ALS:YES / Fee: Non-Disclosing / AmountType: Receive|Aproved|Pass|-|
 
-#### Use Case: P2P TESTE <a name="teste"></a>
+#### International Remmittance <a name="ir"></a>

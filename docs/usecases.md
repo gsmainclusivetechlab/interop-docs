@@ -37,7 +37,8 @@ The use cases represents the Mobile Money transactions types available for testi
 
 ### Transaction Actions
 
-Table with all Actions such as Participant / Party / Quote / Transfer etc...
+Table with all Actions such as Participant / Party / Quote / Transfer etc... (Do we need it)
+
 
 
 <a name="myfootnote1">1 </a>: Actors are usually considered as humans and/or external systems.

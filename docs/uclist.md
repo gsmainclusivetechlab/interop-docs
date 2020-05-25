@@ -12,14 +12,16 @@ sidebar_label: Use Cases List
 
 ### List of Use Cases <a name="uc"></a>
 
-1. UC100 - [Merchant-Initiated Merchant Payment](#mimp)
-2. UC101 - [Payer-Initiated Merchant Payment](#pimp)
-3. UC200 - [P2P Transfer]()
-4. UC300 - [International Remmitance]()
+1. UC0100 - [Merchant-Initiated Merchant Payment](#mimp)
+2. UC0200 - [Payer-Initiated Merchant Payment](#pimp)
+3. UC0300 - [P2P Transfer](#p2p)
+4. UC0400 - [International Remmitance](#ir)
 
 ### Use Cases Description <a name="ucdescription"></a>
 
-#### UC100 - Merchant-Initiated Merchant Payment <a name="mimp"></a>
+The UC code identifies the use case in relation to the others. The code contains the acronym UC and a reference code (e.g. UC019). All use cases currently available on the ITP platform are listed below.
+
+#### UC0100 - Merchant-Initiated Merchant Payment <a name="mimp"></a>
 
 |Use Case Name:| Merchant-Initiated Merchant Payment |
 |-:|:-|
@@ -30,7 +32,7 @@ sidebar_label: Use Cases List
 |Exceptions:| insert text |
 |Postconditions:| insert text |
 
-#### UC100 - Payer-Initiated Merchant Payment <a name="pimp"></a>
+#### UC0200 - Payer-Initiated Merchant Payment <a name="pimp"></a>
 
 |Use Case Name:| Payer-Initiated Merchant Payment |
 |-:|:-|
@@ -41,9 +43,9 @@ sidebar_label: Use Cases List
 |Exceptions:| insert text |
 |Postconditions:| insert text |
 
-#### UC100 - Payer-Initiated Merchant Payment <a name="pimp"></a>
+#### UC0300 - Peer-2-Peer <a name="p2p"></a>
 
-|Use Case Name:| Payer-Initiated Merchant Payment |
+|Use Case Name:| Peer-2-Peer |
 |-:|:-|
 |Sumary:| insert text |
 |Actors:| insert text |
@@ -52,15 +54,13 @@ sidebar_label: Use Cases List
 |Exceptions:| insert text |
 |Postconditions:| insert text |
 
-### How to Create New Use Cases <a name="createuc"></a>
+#### UC0400 - International Remmittance <a name="ir"></a>
 
-
-
-
-
-
-
-
-
-
-<a name="myfootnote1">1 </a>: Actors are usually considered as humans and/or external systems.
+|Use Case Name:| International Remmitance |
+|-:|:-|
+|Sumary:| insert text |
+|Actors:| insert text |
+|Preconditions:| insert text |
+|Description:| insert text |
+|Exceptions:| insert text |
+|Postconditions:| insert text |
