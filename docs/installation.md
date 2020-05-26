@@ -731,7 +731,7 @@ rsync -auvz ./ /var/backups/`date +%Y-%m-%d`_mmo2_full
 
 #### 4. docker-compose up -d --gorce-recreate
 
-## GSMA MMO1 simulator
+## GSMA SP simulator
 
 Project folder on **production**: /var/docker
 Project folder on **staging**:   /var/docker
