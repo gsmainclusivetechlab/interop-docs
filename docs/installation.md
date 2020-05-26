@@ -402,10 +402,9 @@ $ helm -n moja upgrade moja mojaloop/mojaloop --dry-run
 $ helm -n moja upgrade moja mojaloop/mojaloop
 ```
 
-## GSMA ITP Test Platform
+## GSMA ITP test platform
 
 Project folder on **production**: /var/docker
-
 Project folder on **staging**: /var/docker
 
 ### installation steps
@@ -413,7 +412,6 @@ Project folder on **staging**: /var/docker
 #### 1. Install docker
 
 Install docker https://docs.docker.com/install/linux/docker-ce/ubuntu/
-
 and docker-compose: https://docs.docker.com/compose/install/ 
 
 ```bash
@@ -425,10 +423,10 @@ and docker-compose: https://docs.docker.com/compose/install/
 #### 3. Configure .env variables, docker-compose.yml and nginx.conf
 
 ```bash
-$ make init
+$ make init 
 ```
 
-Modify .env, src/.env, docker-compose.yml and build/nginx-server.conf according to you needs.
+Modify .env, src/.env, docker-compose.yml and build/nginx-server.conf according to you needs. 
 
 :::important
 Add “restart: always” to all docker-compose.yml services 
@@ -538,10 +536,9 @@ rsync -auvz ./ /var/backups/`date +%Y-%m-%d`_itp_full
 
 #### 8. make update
 
-## GSMA MMO1 Simulator
+## GSMA MMO1 simulator
 
 Project folder on **production**: /var/docker
-
 Project folder on **staging**:   /var/docker
 
 ### installation steps
@@ -656,10 +653,9 @@ Don't forget to add restart: always in each docker-compose service
 
 #### 7. make update
 
-## GSMA MMO2 Simulator
+## GSMA MMO2 simulator
 
 Project folder on **production**: /var/docker
-
 Project folder on **staging**:   /var/docker
 
 ### installation steps
@@ -735,10 +731,9 @@ rsync -auvz ./ /var/backups/`date +%Y-%m-%d`_mmo2_full
 
 #### 4. docker-compose up -d --gorce-recreate
 
-## GSMA SP Simulator
+## GSMA SP simulator
 
 Project folder on **production**: /var/docker
-
 Project folder on **staging**:   /var/docker
 
 ### installation steps:
