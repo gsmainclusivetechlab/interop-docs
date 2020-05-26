@@ -1,7 +1,7 @@
 --- 
-id: itpinstallation 
-title: ITP Installation Guide
-sidebar_label: ITP Installation
+id: architecture
+title: ITP Architecture
+sidebar_label: Architecture
 --- 
 
 Mojaloop
