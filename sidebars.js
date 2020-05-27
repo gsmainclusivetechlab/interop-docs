@@ -1,10 +1,9 @@
 module.exports = {
   someSidebar: {
-    'Get Started': ['intro','quickstart','docsguide'],
-    'Interoperability Test Platform':['installation','architecture'],
+    'Get Started': ['intro','quickstart','docsguide','architecture'],
+    'Installation':['installitp','installmmo','installsp','installmoja'],
     'Use Cases': ['usecases','uclist','uccreation'],
     'Test Cases': ['testcases','tclist','tctemplate'],
-    'ITP User Manual': ['requirements','session','tests','results'],
-    'EXTRA-TEMP': ['doc1','doc2','doc3'],
+    'User Manual': ['requirements','session','tests','results'],
   },
 };

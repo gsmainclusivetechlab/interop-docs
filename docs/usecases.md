@@ -4,13 +4,6 @@ title: Guide for ITP Use Cases
 sidebar_label: Use Cases Guide
 ---
 
-## Table of Contents
-
-1. [ITP Use Cases](#what)
-2. [List of Use Cases](#uc)
-3. [Use Cases Description](#ucdescription)
-4. [How to Create New Use Cases](#createuc)
-
 ### ITP Use Cases <a name="what"></a>
 
 The **ITP Use Cases** are used to capture the system requirements documenting the action of external actors <sup>[1](#myfootnote1)</sup> interacting with a system to achieve a specific goal. They map the business and user requisites to demonstrate precisely what to expect from the system. A Use Case (UC) makes possible the understanding of all possible paths through a given user/system interaction. Theses paths include both basic and alternative flows. The basic path (also called happy flow) is the main one and comply with all user needs. Alternative paths include several other situations that are related to the use case, even if they are not frequent or desired (unhappy flow), such as errors for example. Through this documentation  it is possible to understand more about the use cases and see all the use cases available in the Interoperability Test Platform. Also, it is possible to understand what types of requirements are related to the UC and the different paths under test by the platform. In way to a better understanding about the behaviour of the different use cases paths, please see the guide for ITP test cases.
