@@ -48,9 +48,7 @@ The UC code identifies the use case in relation to the others. The code contains
 |Exceptions:|<ul><li>Quote Rejected</li><li>Syntax Error</li><li>Element Missing</li><li>Too Many Elements</li><li>Invalid Signature</li><li>Generic Errors</li><li>INSERT MORE</li></ul> |
 |Postconditions:|Quotes:<ul><li>Accepted</li><li>Expired</li><li>Rejected</li></ul>Transfer:<ul><li>Committed</li><li>Aborted</li></ul>|
 
-Here's our logo (hover to see the title text):
-
-Inline-style: ![alt text](https://github.com/gsmainclusivetechlab/interop-docs/tree/gh-pages/img/p2p-rnd.png 'Logo Title Text 1')
+![P2P Use Case Flow](/interop-docs/img/p2p-rnd.png)
 
 #### UC0400 - International Remmittance <a name="ir"></a>
 
