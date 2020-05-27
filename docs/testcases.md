@@ -1,7 +1,7 @@
 ---
 id: testcases
 title: Guide for ITP Test Cases
-sidebar_label: Test Cases
+sidebar_label: Test Cases Guide
 ---
 
 ### 1. ITP Test Cases
@@ -10,13 +10,11 @@ ITP Test Cases approach all diferent paths related to a specific use case to val
 
 ### 2. List of Teste Cases
 
-#### Use Case: Merchant Payment <a name="mp"></a>
+#### Merchant-Initiated Merchant Payment
 
-##### Merchant-Initiated Merchant Payment <a name="mimp"></a>
+#### Payer-Initiated Merchant Payment
 
-##### Payer-Initiated Merchant Payment <a name="pimp"></a>
-
-#### Use Case: Peer-2-Peer <a name="p2p"></a>
+#### Use Case: Peer-2-Peer
 
 P2P use cases may involve different types of scenarios depending on the amount type, the fees involved and if the FSP needs to get a participant location from an Account Lookup System (ALS).
 
@@ -24,4 +22,4 @@ There are two types of amount type in a P2P transaction. **SEND**: In this type 
 
 In relation to the fees/comissions information the transaction can be **Non-Disclosing**, when the PayerFSP does not informes the PayeeFSP about the fees and comission involved in the transaction or **Disclosing** when it does.
 
-#### Use Case: P2P TESTE <a name="teste"></a>
+#### Use Case: International Remmittance

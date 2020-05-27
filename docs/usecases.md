@@ -1,7 +1,7 @@
 ---
 id: usecases
 title: Guide for ITP Use Cases
-sidebar_label: Use Cases
+sidebar_label: Use Cases Guide
 ---
 
 ## Table of Contents
@@ -17,7 +17,7 @@ The **ITP Use Cases** are used to capture the system requirements documenting th
 
 ### What an ITP Use Case represents
 
-The use cases represents the Mobile Money transactions types available for testing in the platform. Each use case is composed by a set of elements which are used to represent the type of use case. These elements are: the **scenario** where the UC refers to, the **initiator party** of the transaction, and the **type**, containing the classification of the initiator part. Além dos elementos mencionados, cada transação é composta por uma ou várias ações definidas pelos serviços disponíveis nas APIS. The transaction elements and transaction actions are decribed below.
+The use cases represents the Mobile Money transactions types available for testing in the platform. Each use case is composed by a set of elements which are used to represent the type of use case. These elements are: the **scenario** where the UC refers to, the **initiator party** of the transaction, and the **type**, containing the classification of the initiator part. In addition to the set of elements mentioned, each transaction consists of one or more actions defined by the services available in the APIs. The transaction elements and transaction actions are detailed below.
 
 ### Transaction Elements
 
@@ -37,8 +37,15 @@ The use cases represents the Mobile Money transactions types available for testi
 
 ### Transaction Actions
 
-Table with all Actions such as Participant / Party / Quote / Transfer etc... (Do we need it)
-
+|Transacrtion Action|Description|
+|:-------------------|:-------------|
+|Participant|Information related to the FSP participant location|
+|Party|Financial information about a party in a transaction|
+|Quote|Calculation of all values that can influence a transaction, such as fees and commissions|
+|Transfer|Performs the transfer of funds from Payer to Payee|
+|Authorization|Requires the necessary credentials to carry out a transaction on devices such as POS, ATM, etc|
+|Transaction Request|Payee requires the transfer of funds by Payer who can approve or reject the request|
+|Transaction Information|Obtains information regarding a financial transaction|
 
 
 <a name="myfootnote1">1 </a>: Actors are usually considered as humans and/or external systems.

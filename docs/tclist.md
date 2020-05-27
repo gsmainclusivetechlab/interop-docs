@@ -11,7 +11,7 @@ sidebar_label: Test Cases List
    1. [Merchant-Initiated Merchant Payment](#mimp)
    2. [Payer-Initiated Merchant Payment](#pimp)
    3. [Peer-2-Peer](#p2p)
-   4. [Peer-2-Peer](#ir)
+   4. [International Remmittance](#ir)
 
 ## ITP Test Cases <a name="what"></a>
 

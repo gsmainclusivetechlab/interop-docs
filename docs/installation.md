@@ -6,7 +6,17 @@ sidebar_label: ITP Installation
 
 WRITE SOMETHING ABOUT THE INSTALATION GUIDE
 
-## Mojaloop
+Este guia é direcionado para usuários que desejam realizar a instalação local da Interoperability Test Platform. O Guia foi montado levando em consideração o sistema operacional Ubuntu 18 and minimal requirenments: 1 GB RAM \ 15 GB Storagespace \ 1 VCpu. O Guia está dividido em 4 partes principais de instalação como mostrado no índice a seguir:
+
+## Table of Contents
+
+1. [Mojaloop](#moja)
+2. [ITP Test Plataform](#tp)
+3. [Mobile Money Operator 1 (MMO1) Simulator](#mmo1)
+4. [Mobile Money Operator 2 (MMO2) Simulator](#mmo2)
+5. [Service Provider (SP) Simulator](#sp)
+
+## Mojaloop <a name="moja"></a>
 
 ### installation steps
 
@@ -402,9 +412,10 @@ $ helm -n moja upgrade moja mojaloop/mojaloop --dry-run
 $ helm -n moja upgrade moja mojaloop/mojaloop
 ```
 
-## GSMA ITP test platform
+## GSMA ITP Test Platform <a name="tp"></a>
 
 Project folder on **production**: /var/docker
+
 Project folder on **staging**: /var/docker
 
 ### installation steps
@@ -412,6 +423,7 @@ Project folder on **staging**: /var/docker
 #### 1. Install docker
 
 Install docker https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
 and docker-compose: https://docs.docker.com/compose/install/ 
 
 ```bash
@@ -423,10 +435,10 @@ and docker-compose: https://docs.docker.com/compose/install/
 #### 3. Configure .env variables, docker-compose.yml and nginx.conf
 
 ```bash
-$ make init 
+$ make init
 ```
 
-Modify .env, src/.env, docker-compose.yml and build/nginx-server.conf according to you needs. 
+Modify .env, src/.env, docker-compose.yml and build/nginx-server.conf according to you needs.
 
 :::important
 Add “restart: always” to all docker-compose.yml services 
@@ -536,9 +548,10 @@ rsync -auvz ./ /var/backups/`date +%Y-%m-%d`_itp_full
 
 #### 8. make update
 
-## GSMA MMO1 simulator
+## GSMA MMO1 Simulator <a name="mmo1"></a>
 
 Project folder on **production**: /var/docker
+
 Project folder on **staging**:   /var/docker
 
 ### installation steps
@@ -653,9 +666,10 @@ Don't forget to add restart: always in each docker-compose service
 
 #### 7. make update
 
-## GSMA MMO2 simulator
+## GSMA MMO2 Simulator <a name="mmo2"></a>
 
 Project folder on **production**: /var/docker
+
 Project folder on **staging**:   /var/docker
 
 ### installation steps
@@ -731,9 +745,10 @@ rsync -auvz ./ /var/backups/`date +%Y-%m-%d`_mmo2_full
 
 #### 4. docker-compose up -d --gorce-recreate
 
-## GSMA SP simulator
+## GSMA SP Simulator <a name="sp"></a>
 
 Project folder on **production**: /var/docker
+
 Project folder on **staging**:   /var/docker
 
 ### installation steps:
