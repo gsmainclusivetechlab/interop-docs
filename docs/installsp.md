@@ -5,7 +5,7 @@ sidebar_label: Service Provider
 --- 
 
 :::tip
-This guide is intended for users who wish to install the Service Provider Simulator. The Guide was created taking into account the Ubuntu 18 operating system and minimal requirements: 1 GB RAM \ 15 GB Storagespace \ 1 VCpu.
+This guide is intended for users who wish to install the Service Provider Simulator. The Guide was created taking into account the Ubuntu 18 operating system and minimal requirements: 1 GB RAM \ 15 GB Storagespace \ 1 VCpu
 :::
 
 ## GSMA SP Simulator <a name="sp"></a>
