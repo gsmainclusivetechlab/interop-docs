@@ -15,7 +15,7 @@ sidebar_label: Use Cases List
 
 The UC code identifies the use case in relation to the others. The code contains the acronym UC and a reference code (e.g. UC019). All use cases currently available on the ITP platform are listed below.
 
-#### UC0100 - Merchant-Initiated Merchant Payment <a name="mimp"></a>
+#### UC010 - Merchant-Initiated Merchant Payment <a name="mimp"></a>
 
 |Use Case Name:| Merchant-Initiated Merchant Payment |
 |-:|:-|
@@ -23,10 +23,10 @@ The UC code identifies the use case in relation to the others. The code contains
 |Actors:| insert text |
 |Preconditions:| insert text |
 |Description:| insert text |
-|Exceptions:| insert text |
+|Exceptions<sup>[1](#exceptions)</sup>:| insert text |
 |Postconditions:| insert text |
 
-#### UC0200 - Payer-Initiated Merchant Payment <a name="pimp"></a>
+#### UC020 - Payer-Initiated Merchant Payment <a name="pimp"></a>
 
 |Use Case Name:| Payer-Initiated Merchant Payment |
 |-:|:-|
@@ -34,10 +34,16 @@ The UC code identifies the use case in relation to the others. The code contains
 |Actors:| insert text |
 |Preconditions:| insert text |
 |Description:| insert text |
-|Exceptions:| insert text |
+|Exceptions<sup>[1](#exceptions)</sup>:| insert text |
 |Postconditions:| insert text |
 
-#### UC0300 - Peer-2-Peer <a name="p2p"></a>
+#### UC030 - Peer-2-Peer <a name="p2p"></a>
+
+This use case describes the process involved when a user (payer) needs to carry out a transaction to send money to another user (payee) and who are at different service providers. The following is a brief story describing an example of how the user would behave to perform a P2P transfer.
+
+:::note User Story
+Zuri needs to transfer money to his brother who lives in another city through his mobile money service provider. Both have phones but are at different service providers. After entering her brother's information, or using previously saved information, she starts the transfer process. Zuri has access to full rates (including exchange rates, if any) and decides to proceed with the transfer. A few seconds later Zuri receives confirmation of the transaction and her brother receives the money in his mobile money account.
+:::
 
 |Use Case Name:| Peer-2-Peer |
 |-:|:-|
@@ -45,12 +51,14 @@ The UC code identifies the use case in relation to the others. The code contains
 |Actors:|<ul><li>Payer</li><li>Payee</li><li>Payer FSP</li><li>Payee FSP</li><li>Mobile Money Operator</li><li>Switch</li></ul>|
 |Preconditions:| <ul><li>The user has permission to use P2P transer</li><li>FSPs are capable of handled async calls.</li><li>Payer FSP and Payee FSP exist in Mojaloop as Participants.</li><li>Payee and Payer exist in Switch as Parties.</li></ul> |
 |Description:| <ol><li>Payer shows interest in making a transfer;</li><li>Payer FSP performs the transfer quote via switch to Payee FSP;</li><li>After receiving the quote with fees and commissions, Payer decides to proceed with the transfer;</li><li>Payer FSP transfers to Payee FSP via Switch;</li><li>Payee FSP notifies Payee of receipt of the transfer.</li></ol> |
-|Exceptions:|<ul><li>Quote Rejected</li><li>Syntax Error</li><li>Element Missing</li><li>Too Many Elements</li><li>Invalid Signature</li><li>Generic Errors</li><li>INSERT MORE</li></ul> |
+|Exceptions<sup>[1](#exceptions)</sup>:|Quote Rejected, Syntax Error, Element Missing, Too Many Elements, Invalid Signature, Generic Errors, INSERTING MORE BASED ON THE MOJALOOP ERRORS...|
 |Postconditions:|Quotes:<ul><li>Accepted</li><li>Expired</li><li>Rejected</li></ul>Transfer:<ul><li>Committed</li><li>Aborted</li></ul>|
+
+Sequence diagram for one of the basic paths (happy flow) for P2P: (This picture will be changed to the template Bruno shared)
 
 ![P2P Use Case Flow](/interop-docs/img/p2p-rnd.png)
 
-#### UC0400 - International Remmittance <a name="ir"></a>
+#### UC040 - International Remmittance <a name="ir"></a>
 
 |Use Case Name:| International Remmitance |
 |-:|:-|
@@ -60,3 +68,5 @@ The UC code identifies the use case in relation to the others. The code contains
 |Description:| insert text |
 |Exceptions:| insert text |
 |Postconditions:| insert text |
+
+<a name="exceptions">1 </a>: The exceptions are directed related to the alternative paths the use case can take. This way it is possible to to realize by this parameter the unhappy flows approached in the test cases.

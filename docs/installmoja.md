@@ -71,7 +71,9 @@ spec:
   - command:
 ```
 
-should look like this: http://i.imgur.com/ElDAMy0.png
+After adding the line, it should look like this:
+![Install Example](/interop-docs/img/mojahelm.png)
+
 
 
 #### 5. Add helm repos
