@@ -1,9 +1,9 @@
 module.exports = {
   title: 'My Site',
   tagline: 'The tagline of my site',
-  url: 'https://gsmainclusivetechlab.github.io/',
-  cname: docs.interop.gsmainclusivetechlab.io,
-  baseUrl: '/interop-docs/',
+  url: 'https://gsmainclusivetechlab.github.io/interop-docs/',
+  //cname: docs.interop.gsmainclusivetechlab.io,
+  baseUrl: '',
   favicon: 'img/favicon.ico',
   organizationName: 'gsmainclusivetechlab', // Usually your GitHub org/user name.
   projectName: 'interop-docs', // Usually your repo name.
