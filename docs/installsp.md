@@ -4,7 +4,7 @@ title: Service Provider Installation Guide
 sidebar_label: Service Provider
 --- 
 
-:::tip
+:::tip System Requrements
 This guide is intended for users who wish to install the Service Provider Simulator. The Guide was created taking into account the Ubuntu 18 operating system and minimal requirements: 1 GB RAM \ 15 GB Storagespace \ 1 VCpu.
 :::
 
@@ -119,7 +119,7 @@ rsync -auvz ./ /var/backups/`date +%Y-%m-%d`_mmo1_full
 #### 4. If there was changes in docker-compose.example.yml please perform manually update of docker-compose.yml
 
 :::important
-Don't forget to add restart: always in each docker-compose service
+Don't forget to add "restart: always" in each docker-compose service
 :::
 
 #### 5. If there was changes in build/nginx-server.example.conf please perform manually update of build/nginx-server.example.conf

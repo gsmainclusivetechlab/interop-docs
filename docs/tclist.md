@@ -35,33 +35,21 @@ All test cases currently available on the ITP platform are listed below. As new 
 
 ### Use Case: Peer-2-Peer <a name="p2p"></a>
 
-
 | Teste Case | Test Scenario | Results | Status | Error|
-|------------|---------------|---------|--------|-----:|
-|P2P0100|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Aproved|Pass|-|
-|P2P0110|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Rejected Quote|Fail|5103|
-|P2P0140|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Rejected|Fail|400|
-|P2P0141|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Rejected|Fail|401|
-|P2P0144|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Rejected|Fail|450|
-|P2P0150|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Receive|Aproved|Fail|150|
-|P2P0200|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Aproved|Pass|-|
-|P2P0210|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected Quote|Fail|5103|
-|P2P0240|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected|Fail|400|
-|P2P0241|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected|Fail|401|
-|P2P0244|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected|Fail|404|
-|P2P0250|P2P transference ALS:NO / Fee: Non-Disclosing / AmountType: Send|Rejected|Fail|500|
-|P2P0300|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Aproved|Pass|-|
-|P2P0310|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected Quote|Fail|5103|
-|P2P0340|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected|Fail|400|
-|P2P0341|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected|Fail|401|
-|P2P0344|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected|Fail|404|
-|P2P0350|P2P transference ALS:NO / Fee: Disclosing / AmountType: Receive|Rejected|Fail|500|
-|P2P0400|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Aproved|Pass|-|
-|P2P0410|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected Quote|Fail|5103|
-|P2P0440|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected|Fail|400|
-|P2P0441|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected|Fail|401|
-|P2P0444|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected|Fail|404|
-|P2P0450|P2P transference ALS:NO / Fee: Disclosing / AmountType: Send|Rejected|Fail|500|
-|P2P0500|P2P transference ALS:YES / Fee: Non-Disclosing / AmountType: Receive|Aproved|Pass|-|
+|:----------:|---------------|:-------:|:------:|:----:|
+|[P2P0100](files/tc/p2p/P2P0100.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Non-Disclosing|Aproved|Pass|-|
+|[P2P0200](files/tc/p2p/P2P0200.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Non-Disclosing|Aproved|Pass|-|
+|[P2P0300](files/tc/p2p/P2P0300.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Disclosing|Aproved|Pass|-|
+|[P2P0400](files/tc/p2p/P2P0400.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Disclosing|Aproved|Pass|-|
+|[P2P0500](files/tc/p2p/P2P0500.yml)|P2P transference ALS:YES / AmountType: Receive / Fee: Non-Disclosing|Aproved|Pass|-|
+|[P2P0600](files/tc/p2p/P2P0600.yml)|P2P transference ALS:YES / AmountType: Send / Fee: Non-Disclosing|Aproved|Pass|-|
+|[P2P0700](files/tc/p2p/P2P0700.yml)|P2P transference ALS:YES / AmountType: Receive / Fee: Disclosing|Aproved|Pass|-|
+|[P2P0800](files/tc/p2p/P2P0800.yml)|P2P transference ALS:YES / AmountType: Send / Fee: Disclosing|Aproved|Pass|-|
+|[P2P5001](files/tc/p2p/P2P5001.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Non-Disclosing|Rejected Quote by Payee|Fail|5103|
+|[P2P5002](files/tc/p2p/P2P5002.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Non-Disclosing|Rejected Quote by Payee|Fail|5103|
+|[P2P5003](files/tc/p2p/P2P5003.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Disclosing|Rejected Quote by Payee|Fail|5103|
+|[P2P5004](files/tc/p2p/P2P5004.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Disclosing|Rejected Quote by Payee|Fail|5103|
 
-#### International Remmittance <a name="ir"></a>
+### International Remmittance <a name="ir"></a>
+
+Test Cases Under Construction...

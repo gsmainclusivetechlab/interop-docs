@@ -136,8 +136,8 @@ rsync -auvz ./ /var/backups/`date +%Y-%m-%d`_itp_full
 
 #### 4. If there was changes in docker-compose.example.yml please perform manually update of docker-compose.yml
 
-:::IMPORTANT 
-Don't forget to add restart: always in each docker-compose service
+:::important
+Don't forget to add "restart: always" in each docker-compose service
 :::
 
 #### 7. If there was changes in build/nginx-server.example.conf please perform manually update of build/nginx-server.example.conf
