@@ -1,7 +1,7 @@
 --- 
 id: tctemplate 
 title: Test Case Template 
-sidebar_label: Test Case Template 
+sidebar_label: Creating a Test Case 
 --- 
 
 The ITP test cases are described using YAML files. Each file is composed of several fields that are interpreted by the platform to carry out tests and validations of the different use cases paths. Thus, the purpose of this manual is to describe the basic model of a YAML file for ITP. Using this template it is possible to understand how the fields are used by the ITP and how to create (or propose) new test cases.
@@ -59,7 +59,7 @@ The second part of the test case file is called Test Step Data. This part is det
 
 ### Global values
 
-INSERT A QUICK DESCRIPTION ABOUT GLOBAL VALUES
+The global values are presented in each transaction and contains information about it.
 
 | Name | Description | Example |
 |:-----|:------------|---------|
@@ -117,7 +117,7 @@ test_request_scripts:
 
 ### Overridings
 
-Write description
+Overridings are used in situations where it is necessary to force an overriding of a value for the request or the response in a transaction.
 
 | Name | Description | Example |
 |:-----|:------------|---------|

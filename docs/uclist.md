@@ -51,7 +51,7 @@ Zuri needs to transfer money to his brother who lives in another city through hi
 |Actors:|<ul><li>Payer</li><li>Payee</li><li>Payer FSP</li><li>Payee FSP</li><li>Mobile Money Operator</li><li>Switch</li></ul>|
 |Preconditions:| <ul><li>The user has permission to use P2P transer</li><li>FSPs are capable of handled async calls.</li><li>Payer FSP and Payee FSP exist in Mojaloop as Participants.</li><li>Payee and Payer exist in Switch as Parties.</li></ul> |
 |Description:| <ol><li>Payer shows interest in making a transfer;</li><li>Payer FSP performs the transfer quote via switch to Payee FSP;</li><li>After receiving the quote with fees and commissions, Payer decides to proceed with the transfer;</li><li>Payer FSP transfers to Payee FSP via Switch;</li><li>Payee FSP notifies Payee of receipt of the transfer.</li></ol> |
-|Exceptions<sup>[1](#exceptions)</sup>:|Quote Rejected, Syntax Error, Element Missing, Too Many Elements, Invalid Signature, Generic Errors, INSERTING MORE BASED ON THE MOJALOOP ERRORS...|
+|Exceptions<sup>[1](#exceptions)</sup>:| Payee FSP Rejected Quote, Payee Rejected Quote|
 |Postconditions:|Quotes:<ul><li>Accepted</li><li>Expired</li><li>Rejected</li></ul>Transfer:<ul><li>Committed</li><li>Aborted</li></ul>|
 
 Sequence diagram for one of the basic paths (happy flow) for P2P: (This picture will be changed to the template Bruno shared)

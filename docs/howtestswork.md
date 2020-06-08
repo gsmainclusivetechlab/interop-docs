@@ -2,11 +2,9 @@
 id: howtestswork
 title: How Tests Work with Components
 sidebar_label: How Tests Work
---- 
+---
 
 This manual describes how the Test Control, Mojaloop and Simulators should be set up in order to work properly per working environment (e.g. Staging or Production) and contains examples of setups.
-
-1) How it works
 
 ## Components
 

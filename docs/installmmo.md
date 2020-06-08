@@ -4,7 +4,7 @@ title: Mobile Money Operator Installation Guide
 sidebar_label: Mobile Money Operator
 --- 
 
-:::tip
+:::tip System Requrements
 This guide is intended for users who wish to install the two Mobile Money Operator Simulators used in the tests. The Guide was created taking into account the Ubuntu 18 operating system and minimal requirements: 1 GB RAM \ 15 GB Storagespace \ 1 VCpu.
 :::
 
@@ -33,7 +33,7 @@ $ make init
 Modify .env, src/.env, docker-compose.yml and build/nginx-server.conf according to you needs.
 
 :::important
-Add “restart: always” to all docker-compose.yml services
+Don't forget to add "restart: always" in each docker-compose.yml service
 :::
 
 #### 4. Perform test run  (stop after DB initialize by CTRL+C)

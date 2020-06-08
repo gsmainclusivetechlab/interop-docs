@@ -1,7 +1,7 @@
 ---
 id: uccreation
 title: How to Create a New Use Case
-sidebar_label: Creating a UC
+sidebar_label: Creating a Use Case
 ---
 
 ### List of Steps
