@@ -12,7 +12,11 @@ ITP Test Cases approach all diferent paths related to a specific use case to val
 
 #### Merchant-Initiated Merchant Payment
 
-#### Payer-Initiated Merchant Payment
+#### Customer-Initiated Merchant Payment
+
+:::note
+Under development
+:::
 
 #### Use Case: Peer-2-Peer
 
@@ -23,3 +27,7 @@ There are two types of amount type in a P2P transaction. **SEND**: In this type 
 In relation to the fees/comissions information the transaction can be **Non-Disclosing**, when the PayerFSP does not informes the PayeeFSP about the fees and comission involved in the transaction or **Disclosing** when it does.
 
 #### Use Case: International Remmittance
+
+:::note
+Under development
+:::

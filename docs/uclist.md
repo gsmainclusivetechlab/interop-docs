@@ -7,7 +7,7 @@ sidebar_label: Use Cases List
 ### List of Use Cases <a name="uc"></a>
 
 1. UC0100 - [Merchant-Initiated Merchant Payment](#mimp)
-2. UC0200 - [Payer-Initiated Merchant Payment](#pimp)
+2. UC0200 - [Customer-Initiated Merchant Payment](#cimp)
 3. UC0300 - [P2P Transfer](#p2p)
 4. UC0400 - [International Remmitance](#ir)
 
@@ -26,16 +26,11 @@ The UC code identifies the use case in relation to the others. The code contains
 |Exceptions<sup>[1](#exceptions)</sup>:| insert text |
 |Postconditions:| insert text |
 
-#### UC020 - Payer-Initiated Merchant Payment <a name="pimp"></a>
+#### UC020 - Customer-Initiated Merchant Payment <a name="cimp"></a>
 
-|Use Case Name:| Payer-Initiated Merchant Payment |
-|-:|:-|
-|Sumary:| insert text |
-|Actors:| insert text |
-|Preconditions:| insert text |
-|Description:| insert text |
-|Exceptions<sup>[1](#exceptions)</sup>:| insert text |
-|Postconditions:| insert text |
+:::note
+Under development
+:::
 
 #### UC030 - Peer-2-Peer <a name="p2p"></a>
 
@@ -60,13 +55,8 @@ Sequence diagram for one of the basic paths (happy flow) for P2P: (This picture 
 
 #### UC040 - International Remmittance <a name="ir"></a>
 
-|Use Case Name:| International Remmitance |
-|-:|:-|
-|Sumary:| insert text |
-|Actors:| insert text |
-|Preconditions:| insert text |
-|Description:| insert text |
-|Exceptions:| insert text |
-|Postconditions:| insert text |
+:::note
+Under development
+:::
 
 <a name="exceptions">1 </a>: The exceptions are directed related to the alternative paths the use case can take. This way it is possible to to realize by this parameter the unhappy flows approached in the test cases.
