@@ -9,11 +9,13 @@ sidebar_label: Test Cases List
 1. [ITP Test Cases](#what)
 2. [List of Test Cases](#tc)
    1. [Merchant-Initiated Merchant Payment](#mimp)
-   2. [Payer-Initiated Merchant Payment](#pimp)
+   2. [Customer-Initiated Merchant Payment](#cimp)
    3. [Peer-2-Peer](#p2p)
    4. [International Remmittance](#ir)
 
 ## ITP Test Cases <a name="what"></a>
+
+ITP Test Cases approach all diferent paths related to a specific use case to validade if the requirements are met. In way to assure the quality of a system, the test cases are separated into happy and unhappy so that they cover all the existing possibilities for a use case. Tests typically include several alternative paths that evaluate the exceptions and errors in the use case. It is also possible that there are several happy paths, addressing different business rules that allow to obtain the expected result.
 
 All test cases currently available on the ITP platform are listed below. As new test cases are created, the documentation, and therefore the list, is updated. The list of test cases is divided by use case and contains the following attributes:
 
@@ -31,7 +33,11 @@ All test cases currently available on the ITP platform are listed below. As new 
 
 ### Merchant-Initiated Merchant Payment <a name="mimp"></a>
 
-### Payer-Initiated Merchant Payment <a name="pimp"></a>
+### Customer-Initiated Merchant Payment <a name="cimp"></a>
+
+:::note
+Under development
+:::
 
 ### Use Case: Peer-2-Peer <a name="p2p"></a>
 
@@ -52,4 +58,6 @@ All test cases currently available on the ITP platform are listed below. As new 
 
 ### International Remmittance <a name="ir"></a>
 
-Test Cases Under Construction...
+:::note
+Under development
+:::
