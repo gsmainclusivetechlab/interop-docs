@@ -4,6 +4,6 @@ module.exports = {
     'Installation':['installitp','installmmo','installsp','installmoja'],
     'Use Cases': ['usecases','uclist','uccreation'],
     'Test Cases': ['tclist','tctemplate'],
-    'User Manual': ['requirements','session','tests','results'],
+    'User Manual': ['session','tests','results'],
   },
 };
