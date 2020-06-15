@@ -59,4 +59,8 @@ Sequence diagram for one of the basic paths (happy flow) for P2P: (This picture 
 Under development
 :::
 
-<a name="exceptions">1 </a>: The exceptions are directed related to the alternative paths the use case can take. This way it is possible to to realize by this parameter the unhappy flows approached in the test cases.
+---
+
+##### Footnotes
+
+###### <a name="exceptions">1 </a>: The exceptions are directed related to the alternative paths the use case can take. This way it is possible to to realize by this parameter the unhappy flows approached in the test cases.

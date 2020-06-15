@@ -40,4 +40,8 @@ The use cases represents the Mobile Money transactions types available for testi
 |Transaction Request|Payee requires the transfer of funds by Payer who can approve or reject the request|
 |Transaction Information|Obtains information regarding a financial transaction|
 
-<a name="actors">1</a>: Actors are usually considered as humans and/or external systems.
+---
+
+##### Footnotes
+
+###### <a name="actors">1</a>: Actors are usually considered as humans and/or external systems.
