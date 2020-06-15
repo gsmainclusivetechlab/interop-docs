@@ -4,18 +4,18 @@ title: ITP Use Cases List
 sidebar_label: Use Cases List
 ---
 
-### List of Use Cases <a name="uc"></a>
+## List of Use Cases <a name="uc"></a>
 
-1. UC0100 - [Merchant-Initiated Merchant Payment](#mimp)
-2. UC0200 - [Customer-Initiated Merchant Payment](#cimp)
-3. UC0300 - [P2P Transfer](#p2p)
-4. UC0400 - [International Remmitance](#ir)
+1. UC01 - [Merchant-Initiated Merchant Payment](#mimp)
+2. UC02 - [Customer-Initiated Merchant Payment](#cimp)
+3. UC03 - [P2P Transfer](#p2p)
+4. UC04 - [International Remmitance](#ir)
 
-### Use Cases Description <a name="ucdescription"></a>
+## Use Cases Description <a name="ucdescription"></a>
 
 The UC code identifies the use case in relation to the others. The code contains the acronym UC and a reference code (e.g. UC019). All use cases currently available on the ITP platform are listed below.
 
-#### UC010 - Merchant-Initiated Merchant Payment <a name="mimp"></a>
+### UC01 - Merchant-Initiated Merchant Payment <a name="mimp"></a>
 
 |Use Case Name:| Merchant-Initiated Merchant Payment |
 |-:|:-|
@@ -26,13 +26,13 @@ The UC code identifies the use case in relation to the others. The code contains
 |Exceptions<sup>[1](#exceptions)</sup>:| insert text |
 |Postconditions:| insert text |
 
-#### UC020 - Customer-Initiated Merchant Payment <a name="cimp"></a>
+### UC02 - Customer-Initiated Merchant Payment <a name="cimp"></a>
 
 :::note
 Under development
 :::
 
-#### UC030 - Peer-2-Peer <a name="p2p"></a>
+### UC03 - Peer-2-Peer <a name="p2p"></a>
 
 This use case describes the process involved when a user (payer) needs to carry out a transaction to send money to another user (payee) and who are at different service providers. The following is a brief story describing an example of how the user would behave to perform a P2P transfer.
 
@@ -53,7 +53,7 @@ Sequence diagram for one of the basic paths (happy flow) for P2P: (This picture 
 
 ![P2P Use Case Flow](/interop-docs/img/p2p-rnd.png)
 
-#### UC040 - International Remmittance <a name="ir"></a>
+### UC04 - International Remmittance <a name="ir"></a>
 
 :::note
 Under development
