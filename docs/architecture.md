@@ -1,24 +1,54 @@
---- 
+---
 id: architecture
-title: ITP Architecture
+title: Architecture
 sidebar_label: Architecture
---- 
+---
 
-Mojaloop
-installation steps:
-Install docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/
-Install K8s (for Ubuntu 18):
+This section describes the high-level architecture of the Interoperability Test Platform.
+The platform was designed to be possible scale and integrate with other simulators in the future, for that reason we have 4 main components: Test Platform, Simulators, Mojaloop and System Under Tests(SUTs).
+The system can handle 2 System Under Test, Service Providers and Digital Financial Service Providers.
 
-:::important
+![High Level Architecture](/interop-docs/img/architecture_high_level.png)
 
-1. \# - means that command should be executed by root user <br/>
-2. $ - means that command should be executed by regular user
+## Test Platform
 
-:::
+It's the core of the system which is subdivided into 4 main blocks: Frontend, Backend, Test Management and Proxy. Within this, the test platform can provide a UI, manage users, manage sessions, manage test cases, intercepts messages between simulators and SUTs and test each message that is sent or received by the platform.
+The platform uses [Laravel](https://laravel.com/), a web application framework which uses PHP as base language.
 
-:::caution
+### Frontend
 
-1. kubelet, kubeadm and kubectl shoud be version 1.17.3 <br/>
-2. Flannel is broken, use weave-kube
+The frontend responsible for rendering the UI and uses 2 main technologies: [Vue.js](https://vuejs.org/) and [Tabler](https://tabler.io/).
 
-:::
+*   Vue.js: is used to build a single page application.
+*   Tabler: provide the admin and dashboard layout to build the UI, underneath uses [Bootstrap](https://getbootstrap.com/) one the most popular frontend frameworks.
+
+### Backend
+
+The backend is responsible for providing the data to UI and interact with the database, and uses 1 main technology: [Inertia.js](https://inertiajs.com/).
+
+*   Inertia.js: Allows to create a single page application without the need to build an API.
+
+### Test Management
+
+It's the core part of the testing which holds the test case, test run and test validators, and uses 1 main technology: [OpenAPI PSR-7 Message Validator](https://github.com/thephpleague/openapi-psr7-validator), besides the testing logic create for this.
+The test management supports 2 types of validation Schema validation and Business rule validations, more details [here]().
+
+*   OpenAPI PSR-7 Message Validator: Combine the power of OpenAPI Spec and PS7-Message, and validates all messages(request/response) in the platform.
+
+### Proxy
+
+One of the objectives of the platform is to provide an end-to-end chain of all messages that happens in a real implementation using a Mojaloop hub. The proxy layer was created with this purpose. All messages pass to a proxy layer where the platform is able to get the message, store, validate and send to the correct simulator to process the response and possible next message, if needed.
+
+## Simulators
+
+**SP Simulator**: represents Service Provider
+
+**MMO1 simulator**: represents Payee’s FSP
+
+**MMO2 simulator**: represents Payer’s FSP
+
+## Mojaloop
+
+interoperability platform that connects MMO1 and MMO2 so that they can perform Use Cases (business operations like transfer funds in between MMOs)
+
+## System Under Test
