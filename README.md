@@ -2,6 +2,17 @@
 
 This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
+## Cloning and Running this Project
+
+```
+$ git clone
+$ npm install
+$ npm run build
+$ npm run start
+```
+
+## Installing Docusaurus
+
 ### Installation
 
 ```
