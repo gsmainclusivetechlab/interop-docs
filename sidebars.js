@@ -7,6 +7,7 @@ module.exports = {
       "architecture/matching",
     ],
     Installation: [
+      "installation/introduction",
       "installation/itp",
       "installation/mmo",
       "installation/sp",
