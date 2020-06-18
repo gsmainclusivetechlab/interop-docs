@@ -1,29 +1,12 @@
 ---
-id: howtestswork
-title: How Tests Work with Components
-sidebar_label: How Tests Work
+id: howconnectionswork
+title: How Components Connections Works
+sidebar_label: Component Connections
 ---
 
 This page describes how the various components of the Interoperability Testing
 Platform (ITP) work together, and how they can be deployed to different
 environments.
-
-## Components
-
-There are five main components used to test the paths corresponding to different
-use cases. They are:
-
-- **SP Simulator**: Acts as a mock service provider (SP) such as a utilities
-  company or supermarket checkout to simulate their role in a transaction.
-- **MMO1 simulator**: Acts as a mock financial services provider (FSP)
-  representing the _payee_ of a transaction.
-- **MMO1 simulator**: Acts as a mock financial services provider (FSP)
-  representing the _payer_ of a transaction.
-- **Mojaloop Simulator**: Acts as an interoperability platform that connects
-  MMO1 and MMO2 in a transaction.
-- **Interoperability Test Platform**: The core test platform which intercepts
-  all messages between the components to display them and validate component
-  behaviours.
 
 ## Connections between Components
 
@@ -39,7 +22,7 @@ import { Graphviz } from "graphviz-react";
 <Graphviz
   options={{ height: "auto" }}
   dot={`
-    digraph { 
+    digraph {
       rankdir="TD"
       ratio="fill";
       size="6,2";
@@ -50,7 +33,7 @@ import { Graphviz } from "graphviz-react";
       ITP [ label="Test Platform" shape="box"]
       subgraph sim {
         rank="same"
-        sp -> mmo1 -> sp [ style="dashed", color="#67ab9f"] 
+        sp -> mmo1 -> sp [ style="dashed", color="#67ab9f"]
         mmo1 -> mojaloop -> mmo2 -> mojaloop -> mmo1 [ style="dashed", nodesep=1]
       }
       ITP -> {sp mmo1} [dir="both", color="#67ab9f"]
@@ -73,8 +56,8 @@ import { Graphviz } from "graphviz-react";
         a -> b [label="Actual message (MM API)", color="#67ab9f"] ;
         b -> f [label="Actual message (Mojaloop API)"] ;
         c -> d [label="Logical message (MM API)", style=dashed, color="#67ab9f"];
-        d -> e [label="Logical message (Mojaloop API)", style=dashed] ; 
-      }        
+        d -> e [label="Logical message (Mojaloop API)", style=dashed] ;
+      }
 `}
 />
 
@@ -138,5 +121,3 @@ Thus, the URL that an MMO1 simulator should use to send messages to Mojaloop
 ```
 https://interop.gsmainclusivetechlab.io/testing/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/b2a85076-b748-4d93-8df1-2b39844e6d4b/simulator/
 ```
-
-## TODO: Test Step Matching
