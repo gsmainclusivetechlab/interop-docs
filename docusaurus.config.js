@@ -87,7 +87,7 @@ module.exports = {
           routeBasePath: '/', // Set this value to '/'.
           // Please change this to your repo.
           editUrl:
-            'https://github.com/gsmainclusivetechlab/interop-docs/',
+            'https://github.com/gsmainclusivetechlab/',
         },
         // blog: {
         //   showReadingTime: true,
