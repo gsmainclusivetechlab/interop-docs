@@ -22,6 +22,7 @@ Session screen elements:
 
 When clicking on a test case, the user will have access to information and the results of all executions carried out for this particular test. The data that can be seen are principally: configuration (1), description (2), preconditions (3), test runs (4), test steps (5) and test flow (6). This information will be further detailed below.
 
+Executions for a test case:
 ![List of Executed Tests](/interop-docs/img/runlist.png)
 
 ### Test Information
@@ -34,13 +35,15 @@ In the **Test Runs** tab are all the executions performed for the test case. Eac
 
 When selecting a run, the user can navigate through the steps that were taken when the test was run. For each step it is possible to see the status of the same, all the necessary tests so that the step is complete and the request and response messages. By clicking on the performed test itens list, it is possible to view the information of the request message that was sent and the expected message for the request. This information is very useful to understand how the step works and the test case as a whole, being notoriously relevant in situations of failure in one of the steps. The following figure shows a screen of the system with this information previously described.
 
+Information of Test Runs tab:
 ![Example of Test Runs](/interop-docs/img/testruns.png)
 
 ### Test Steps
 
 When choosing the **Test Steps** tab, it is possible to see a more detailed view of each step when executing the test case. In each row of the table you can see the method used, the endpoint and the source and destination modules involved in the step being executed. In addition, the information that was used in the request and response for each step is also available. The following figure shows an example of visualization of the steps for the execution of a test case for P2P in which the transaction is accepted, having receive for amount type and disclosing fees and commissions.
 
-![Example of Test Flow](/interop-docs/img/teststeps.png)
+Information of Test Steps tab:
+![Example of Test Steps](/interop-docs/img/teststeps.png)
 
 ### Test Flow
 
@@ -48,10 +51,11 @@ The **test flow** consists of a sequence diagram showing the messages exchanged 
 
 If the user wishes, the test flow can be exported or edited. By clicking on the Diagrgam Editor option, the code generated for the test flow is opened on the Mermaid platform. Through Mermaid the user can change the flows, export different types of images and generate the diagram markdown. This possibility can be a useful tool for creating and viewing new test cases before proposing them to the Interoperability Test Platform.
 
+Information of Test Flow tab:
 ![Example of Test Flow](/interop-docs/img/testflow.png)
 
 ---
 
 ##### Footnotes
 
-###### <a name="testduration">1</a>: This duration is directly related to the Interoperability Test Platform. The performance of the system under test is not evaluated here, since part of the test execution comes from simulated components.
+- <a name="testduration">1</a>: This duration is directly related to the Interoperability Test Platform. The performance of the system under test is not evaluated here, since part of the test execution comes from simulated components.
