@@ -1,6 +1,6 @@
 module.exports = {
   someSidebar: {
-    'Get Started': ['intro','quickstart','docsguide'],
+    'Get Started': ['intro','docsguide'],
     'Architecture': ['architecture_overview','howconnectionswork', 'testcasematching'],
     'Installation':['installitp','installmmo','installsp','installmoja'],
     'Use Cases': ['usecases','uclist','uccreation'],
