@@ -1,5 +1,5 @@
 --- 
-id: installmmo
+id: mmo
 title: Mobile Money Operator Installation Guide
 sidebar_label: Mobile Money Operator
 --- 

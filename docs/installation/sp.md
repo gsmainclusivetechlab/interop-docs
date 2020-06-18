@@ -1,5 +1,5 @@
 --- 
-id: installsp
+id: sp
 title: Service Provider Installation Guide
 sidebar_label: Service Provider
 --- 

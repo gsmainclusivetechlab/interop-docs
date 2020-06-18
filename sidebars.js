@@ -6,7 +6,12 @@ module.exports = {
       "architecture/connections",
       "architecture/matching",
     ],
-    Installation: ["installitp", "installmmo", "installsp", "installmoja"],
+    Installation: [
+      "installation/itp",
+      "installation/mmo",
+      "installation/sp",
+      "installation/mojaloop",
+    ],
     "Use Cases": ["usecases", "uclist", "uccreation"],
     "Test Cases": ["tclist", "tctemplate"],
     "User Manual": ["quickguide", "session", "tests", "results"],
