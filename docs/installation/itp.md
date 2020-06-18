@@ -7,7 +7,7 @@ sidebar_label: Interoperability Test Platform
 ## Project Set-up
 
 To begin with, download the code for the test platform onto your machine. To do
-this using git, run
+this using git, run:
 
 ```bash
 $ git clone git@github.com:gsmainclusivetechlab/interop-test-platform.git
@@ -83,7 +83,6 @@ installation script above should be re-run to ensure that the URLs are persisted
 to the database. It is a current limitation of the test platform that this
 process will also erase other contents of the database.
 
-
 ## Logging In
 
 At this point, all services are set up, and you should be able to log in. If you
@@ -115,7 +114,8 @@ data loss. Before you proceed, you may nonetheless choose to make a backup of
 your database with the following command:
 
 ```bash
-$ docker-compose exec mysqldb bash -c "mysqldump -u $DB_USERNAME -p$DB_PASSWORD $DB_DATABASE > /var/lib/mysql/itp-test-control_`date +%Y-%m-%d`.sql"
+$ docker-compose exec mysqldb bash -c "mysqldump -p -u $DB_USERNAME $DB_DATABASE > /var/lib/mysql/itp-test-control_`date +%Y-%m-%d`.sql"
+# Enter password...
 ```
 
 This will place a `.sql` dump file inside the `runtime/mysql` directory. You may
@@ -134,7 +134,7 @@ $ rsync -auvz ./ ~/backups/`date +%Y-%m-%d`_itp_full
 
 ### Fetching Updates
 
-To update the project code, simply run pull the latest changes using git. You
+To update the project code, simply pull the latest changes using git. You
 can also update service images (such as those used for mysql and redis) with
 `docker-compose`:
 
