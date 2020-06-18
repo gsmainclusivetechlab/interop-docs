@@ -1,9 +1,4 @@
-import React from 'react';
-import { Redirect } from '@docusaurus/router';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-function Home() {
-  return <Redirect to={useBaseUrl('/intro')} />;
+// This component is not used, since docusaurus is loaded in "docs-only" mode
+export default function Home() {
+  return null;
 }
-
-export default Home;
