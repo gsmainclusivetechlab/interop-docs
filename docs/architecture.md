@@ -39,7 +39,11 @@ The test management supports 2 types of validation Schema validation and Busines
 
 One of the objectives of the platform is to provide an end-to-end chain of all messages that happens in a real implementation using a Mojaloop hub. The proxy layer was created with this purpose. All messages pass to a proxy layer where the platform is able to get the message, store, validate and send to the correct simulator to process the response and possible next message, if needed.
 
+![Component Scheme](/interop-docs/img/itpconnections.png)
+
 ## Simulators
+
+The simulators is an important part of the system and holds the knowledge of messages and how to drive
 
 **SP Simulator**: represents Service Provider
 
