@@ -8,7 +8,6 @@ sidebar_label: Test Sessions
 The execution of tests in the Interoperability Test Platform (ITP) is performed through the creation of sessions. Sessions are a group of use cases and test cases with a validation purpose and possibly a common scope. Through the sessions it is possible to modularize the groups of tests by affinity, as the user wishes and taking into account the selection of the System Under Test (SUT). During the creation of a session, the user sets the address of the SUT, defines information related to the session and selects the test cases to be included. After creation, it is possible to run tests by changing parameters for each test case. The created session is available on the home screen of the ITP (as shown in the picture below), allowing the user to consult previously run tests, delete and run new tests.
 
 Home screen with the user sessions:
-
 ![ITP Home](/interop-docs/img/itphome.png)
 
 ## Creting a Test Session
@@ -39,7 +38,7 @@ In this step the user must provide information for the definition and creation o
 Step 02 - Session information form:
 ![ITP Session Info](/interop-docs/img/itpsessioninfo.png)
 
-### Configure Components
+### Step 03: Configure Components
 
 In this step, the components other than the SUT, which must be present in the execution of the tests, are automatically filled with addresses simulated by the platform. During the execution of tests for a session, these addresses remain at the user's view so that they can be copied and used in the execution of tests using an API client tool, such as Postman<sup>[3](#postman)</sup> or Insomnia<sup>[4](#insomnia)</sup>, for example.
 
@@ -55,7 +54,7 @@ Example of session main screen after its creation:
 
 ##### Footnotes
 
-###### <a name="instancedsut">1</a>: To understand about how to run your ouwn SUT read more in the installation section.
-###### <a name="simulatedsut">2</a>: INSERT SOMETHING HERE.
-###### <a name="postman">3</a>: https://www.postman.com/
-###### <a name="insomnia">4</a>: https://insomnia.rest/
+- <a name="instancedsut">1</a>: To understand about how to run your ouwn SUT read more in the installation section.
+- <a name="simulatedsut">2</a>: INSERT SOMETHING HERE.
+- <a name="postman">3</a>: https://www.postman.com/
+- <a name="insomnia">4</a>: https://insomnia.rest/

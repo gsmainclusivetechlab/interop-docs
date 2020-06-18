@@ -22,5 +22,8 @@ sidebar_label: Creating a Use Case
 
 
 
+---
 
-<a name="myfootnote1">1 </a>: Actors are usually considered as humans and/or external systems.
+##### Footnotes
+
+- <a name="myfootnote1">1 </a>: Actors are usually considered as humans and/or external systems.
