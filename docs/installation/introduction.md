@@ -1,6 +1,6 @@
 ---
 id: introduction
-title: Installation Guide 
+title: Installation Guide
 sidebar_label: Introduction
 ---
 
@@ -26,3 +26,12 @@ $ docker --version
 $ docker-compose --version
 #  docker-compose version 1.26.0, build d4451659
 ```
+
+Finally, we recommend the use of `git` to download source code and fetch
+updates, along with the use of `make` to simplify installation. Installation
+guides for `git` for all platforms can be found
+[here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+Instructions for installing `make` are also available for
+[Ubuntu](https://askubuntu.com/a/272020),
+[macOS](https://stackoverflow.com/a/10265766/1590962) and
+[Windows](http://gnuwin32.sourceforge.net/packages/make.htm).

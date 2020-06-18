@@ -1,0 +1,272 @@
+---
+id: mmo
+title: Mobile Money Operator Installation Guide
+sidebar_label: Mobile Money Operator
+---
+
+The GSMA Interoperability Test Platform currently supports simulation of mobile
+money operators (MMO) in two configurations. In the first configuration, the MMO
+can communicate with a service provider via the
+[GSMA Mobile Money API](https://developer.mobilemoneyapi.io/) and with an
+interoperability hub using the Mojaloop API (MMO1 in the diagram below). In the
+second configuration, the MMO will communicate exclusively with the Mojaloop API
+(MMO2 in the diagram below).
+
+import { Graphviz } from "graphviz-react";
+
+<Graphviz
+  options={{ width: "100%", height: "auto" }}
+  dot={`
+    digraph { 
+      graph [nodesep="1", ranksep="0.6", fillcolor="black"];
+      node [ fontname="var(--ifm-font-family)", shape="box", margin=0.3];
+      edge [ fontname="var(--ifm-font-family)"];
+      rankdir="LR"
+      ratio="fill";
+      sp [label="Service Provider"]
+      mmo1 [label="MMO1"]
+      mojaloop [label="Interoperability\nHub (Mojaloop)"]
+      mmo2 [label="MMO2"]
+      sp -> mmo1 [dir="both", color="#DE002B", label="MM API", fontcolor="#DE002B"]
+      mmo1 -> mojaloop -> mmo2 [dir="both", label="Mojaloop API", fontcolor="#00A3FF", color="#00A3FF"]
+    }
+`}
+/>
+
+## MMO1 Simulator Set-up
+
+To begin with, download the code for the simulator onto your machine. To do this
+using git, run:
+
+```bash
+$ git clone git@github.com:gsmainclusivetechlab/interop-mm-simulator.git
+$ cd interop-mm-simulator
+```
+
+Certain configuration files must be created to customise the simulator to your
+own environment. To get you started, you can copy the `*.example` files included
+in the codebase. Alternatively, you can run the `make init` command if you have
+`make` installed on your machine. The files to copy are:
+
+- `.env`: In this file, you can configure the ports that the simulator should
+  listen for connections on, as well as defining credentials for the MySQL
+  database.
+- `src/.env`: In this file, you can configure the URL for the test platform, as
+  well as the URLs that the platform will use to contact other simulator
+  components.
+- `docker-compose.yml`: No changes should be required for development.
+
+Once the configuration files have been added, you should be able to launch all
+services using the following command:
+
+```bash
+$ docker-compose up -d
+# Creating network "mm-simulator_default" with the default driver
+# Creating mm-simulator_mysqldb_1 ... done
+# Creating mm-simulator_app_1     ... done
+# Creating mm-simulator_web_1     ... done
+```
+
+### Database Installation
+
+At this point, `docker-compose` has launched all services required for the
+simulator, but they still require further set-up. In a future version of the
+MMO1 simulator , the images used by Docker will be pre-configured, so this step
+will not be necessary. In the meantime, you can set up the database and install
+any missing dependencies by simply running `make install`:
+
+```bash
+$ make install
+# docker-compose exec app bash -c "make install"
+# Chmod storage and bootstrap cache...
+# Install composer...
+# ...
+# make[1]: Leaving directory '~/Code/GSMA/interop-mm-simulator'
+# touch runtime/installed
+```
+
+The simulator should now be accessible at `http://localhost:8084`.
+
+### URL Configuration
+
+In order for the simulator to communicate with other components, you must add
+the URLs for these components into the `src/.env` file. In particular, you will
+need to add URLs pointing to the service provider and the Mojaloop hub. In our
+particular case, we must use URLs for the core test platform, which will
+redirect requests to the appropriate component. All simulators must be
+configured with URLs that follow a consistent structure:
+
+```
+https://{itp_url}/testing/{my_uuid}/{recipient_uuid}/simulator/
+```
+
+- Within MMO1, `my_uuid` should always be equal to
+  `e5f5e817-94d6-4a43-a7ec-f7274b6d85c2`
+- For the service provider, set
+  `recipient_uuid=114511be-74e9-49d5-b93e-b4a461e01626`.
+- For the Mojaloop hub, set
+  `recipient_uuid=b2a85076-b748-4d93-8df1-2b39844e6d4b`.
+
+The Mojaloop hub URL must be updated in several places within `src/.env`. In the
+end, the file should look something like this:
+
+```ini
+# Service Provider URL
+HOST_SERVICE_PROVIDER=https://{itp_url}/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/114511be-74e9-49d5-b93e-b4a461e01626/simulator/
+
+# Mojaloop URLs - all identical
+HOST_ACCOUNT_LOOKUP_ADMIN=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e01626/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+HOST_ACCOUNT_LOOKUP_SERVICE=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e01626/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+HOST_CENTRAL_LEDGER=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e01626/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+HOST_CENTRAL_SETTLEMENT=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e01626/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+HOST_SIMULATOR=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e01626/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+HOST_TRANSACTION_REQUESTS_SERVICE=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e01626/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+HOST_ML_API_ADAPTER=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e01626/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+HOST_QUOTING_SERVICE=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e01626/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+```
+
+## MMO2 Simulator Set-up
+
+To begin with, download the code for the simulator onto your machine. To do this
+using git, run:
+
+```bash
+$ git clone git@github.com:gsmainclusivetechlab/interop-mojaloop-simulator.git
+$ cd interop-mojaloop-simulator
+```
+
+Certain configuration files must be created to customise the simulator to your
+own environment. To get started, you can copy the `.env.example` file included
+in the codebase.
+
+### URL Configuration
+
+The simulator must be configured with the URL for the Mojaloop hub. In our case,
+you will actually need to add URLs for the core test platform, which will
+redirect requests to Mojaloop. All simulators must be configured with URLs that
+follow a consistent structure:
+
+```
+https://{itp_url}/testing/{my_uuid}/{recipient_uuid}/simulator/
+```
+
+- Within MMO2, `my_uuid` should always be equal to
+  `e602a859-a25f-4d37-9abe-0ac09fb734af`
+- Within MMO2, `recipient_uuid` should always be equal to
+  `b2a85076-b748-4d93-8df1-2b39844e6d4b` (the Mojaloop hub).
+
+This URL must be updated in several places within `.env`. In the end, the file
+should look something like this:
+
+```ini
+# Mojaloop URLs - all identical
+TRANSFERS_ENDPOINT=https://{itp_url}/testing/e602a859-a25f-4d37-9abe-0ac09fb734af/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+QUOTES_ENDPOINT=https://{itp_url}/testing/e602a859-a25f-4d37-9abe-0ac09fb734af/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+TRANSACTION_REQUESTS_ENDPOINT=https://{itp_url}/testing/e602a859-a25f-4d37-9abe-0ac09fb734af/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+AUTHORIZATIONS_ENDPOINT=https://{itp_url}/testing/e602a859-a25f-4d37-9abe-0ac09fb734af/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
+```
+
+### Launch
+
+Once this configuration file has been added, you should simply be able to launch
+the simulator using the following command:
+
+```bash
+$ docker-compose up -d
+# Creating Simulator ... done
+```
+
+The simulator should be accessible at `http://localhost:8444`.
+
+## Updating Simulators
+
+### Backing Up
+
+Updating either simulator is very straightforward and unlikely to cause any data
+loss. Before you proceed, you may nonetheless choose to make a backup of your
+database with the following command (this is not necessary on MMO2, where no
+database is used):
+
+```bash
+$ docker-compose exec mysqldb bash -c "mysqldump -p -u $DB_USERNAME  $DB_DATABASE > /var/lib/mysql/mmo-simulator_`date +%Y-%m-%d`.sql"
+# Enter password...
+```
+
+This will place a `.sql` dump file inside the `runtime/mysql` directory. You may
+also choose to backup any modifications you have made to configuration files or
+code (including the mysql backup just made) using `rsync`:
+
+```bash
+$ rsync -auvz ./ ~/backups/`date +%Y-%m-%d`_mmo-simulator
+# sending incremental file list
+# .git/
+# ...
+# src/vendor/webmozart/assert/src/Assert.php
+# sent 153,373,035 bytes  received 741,354 bytes  4,341,250.39 bytes/sec
+# total size is 602,736,172  speedup is 3.91
+```
+
+### Fetching Updates
+
+To update the project code, simply run pull the latest changes using git. You
+can also update service images (such as those used for mysql and redis) with
+`docker-compose`:
+
+```bash
+$ docker-compose stop
+# Stopping test-platform_web_1     ... done
+# Stopping test-platform_app_1     ... done
+# Stopping test-platform_mysqldb_1 ... done
+
+$ git pull
+# Updating 59995d74..0af9196d
+# ...
+
+$ docker-compose pull
+# Pulling mysqldb ... done
+# Pulling app     ... done
+# Pulling web     ... done
+```
+
+Once you have obtained the latest code, the procedure differs slightly for MMO1
+and MMO2.
+
+#### MMO1
+
+For MMO1, the services can immediately be restarted, and any missing
+dependencies can be installed using the `make update` script:
+
+```bash
+$ docker-compose up -d --force-recreate
+# Recreating test-platform_mysqldb_1   ... done
+# Recreating test-platform_app_1       ... done
+# Recreating test-platform_web_1       ... done
+
+$ make update
+# docker-compose exec  --privileged --index=1 -w /var/www/html app bash -c "make update"
+# ...
+# make[1]: Leaving directory '~/Code/GSMA/interop-mm-simulator'
+```
+
+#### MMO2
+
+For MMO2, the simulator image must be rebuilt before restarting the services,
+and there is no need to run a `make update` script:
+
+```bash
+$ docker-compose build
+# Building simulator
+# Step 1/9 : FROM node:12.16.0-alpine
+
+$ docker-compose up -d --force-recreate
+# Recreating simulator  ... done
+```
+
+## Production Use
+
+To set up the simulators for production use, a few changes are recommended.
+Firstly, the services defined in `docker-compose.yml` should be configured to
+restart on failure by adding `restart: always` into the docker-compose
+configuration. Secondly, you may choose to add a reverse proxy (for example
+using [`nginx`](https://www.nginx.com/)) to make the simulator available on
+other hostnames.
