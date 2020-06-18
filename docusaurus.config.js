@@ -1,8 +1,8 @@
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
-  url: 'https://gsmainclusivetechlab.github.io',
-  baseUrl: '/interop-docs/',
+  title: 'GSMA Interoperability Test Platform Documentation',
+  tagline: '',
+  url: 'https://docs.interop.gsmainclusivetechlab.io',
+  baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'gsmainclusivetechlab', // Usually your GitHub org/user name.
   projectName: 'interop-docs', // Usually your repo name.
