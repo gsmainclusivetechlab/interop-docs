@@ -44,4 +44,4 @@ The use cases represents the Mobile Money transactions types available for testi
 
 ##### Footnotes
 
-###### <a name="actors">1</a>: Actors are usually considered as humans and/or external systems.
+- <a name="actors">1</a>: Actors are usually considered as humans and/or external systems.
