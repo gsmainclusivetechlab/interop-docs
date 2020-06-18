@@ -11,7 +11,7 @@ In way to run test cases, the user may use an API Client Tool such as Postman<su
 The requests that can be made for each test case are already grouped into collections, easing the testing process by the user. The collections are preconfigured for use in the execution of the tests. The user has the power to change collections preset information and parameters and perform different tests. To access the collections, visit ITP Postman Collections. It is worth remembering that the collections can be easily adapted to any other platform of your choice. The user can then run the test cases and, if desired, change the request data to proceed with different executions<sup>[7](#triggers)</sup>.
 
 Collections available in Postman:
-![Postman Collections](/interop-docs/img/postmancollections.png)
+![Postman Collections](/img/postmancollections.png)
 
 ## Sending Requests from Postman
 

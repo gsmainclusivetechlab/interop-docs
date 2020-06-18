@@ -72,7 +72,7 @@ spec:
 ```
 
 After adding the line, it should look like this:
-![Install Example](/interop-docs/img/mojahelm.png)
+![Install Example](/img/mojahelm.png)
 
 
 
