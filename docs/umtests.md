@@ -4,11 +4,11 @@ title: Running Tests
 sidebar_label: Running Tests
 --- 
 
-In way to run test cases, the user may use an API Client Tool such as Postman<sup>[1](#postman)</sup>, Insomnia<sup>[2](#insomnia)</sup>, Postwoman<sup>[3](#postwoman)</sup>, HTTPie<sup>[4](#httpie)</sup>, SoapUI<sup>[5](#soapui)</sup>, Paw<sup>[6](#paw)</sup>, etc. The tool allows the user making requests for the Interoperability Test Platform using the addresses, namely Service Provider and Mobile Money Operator, provided in the configuration step of session creation and in the test case information.
+In way to run test cases, the user may use an API Client Tool such as [Postman](https://www.postman.com), [Insomnia](https://insomnia.rest), [Postwoman](https://postwoman.io), [HTTPie](https://httpie.org), [SoapUI](https://www.soapui.org), [Paw](https://paw.cloud), etc. The tool allows the user making requests for the Interoperability Test Platform using the addresses, namely Service Provider and Mobile Money Operator, provided in the configuration step of session creation and in the test case information.
 
 ### Postman Collections
 
-The requests that can be made for each test case are already grouped into collections, easing the testing process by the user. The collections are preconfigured for use in the execution of the tests. The user has the power to change collections preset information and parameters and perform different tests. To access the collections, visit ITP Postman Collections. It is worth remembering that the collections can be easily adapted to any other platform of your choice. The user can then run the test cases and, if desired, change the request data to proceed with different executions<sup>[7](#triggers)</sup>.
+The requests that can be made for each test case are already grouped into collections, easing the testing process by the user. The collections are preconfigured for use in the execution of the tests. The user has the power to change collections preset information and parameters and perform different tests. To access the collections, visit ITP Postman Collections. It is worth remembering that the collections can be easily adapted to any other platform of your choice. The user can then run the test cases and, if desired, change the request data to proceed with different executions<sup>[1](#triggers)</sup>.
 
 Collections available in Postman:
 ![Postman Collections](/img/postmancollections.png)
@@ -30,7 +30,7 @@ The environment variables used for the components are respectively: Service Prov
 :::
 
 Creating a New Environment in Postman:
-![Creating a New Env](/interop-docs/img/creatingenv.png)
+![Creating a New Env](/img/creatingenv.png)
 
 :::tip
 Remember that when creating a new session, the parameters of the SUT need to reference the simulated components. For our example in which the SUT is MMO1, we need to configure the .env file of our system under test with the addresses provided for the SP and the Switch.
@@ -41,7 +41,7 @@ Remember that when creating a new session, the parameters of the SUT need to ref
 Now that we have the test parameters, present in the collections, and the configured environment variables, the next step is to send the test requests for execution. For this, the user chooses among the available test cases the one he / she wants to send for execution on the Interoperability Test Platform. After choosing the test, you can browse the information related to it, such as the request header and body, for example. When desired, just select the send option and the request is sent to the platform.
 
 Example of Test Case File Information:
-![Creating a New Env](/interop-docs/img/runtestcase.png)
+![Example of Test Case File Information](/img/runtestcase.png)
 
 Depending on how the test case transaction occurs, it may contain more than one execution step. When this happens, you can see the different files in the collection grouped in a folder with the name of the test case. In the example we are using as a basis, we can see this happening when the test cases need access to the Account Lookup System (ALS), where there are two execution files for these tests. Thus, there is a need to send the GET request and then send the POST request for the complete execution of the test case.
 
@@ -60,29 +60,17 @@ After the execution, the user receives the result of the request, which can be e
 After sending the request, some random variables are created in the current environment. In our example, for the execution of P2P test cases, two variables are made necessary: QuoteID and TransacrtionID. These variables values are automatically generated with each test run and added to the current environment. The following figure distinguishes the variables added by the user within the red square from the variables generated when the requests are sent, represented within the blue square.
 
 Environment Variables in Postman After a Request:
-![Creating a New Env](/interop-docs/img/environmentconfig.png)
+![Environment Variables](/img/environmentconfig.png)
 
 ### Running Multiple Tests
 
-Depending on which API Client Tool is being used, there is the possibility of running multiple batch tests. This speeds up the evaluation process when it involves many test cases. In Postman<sup>[1](#postman)</sup>, this possibility is allowed through the Collection Runner option. In this modality, it is possible to define parameters for the execution of test cases collection, such as: number of iterations, delay between requests, and so forth.
+Depending on which API Client Tool is being used, there is the possibility of running multiple batch tests. This speeds up the evaluation process when it involves many test cases. In [Postman](https://www.postman.com), this possibility is allowed through the Collection Runner option. In this modality, it is possible to define parameters for the execution of test cases collection, such as: number of iterations, delay between requests, and so forth.
 
 Running a Collection of Test Cases:
-![Creating a New Env](/interop-docs/img/runcollection.png)
+![Run Test Case Collection](/img/runcollection.png)
 
 ---
 
 ##### Footnotes
 
-- <a name="postman">1</a>: https://www.postman.com/
-
-- <a name="insomnia">2</a>: https://insomnia.rest/
-
-- <a name="postwoman">3</a>: https://postwoman.io/
-
-- <a name="httpie">4</a>: https://httpie.org/
-
-- <a name="soapui">5</a>: https://www.soapui.org/
-
-- <a name="paw">6</a>: https://paw.cloud/
-
-- <a name="triggers">7</a>: It is important to pay attention to the required parameters for execution present in the the test cases, since they are used as triggers for tests.
+- <a name="triggers">1</a>: It is important to pay attention to the required parameters for execution present in the the test cases, since they are used as triggers for tests.
