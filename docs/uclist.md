@@ -51,7 +51,7 @@ Zuri needs to transfer money to his brother who lives in another city through hi
 
 Sequence diagram for one of the basic paths (happy flow) for P2P: (This picture will be changed to the template Bruno shared)
 
-![P2P Use Case Flow](/interop-docs/img/p2p-rnd.png)
+![P2P Use Case Flow](/img/p2p-rnd.png)
 
 ### UC04 - International Remmittance <a name="ir"></a>
 
