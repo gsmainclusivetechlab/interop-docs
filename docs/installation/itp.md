@@ -1,147 +1,183 @@
---- 
-id: itp 
+---
+id: itp
 title: Interoperability Test Platform Installation Guide
 sidebar_label: Interoperability Test Platform
---- 
+---
 
-:::tip System Requrements
-This guide is intended for users who wish to install the Interoperability Test Platform. The Guide was created taking into account the Ubuntu 18 operating system and minimal requirements: 1 GB RAM \ 15 GB Storagespace \ 1 VCpu.
-:::
+## Project Set-up
 
-## GSMA ITP Test Platform <a name="tp"></a>
-
-Project folder on **production**: /var/docker
-
-Project folder on **staging**: /var/docker
-
-### installation steps
-
-#### 1. Install docker
-
-Install docker https://docs.docker.com/install/linux/docker-ce/ubuntu/
-
-and docker-compose: https://docs.docker.com/compose/install/ 
+To begin with, download the code for the test platform onto your machine. To do
+this using git, run
 
 ```bash
-# apt install make
+$ git clone git@github.com:gsmainclusivetechlab/interop-test-platform.git
+$ cd interop-test-platform
 ```
 
-#### 2. Clone project from repo
+Certain configuration files must be created to customise the test platform to
+your own environment. To get you started, you can copy the `*.example` files
+included in the codebase. Alternatively, you can run the `make init` command if
+you have `make` installed on your machine. The files to copy are:
 
-#### 3. Configure .env variables, docker-compose.yml and nginx.conf
+- `.env`: In this file, you can configure the ports that the test platform
+  should listen for connections on, as well as defining credentials for the
+  MySQL database, and setting appropriate user permissions.
+- `src/.env`: In this file, you can configure the URL for the test platform, as
+  well as the URLs that the platform will use to contact other simulator
+  components.
+
+Once the configuration files have been added, you should be able to launch all
+microservices using the following command:
 
 ```bash
-$ make init
+$ docker-compose up -d
+# Creating network "test-platform_default" with the default driver
+# Creating test-platform_mailhog_1 ... done
+# Creating test-platform_redis_1   ... done
+# Creating test-platform_nodejs_1  ... done
+# Creating test-platform_mysqldb_1 ... done
+# Creating test-platform_app_1     ... done
+# Creating test-platform_queue_1   ... done
+# Creating test-platform_web_1     ... done
 ```
 
-Modify .env, src/.env, docker-compose.yml and build/nginx-server.conf according to you needs.
+## Database Installation
 
-:::important
-Add “restart: always” to all docker-compose.yml services 
-:::
-
-#### 4. Perform test run  (stop after DB initialize by CTRL+C)
-
-```bash
-$ make test-run
-```
- 
-#### 5. Run the project
-
-```bash
-$ make run
-```
-
-#### 6. Run installation procedure
+At this point, `docker-compose` has launched all services required for the test
+platform, but they will require further set-up. In a future version of the test
+platform, the images used by Docker will be pre-configured, so this step will
+not be necessary. In the meantime, you can set up the database and install any
+missing dependencies by running the following `make` script.
 
 ```bash
 $ make install
+# docker-compose exec app bash -c "make install"
+# Chmod storage and bootstrap cache...
+# Install composer...
+# ...
+# make[1]: Leaving directory '~/Code/GSMA/interop-test-platform'
+# touch runtime/installed
 ```
 
-#### 7. Install nginx
+### Troubleshooting
+
+This installation script may fail if the `mysql` service is unable to write
+files to your host machine. Check that the `runtime/mysql` directory exists and
+is writable by your user. Another common cause of this is forgetting to update
+the `UID` field inside the `.env` file. The value should be equal to your user
+and group ID. To find out your user id, run `id -u` and to find out your primary
+group ID, run `id -g`. In the example below, `UID` should be set to `1000:1001`.
 
 ```bash
-# apt install nginx
+$ id -u
+# 1000
+$ id -g
+# 1001
 ```
 
-#### 8. Configure nginx vhost
+## URL Configuration
 
-##### Create new vhost file: /etc/nginx/sites-available/itp.example.com
+Once you have set up all simulator components, you must add the URLs for the
+simulators into the `src/.env` file. When these URLs are updated, the
+installation script above should be re-run to ensure that the URLs are persisted
+to the database. It is a current limitation of the test platform that this
+process will also erase other contents of the database.
 
-##### vhost locations config:
+
+## Logging In
+
+At this point, all services are set up, and you should be able to log in. If you
+did not change the default port in `.env`, then you will be able to browse to
+`http://localhost:8084` in your web browser and see a login page.
+
+By default, the test platform does not connect to a real SMTP server, but emails
+are instead intercepted and shown on a test email server, which you will be able
+to access on `http://localhost:8086`. Using this mail server, you will be able
+to register a new account and verify your email address to log in to the
+platform.
+
+## Production Use
+
+To set up the test platform for production use, a few changes are recommended.
+Firstly, the `mailhog` service should be disabled and a real SMTP server
+connected to allow user registration emails. The remaining services should be
+configured to restart on failure by adding `restart: always` into the
+docker-compose configuration. Finally, you may choose to add a reverse proxy
+(for example using [`nginx`](https://www.nginx.com/)) to make the platform
+available on other hostnames.
+
+## Updating
+
+### Backing Up
+
+Updating the test platform is very straightforward and unlikely to cause any
+data loss. Before you proceed, you may nonetheless choose to make a backup of
+your database with the following command:
 
 ```bash
-server {
-    root /var/www/html/;
-    listen 80;
-    server_name interop.example.com;
-    access_log /var/log/nginx/interop.example.com_access.log;
-    error_log /var/log/nginx/interop.example.com_error.log;
-
-    location / {
-        proxy_pass http://127.0.0.1:8084;
-        proxy_buffering on;
-        proxy_buffers 12 12k;
-        proxy_redirect off;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $remote_addr;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header REMOTE_ADDR $remote_addr;
-        proxy_set_header Host $host;
-
-    }
-
-    location ^~ /mailhog/ {
-        rewrite ^/mailhog(.*) $1 break;
-        proxy_set_header Accept-Encoding "";
-        proxy_pass http://127.0.0.1:8086;
-        proxy_buffering on;
-        proxy_buffers 12 12k;
-        proxy_redirect off;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $remote_addr;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header REMOTE_ADDR $remote_addr;
-        proxy_set_header Host $host;
-
-    }
-}
+$ docker-compose exec mysqldb bash -c "mysqldump -u $DB_USERNAME -p$DB_PASSWORD $DB_DATABASE > /var/lib/mysql/itp-test-control_`date +%Y-%m-%d`.sql"
 ```
 
-##### Apply config
+This will place a `.sql` dump file inside the `runtime/mysql` directory. You may
+also choose to backup any modifications you have made to configuration files or
+code (including the mysql backup just made) using `rsync`:
 
 ```bash
-# cd /etc/nginx/sites-enabled
-# ln -sf ../sites-available/mojaloop.conf
-# nginx -t
-# service nginx reload
+$ rsync -auvz ./ ~/backups/`date +%Y-%m-%d`_itp_full
+# sending incremental file list
+# .git/
+# ...
+# src/vendor/webmozart/assert/src/Assert.php
+# sent 153,373,035 bytes  received 741,354 bytes  4,341,250.39 bytes/sec
+# total size is 602,736,172  speedup is 3.91
 ```
 
-### Updating
+### Fetching Updates
 
-#### 1. Perform mysql database backup (mysql dump file will be placed in data/mysql):
-
-```sql
-docker-compose exec -T mysqldb bash -c "mysqldump --single-transaction -u $DB_USERNAME -p$DB_PASSWORD $DB_DATABASE > /var/lib/mysql/itp-test-control_`date +%Y-%m-%d`.sql"
-```
-
-#### 2. Perform full project backup 
+To update the project code, simply run pull the latest changes using git. You
+can also update service images (such as those used for mysql and redis) with
+`docker-compose`:
 
 ```bash
-docker-compose stop
-rsync -auvz ./ /var/backups/`date +%Y-%m-%d`_itp_full
+$ docker-compose stop
+# Stopping test-platform_web_1     ... done
+# Stopping test-platform_app_1     ... done
+# Stopping test-platform_queue_1   ... done
+# Stopping test-platform_mysqldb_1 ... done
+# Stopping test-platform_mailhog_1 ... done
+# Stopping test-platform_redis_1   ... done
+
+$ git pull
+# Updating 59995d74..0af9196d
+# Fast-forward
+# ...
+
+$ docker-compose pull
+# Pulling redis   ... done
+# Pulling mysqldb ... done
+# Pulling queue   ... done
+# Pulling app     ... done
+# Pulling web     ... done
+# Pulling nodejs  ... done
+# Pulling mailhog ... done
 ```
 
-#### 3. git pull
+Once you have obtained the latest code, you can restart the services, install
+any missing dependencies and update the database structure using another `make`
+script:
 
-#### 4. If there was changes in docker-compose.example.yml please perform manually update of docker-compose.yml
+```bash
+$ docker-compose up -d --force-recreate
+# Recreating test-platform_mailhog_1   ... done
+# Recreating test-platform_redis_1     ... done
+# Recreating test-platform_nodejs_1    ... done
+# Recreating test-platform_mysqldb_1   ... done
+# Recreating test-platform_queue_1     ... done
+# Recreating test-platform_app_1       ... done
+# Recreating test-platform_web_1       ... done
 
-:::important
-Don't forget to add "restart: always" in each docker-compose service
-:::
-
-#### 7. If there was changes in build/nginx-server.example.conf please perform manually update of build/nginx-server.example.conf
-
-#### 8. docker-compose pull
-
-#### 7. make update
+$ make update
+# docker-compose exec  --privileged --index=1 -w /var/www/html app bash -c "make update"
+# ...
+# make[1]: Leaving directory '~/Code/GSMA/interop-test-platform'
+```

@@ -18,7 +18,7 @@ Docker. On a Linux host, `docker-compose` must be installed separately using
 [this guide](https://docs.docker.com/compose/install/).
 
 You can check that both Docker and `docker-compose` have been correctly
-installed by running the following command on your machine:
+installed by running the following commands on your machine:
 
 ```bash
 $ docker --version
