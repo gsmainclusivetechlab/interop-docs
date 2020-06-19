@@ -23,3 +23,18 @@
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+/* Graphviz theming */
+
+.graph > polygon {
+  fill: transparent;
+}
+polygon[stroke="#000000"], path[stroke="#000000"] {
+  stroke: currentColor;
+}
+polygon[fill="#000000"] {
+  fill: currentColor;
+}
+.graph text {
+  fill: currentColor;
+}
