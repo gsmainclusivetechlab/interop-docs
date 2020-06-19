@@ -1,5 +1,5 @@
 --- 
-id: installmoja
+id: mojaloop
 title: Mojaloop Installation Guide
 sidebar_label: Mojaloop
 --- 
