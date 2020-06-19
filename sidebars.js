@@ -1,6 +1,5 @@
 module.exports = {
   someSidebar: {
-    "Get Started": ["intro", "docsguide"],
     Architecture: [
       "architecture/overview",
       "architecture/connections",
