@@ -1,0 +1,156 @@
+---
+id: overview
+title: Overview
+sidebar_label: Overview
+---
+
+This section describes the high-level architecture of the Interoperability Test
+Platform. The platform was designed to be scalable and integrate with novel
+simulators in future, and so it was designed around a flexible architecture
+consisting of three sections:
+
+- Core Test Platform
+- Simulators
+- Systems Under Test (SUTs)
+
+![High Level Architecture](/img/architecture_high_level.png)
+
+## Core Test Platform
+
+The core test platform provides an interface to manage users, sessions and test
+cases, and intercepts and validates every message between simulators and SUTs.
+The platform uses [Laravel](https://laravel.com/), a web application framework
+built with PHP. The test platform can be further subdivided into four main
+blocks: Frontend, Backend, Test Manager and Proxy.
+
+### Frontend
+
+The frontend is responsible for rendering the user interface and uses two main
+technologies: [Vue.js](https://vuejs.org/) and [Tabler](https://tabler.io/).
+
+- Vue.js: Used to build a single page application.
+- Tabler: Provides the admin and dashboard layout to build the UI, using
+  [Bootstrap](https://getbootstrap.com/) internally.
+
+### Backend
+
+The backend is responsible for providing data to the Frontend, and interacts
+with the database. In addition to Laravel, the backend uses
+[Inertia.js](https://inertiajs.com/) to allow the creation of a single page
+application without the need for a dedicated API.
+
+### Test Manager
+
+This is the core of the test platform, containing test case management, test
+runners and validators. The test manager supports 2 types of validation: Schema
+validation and Business Rule validations (more details [here]()). Business rule
+validations are controlled by custom logic defined within the test case
+specification, while schema validation is powered by the
+[OpenAPI PSR-7 Message Validator](https://github.com/thephpleague/openapi-psr7-validator),
+which leverages the power of OpenAPI specifications to automatically validate
+all messages (requests & responses) within the platform.
+
+### Proxy
+
+In order to provide an end-to-end test, the platform must be able to follow all
+messages exchanged between entities. The proxy layer was created for this
+purpose. All messages within the system pass through this proxy layer where the
+platform is able to store and validate messages before forwarding them to the
+correct simulator, and subsequently validate the response.
+
+This diagram illustrates communication through the proxy layer. More details
+about these connections are avalable [here](/architecture/connections).
+
+import { Graphviz } from "graphviz-react";
+
+<Graphviz
+  options={{ width: "100%", height: "auto" }}
+  dot={`
+    digraph {
+      node [ fontname="var(--ifm-font-family)", shape="box", margin=0.3, penwidth=2];
+      edge [ fontname="var(--ifm-font-family)", penwidth=2];
+      rankdir="TD"
+      ratio="fill";
+      size="3,1";
+      simulator1 [ label="Simulator 1"]
+      sut [ label="System \nUnder Test"]
+      simulator2 [ label="Simulator 2"]
+      simulatorN [ label="Simulator N"]
+      ITP [ label="Test Platform"]
+      subgraph sim {
+        rank="same"
+        simulator1 -> sut -> simulator2 -> simulatorN -> simulator2 -> sut -> simulator1[ style="dashed"]
+      }
+      ITP -> {simulator1 sut simulator2 simulatorN} [dir="both"]
+      subgraph cluster_key {
+        style=invis;
+        {
+          node [ width=0.5, height=0.3, label="", style="invis" ];
+          rank = same;
+          edge[ minlen = 2 ];
+          leg1 -> leg2[ label="Actual Message" ];
+          leg2 -> leg4[ style = dashed, label="Logical Message"];
+        }
+      }
+      sut -> leg2 [style=invis] ;
+      simulator2 -> leg2 [style=invis] ;
+    }
+`}
+/>
+
+## Simulators
+
+The simulators are an important part of the system and hold specific knowledge
+of messages and how the flow should happen. Each simulator represents a entity
+from the real scenario, and any of them can be replaced to be the SUT.
+
+### Service Provider Simulator
+
+Acts as a mock service provider (SP) such as a utility company or supermarket
+checkout to simulate their role in a transaction.<br /> This simulator can
+receive and send messages through the GSMA Mobile Money API and has a connection
+to Mobile Money Operator 1.
+
+### Mobile Money Operator 1
+
+Acts as a mock financial services provider (FSP) such as a Mobile Money Operator
+or Bank to simulate their role in a transaction.<br /> This simulator can
+perform two types of actions:
+
+- Receive messages through the GSMA Mobile Money API and map them to a Mojaloop
+  API.<br /> This simulates a scenario when a Mobile Money Operator receives a
+  request from a Service Provider to perform a transaction, acting as the payee.
+  For more details, see the [Merchant-Initiated Merchant Payment](/uclist#mimp)
+  use case.
+- Initiate messages directly through Mojaloop API.<br /> This simulates a
+  scenario when an FSP starts a transaction to a Mojaloop network, acting as
+  Payer. For more details, see the [P2P](/uclist#p2p) use case.
+
+### Mobile Money Operator 2
+
+Acts as a mock financial services provider (FSP) such as a Mobile Money Operator
+or Bank to simulate their role in a transaction.<br /> This simulator can
+perform one action:
+
+- Send and receive messages through the Mojaloop API.<br /> This simulates a
+  scenario when an FSP receives a request to initiate a transaction
+  (`transactionRequest`) to a Mojaloop network, acting as Payer. For more
+  details, see the [Merchant-Initiated Merchant Payment](/uclist#mimp) use case.
+  The same flow simulates a scenario when an FSP replies to a transaction from a
+  Mojaloop network, acting as Payee. For more details, see the
+  [P2P](/uclist#p2p) use case.
+
+### Mojaloop
+
+Mojaloop is the interoperability hub, which links two or more FSPs and enables
+interoperability. To ensure confidence in our test results, Mojaloop is not
+simulated within the test platform, and we instead use a vanilla version of the
+real [Mojaloop software](https://mojaloop.io/).
+
+## System Under Test
+
+A System Under Test (SUT) is the entity which is being tested. Currently the
+test platform can handle two types of System Under Test: Service Providers and
+Financial Service Providers.<br /> Once a SUT is selected in the platform, it
+replaces the simulator representing the same entity for the duration of the
+test, so we can ensure that the SUT is properly tested.
