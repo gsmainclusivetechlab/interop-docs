@@ -90,7 +90,7 @@ module.exports = {
           routeBasePath: "/", // Set this value to '/'.
           homePageId: "intro", // Set to existing document id.
           // Please change this to your repo.
-          editUrl: "https://github.com/gsmainclusivetechlab/interop-docs/edit/develop/",
+          editUrl: "https://github.com/gsmainclusivetechlab/interop-docs/blob/develop/",
         },
         // blog: {
         //   showReadingTime: true,
