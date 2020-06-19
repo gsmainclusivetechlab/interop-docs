@@ -4,7 +4,11 @@ title: Test Results
 sidebar_label: Test Results
 --- 
 
-As the tests are carried out, the platform stores the information for each execution in the session history. Thus, the user can access and analyse all the tests run for each test case. In the figure below it is possible to see the main elements  present in the session screen when several tests are performed and then, a brief description of these elements is shown.
+After running tests using the API Client Tool, all results are stored and available to the user in the tested session on the Interoperability Test Platform.
+
+## Session Results
+
+As the tests are carried out, the platform stores the information for each execution in the session history. Thus, the user can access and analyse all the tests run for each test case.In the figure below it is possible to see the main elements  present in the session screen when several tests are performed and then, a brief description of these elements is shown.
 
 Session screen elements:
 ![ITP Session Info](/img/testsmainscreen.png)
@@ -20,12 +24,14 @@ Session screen elements:
     - Duration: Time in milliseconds that the execution of this test consumed <sup>[1](#testduration)</sup>.
     - Date: Defines when the test was performed.
 
+## Accessing Test Case Results
+
 When clicking on a test case, the user will have access to information and the results of all executions carried out for this particular test. The data that can be seen are principally: configuration (1), description (2), preconditions (3), test runs (4), test steps (5) and test flow (6). This information will be further detailed below.
 
 Executions for a test case:
 ![List of Executed Tests](/img/runlist.png)
 
-### Test Information
+## Test Information
 
 Each test case has relevant information for its execution. In the confuiguration field it is possible to access the addresses of the simulated modules that are necessary to run the test case. In the example in the previous figure, we can see that the links to the Service Provider and Mojaloop are available in this field, so the user can view or copy. The other two relevant information are extracted from the YAML file created for the test case and are: description and preconditions. The description contains the general purpose of the test, describing the scenario under simulation. The preconditions help in understanding how the tests should be performed and state the existing decisions and rules that must be met for the correct execution of the tests.
 

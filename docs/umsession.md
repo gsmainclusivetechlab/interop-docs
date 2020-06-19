@@ -40,7 +40,7 @@ Step 02 - Session information form:
 
 ### Step 03: Configure Components
 
-In this step, the components other than the SUT, which must be present in the execution of the tests, are automatically filled with addresses simulated by the platform. During the execution of tests for a session, these addresses remain at the user's view so that they can be copied and used in the execution of tests using an API client tool, such as Postman<sup>[3](#postman)</sup> or Insomnia<sup>[4](#insomnia)</sup>, for example.
+In this step, the components other than the SUT, which must be present in the execution of the tests, are automatically filled with addresses simulated by the platform. During the execution of tests for a session, these addresses remain at the user's view so that they can be copied and used in the execution of tests using an API client tool, such as [Postman](https://www.postman.com) or [Insomnia](https://insomnia.rest), for example.
 
 Step 03 - Information about the configure components:
 ![ITP Session Configure Compponents](/img/itpsessionconfigure.png)
@@ -55,6 +55,4 @@ Example of session main screen after its creation:
 ##### Footnotes
 
 - <a name="instancedsut">1</a>: To understand about how to run your ouwn SUT read more in the installation section.
-- <a name="simulatedsut">2</a>: INSERT SOMETHING HERE.
-- <a name="postman">3</a>: https://www.postman.com/
-- <a name="insomnia">4</a>: https://insomnia.rest/
+- <a name="simulatedsut">2</a>: This possibility in under construction and will allow the user to use the platform simulating all componentes, including the SUT.
