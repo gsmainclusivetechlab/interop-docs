@@ -1,6 +1,5 @@
 module.exports = {
   someSidebar: {
-    "Get Started": ["intro", "docsguide"],
     Architecture: [
       "architecture/overview",
       "architecture/connections",
@@ -13,8 +12,20 @@ module.exports = {
       "installation/sp",
       "installation/mojaloop",
     ],
-    "Use Cases": ["usecases", "uclist", "uccreation"],
-    "Test Cases": ["tclist", "tctemplate"],
-    "User Manual": ["quickguide", "session", "tests", "results"],
+    "Use Cases": [
+      "usecases", 
+      "uclist", 
+      "uccreation"
+    ],
+    "Test Cases": [
+      "tclist", 
+      "tctemplate"
+    ],
+    "User Manual": [
+      "quickguide", 
+      "session", 
+      "tests", 
+      "results"
+    ],
   },
 };
