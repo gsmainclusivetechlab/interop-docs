@@ -1,14 +1,8 @@
 ---
 id: connections
-title: How Components Connections Works
+title: Connections between Components
 sidebar_label: Component Connections
 ---
-
-This page describes how the various components of the Interoperability Testing
-Platform (ITP) work together, and how they can be deployed to different
-environments.
-
-## Connections between Components
 
 In normal operation, the payer's MMO would connect directly to Mojaloop to
 arrange a funds transfer to the payee's MMO. In testing, however, we must
@@ -20,48 +14,54 @@ component B, the ITP can store all messages and forward them onto component B.
 import { Graphviz } from "graphviz-react";
 
 <Graphviz
-  options={{ height: "auto" }}
+  options={{ height: "auto", width: "100%" }}
   dot={`
     digraph {
       rankdir="TD"
       ratio="fill";
-      size="6,2";
-      sp [ label="SP" shape="box"]
-      mmo1 [ label="MMO1" shape="box"]
-      mojaloop [ label="Mojaloop" shape="box"]
-      mmo2 [ label="MMO2" shape="box"]
-      ITP [ label="Test Platform" shape="box"]
+      size="8,3";
+      node [
+        fontname="var(--ifm-font-family)", shape="box", margin=0.3, penwidth=2
+      ];
+      edge [fontname="var(--ifm-font-family)", penwidth=2];
+      sp [label="SP"]
+      mmo1 [label="MMO1"]
+      mojaloop [label="Mojaloop"]
+      mmo2 [label="MMO2"]
+      ITP [label="Test Platform"]
       subgraph sim {
         rank="same"
-        sp -> mmo1 -> sp [ style="dashed", color="#67ab9f"]
-        mmo1 -> mojaloop -> mmo2 -> mojaloop -> mmo1 [ style="dashed", nodesep=1]
+        edge[style="dashed", dir="both"]
+        sp -> mmo1 [color="#67ab9f"]
+        mmo1 -> mojaloop -> mmo2 
       }
-      ITP -> {sp mmo1} [dir="both", color="#67ab9f"]
-      ITP -> {mmo1 mojaloop mmo2} [dir="both"]
+      {
+        edge[dir="both"]
+        ITP -> {sp mmo1} [color="#67ab9f"]
+        ITP -> {mmo1 mojaloop mmo2}
+        ITP -> mojaloop[style="invis"]
+      }
+      subgraph leg {
+        node [width=0.5, height=0.3, label="", style="invis"]
+        {
+          rank="same"
+          a -> b [label="Actual message\n(MM API)", color="#67ab9f"] ;
+          b -> c [label="Actual message\n(Mojaloop API)"] ;
+        }
+        {
+          rank="same"
+          d -> e [label="Logical message\n(MM API)", style=dashed, color="#67ab9f"];
+          e -> f [label="Logical message\n(Mojaloop API)", style=dashed] ;
+        }
+        edge[style="invis"]
+        {mmo1 mojaloop} -> b
+        b -> e
+      }
     }
 `}
 />
-<Graphviz
-  options={{ height: "auto" }}
-  dot={`
-      digraph {
-        size="6,2";
-        rankdir="LR"
-        a [style=invis];
-        b [style=invis] ;
-        c [style=invis] ;
-        d [style=invis] ;
-        e [style=invis] ;
-        f [style=invis] ;
-        a -> b [label="Actual message (MM API)", color="#67ab9f"] ;
-        b -> f [label="Actual message (Mojaloop API)"] ;
-        c -> d [label="Logical message (MM API)", style=dashed, color="#67ab9f"];
-        d -> e [label="Logical message (Mojaloop API)", style=dashed] ;
-      }
-`}
-/>
 
-## Component URLs
+## Component IDs
 
 In order to recognise the sender and intended recipient of each message received
 by the test platform, this information must be embedded within the message.
@@ -76,12 +76,12 @@ it can be helpful for debugging to know which UUID is which:
 - **Mojaloop**: b2a85076-b748-4d93-8df1-2b39844e6d4b
 - **MMO2**: e602a859-a25f-4d37-9abe-0ac09fb734af
 
-### SUT URLs
+## SUT URLs
 
 Within a SUT, the base URL of each component should be configured according to
 the following scheme:
 
-```
+```handlebars
 https://{itp_url}/testing/{session_uuid}/{my_uuid}/{recipient_uuid}/sut/
 ```
 
@@ -99,19 +99,14 @@ Thus, the URL that an MMO1 test subject should use to send messages to Mojaloop
 https://interop.gsmainclusivetechlab.io/testing/41a2e8d5-3ce4-459b-a6eb-1a1e2988c357/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/b2a85076-b748-4d93-8df1-2b39844e6d4b/sut/
 ```
 
-### TODO: Do we need the simulator URL documentation here?
-
-It feels like it's not useful for a normal user who wouldn't be configuring the
-simulators anyway. It might be useful in a separate "deployment" guide.
-
-### Simulator URLs
+## Simulator URLs
 
 Since the simulators are within the control of the test platform, we can
 slightly simplify the request URLs compared to SUTs. In particular, the
 simulators use a `traceparent` header in place of the `session_uuid` from above.
 For this reason base URLs used by each simulator have this structure.
 
-```
+```handlebars
 https://{itp_url}/testing/{my_uuid}/{recipient_uuid}/simulator/
 ```
 
