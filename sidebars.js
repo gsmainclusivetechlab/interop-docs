@@ -12,8 +12,20 @@ module.exports = {
       "installation/sp",
       "installation/mojaloop",
     ],
-    "Use Cases": ["usecases", "uclist", "uccreation"],
-    "Test Cases": ["tclist", "tctemplate"],
-    "User Manual": ["quickguide", "session", "tests", "results"],
+    "Use Cases": [
+      "usecases", 
+      "uclist", 
+      "uccreation"
+    ],
+    "Test Cases": [
+      "tclist", 
+      "tctemplate"
+    ],
+    "User Manual": [
+      "quickguide", 
+      "session", 
+      "tests", 
+      "results"
+    ],
   },
 };
