@@ -1,5 +1,9 @@
 module.exports = {
   someSidebar: {
+    Introduction: [
+      'intro',
+      'docsguide'
+    ],
     Architecture: [
       "architecture/overview",
       "architecture/connections",
