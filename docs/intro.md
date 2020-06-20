@@ -1,7 +1,7 @@
 ---
 id: intro
-title: Introduction
-sidebar_label: Introduction
+title: The Interoperability Test Platform
+sidebar_label: About
 ---
 
 The GSMA Inclusive Tech Lab continues to support the mobile money industry to develop the mobile financial ecosystem, to enable a broad range of digital transactions and make mobile wallets central to the lives of the financially excluded and underserved, providing them with better solutions to manage their financial resources and face economic shocks. Mobile money is poised to evolve from a platform of 500 million accounts to reach more than a billion emerging market consumers, bringing financial access to the previously underserved and excluded.
