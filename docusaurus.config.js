@@ -1,14 +1,17 @@
 module.exports = {
-  title: 'GSMA Interoperability Test Platform Documentation',
-  tagline: '',
-  url: 'https://docs.interop.gsmainclusivetechlab.io',
-  baseUrl: '/',
-  favicon: 'img/favicon.ico',
-  organizationName: 'gsmainclusivetechlab', // Usually your GitHub org/user name.
-  projectName: 'interop-docs', // Usually your repo name.
+  title: "GSMA Interoperability Test Platform Documentation",
+  tagline: "",
+  url: "https://docs.interop.gsmainclusivetechlab.io",
+  baseUrl: "/",
+  favicon: "img/favicon.ico",
+  organizationName: "gsmainclusivetechlab", // Usually your GitHub org/user name.
+  projectName: "interop-docs", // Usually your repo name.
   themeConfig: {
+    prism: {
+      additionalLanguages: ["properties", "ini"],
+    },
     navbar: {
-      title: 'ITP - Interoperability Test Platform - Documentation',
+      title: "ITP - Interoperability Test Platform - Documentation",
       // logo: {
       //   alt: 'ITP logo',
       //   src: 'img/logo.png',
@@ -29,7 +32,7 @@ module.exports = {
       // ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       // links: [
       //   {
       //     title: 'Inclsuive Tech Lab',
@@ -80,14 +83,14 @@ module.exports = {
   },
   presets: [
     [
-      '@docusaurus/preset-classic',
+      "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/', // Set this value to '/'.
+          sidebarPath: require.resolve("./sidebars.js"),
+          routeBasePath: "/", // Set this value to '/'.
+          homePageId: "intro", // Set to existing document id.
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/gsmainclusivetechlab/',
+          editUrl: "https://github.com/gsmainclusivetechlab/interop-docs/blob/develop/",
         },
         // blog: {
         //   showReadingTime: true,
@@ -96,7 +99,7 @@ module.exports = {
         //     'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         // },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       },
     ],

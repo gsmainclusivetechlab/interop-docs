@@ -59,9 +59,8 @@ Zuri needs to transfer money to his brother who lives in another city through hi
 |Exceptions<sup>[1](#exceptions)</sup>:| Payee FSP Rejected Quote, Payee Rejected Quote|
 |Postconditions:|Quotes:<ul><li>Accepted</li><li>Expired</li><li>Rejected</li></ul>Transfer:<ul><li>Committed</li><li>Aborted</li></ul>|
 
-Sequence diagram for one of the basic paths (happy flow) for P2P: (This picture will be changed to the template Bruno shared)
-
-![P2P Use Case Flow](/img/p2p-rnd.png)
+Sequence diagram for one of the basic paths (happy flow) for P2P:
+![P2P Use Case Flow](/img/P2P.svg)
 
 ### UC04 - International Remmittance <a name="ir"></a>
 
