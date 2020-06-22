@@ -57,18 +57,18 @@ Under development
 
 | Test Case | Test Scenario | Results | Status | Error|
 |:----------:|---------------|:-------:|:------:|:----:|
-|[P2P0100](files/tc/p2p/P2P0100.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Non-Disclosing|Approved|Pass|-|
-|[P2P0200](files/tc/p2p/P2P0200.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Non-Disclosing|Approved|Pass|-|
-|[P2P0300](files/tc/p2p/P2P0300.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Disclosing|Approved|Pass|-|
-|[P2P0400](files/tc/p2p/P2P0400.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Disclosing|Approved|Pass|-|
-|[P2P0500](files/tc/p2p/P2P0500.yml)|P2P transference ALS:YES / AmountType: Receive / Fee: Non-Disclosing|Approved|Pass|-|
-|[P2P0600](files/tc/p2p/P2P0600.yml)|P2P transference ALS:YES / AmountType: Send / Fee: Non-Disclosing|Approved|Pass|-|
-|[P2P0700](files/tc/p2p/P2P0700.yml)|P2P transference ALS:YES / AmountType: Receive / Fee: Disclosing|Approved|Pass|-|
-|[P2P0800](files/tc/p2p/P2P0800.yml)|P2P transference ALS:YES / AmountType: Send / Fee: Disclosing|Approved|Pass|-|
-|[P2P5001](files/tc/p2p/P2P5001.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Non-Disclosing|Rejected Quote by Payee|Fail|5103|
-|[P2P5002](files/tc/p2p/P2P5002.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Non-Disclosing|Rejected Quote by Payee|Fail|5103|
-|[P2P5003](files/tc/p2p/P2P5003.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Disclosing|Rejected Quote by Payee|Fail|5103|
-|[P2P5004](files/tc/p2p/P2P5004.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Disclosing|Rejected Quote by Payee|Fail|5103|
+|[P2P0100](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P0100.yml)|P2P transference ALS:NO / AmountType: Receive / Fees: Non-Disclosing|Aproved|Pass|-|
+|[P2P0200](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P0200.yml)|P2P transference ALS:NO / AmountType: Send / Fees: Non-Disclosing|Aproved|Pass|-|
+|[P2P0300](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P0300.yml)|P2P transference ALS:NO / AmountType: Receive / Fees: Disclosing|Aproved|Pass|-|
+|[P2P0400](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P0400.yml)|P2P transference ALS:NO / AmountType: Send / Fees: Disclosing|Aproved|Pass|-|
+|[P2P0500](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P0500.yml)|P2P transference ALS:YES / AmountType: Receive / Fees: Non-Disclosing|Aproved|Pass|-|
+|[P2P0600](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P0600.yml)|P2P transference ALS:YES / AmountType: Send / Fees: Non-Disclosing|Aproved|Pass|-|
+|[P2P0700](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P0700.yml)|P2P transference ALS:YES / AmountType: Receive / Fees: Disclosing|Aproved|Pass|-|
+|[P2P0800](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P0800.yml)|P2P transference ALS:YES / AmountType: Send / Fees: Disclosing|Aproved|Pass|-|
+|[P2P5001](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P5001.yml)|P2P transference ALS:NO / AmountType: Receive / Fees: Non-Disclosing|Rejected Quote by Payee|Fail|5103|
+|[P2P5002](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P5002.yml)|P2P transference ALS:NO / AmountType: Send / Fees: Non-Disclosing|Rejected Quote by Payee|Fail|5103|
+|[P2P5003](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P5003.yml)|P2P transference ALS:NO / AmountType: Receive / Fees: Disclosing|Rejected Quote by Payee|Fail|5103|
+|[P2P5004](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/develop/src/database/seeds/test-cases/P2P/P2P5004.yml)|P2P transference ALS:NO / AmountType: Send / Fees: Disclosing|Rejected Quote by Payee|Fail|5103|
 
 ### International Remmittance <a name="ir"></a>
 

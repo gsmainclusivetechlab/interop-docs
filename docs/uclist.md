@@ -60,7 +60,7 @@ Zuri needs to transfer money to his brother who lives in another city through hi
 |Postconditions:|Quotes:<ul><li>Accepted</li><li>Expired</li><li>Rejected</li></ul>Transfer:<ul><li>Committed</li><li>Aborted</li></ul>|
 
 Sequence diagram for one of the basic paths (happy flow) for P2P:
-![P2P Use Case Flow](/img/P2P.svg)
+![P2P Use Case Flow](/img/ucp2p.svg)
 
 ### UC04 - International Remmittance <a name="ir"></a>
 
