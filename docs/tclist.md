@@ -29,9 +29,23 @@ All test cases currently available on the ITP platform are listed below. As new 
 
 **Error Number:** Indicates the number of the current error for the test case. Through this number it is possible to know which category the error belongs to in relation to the API to which it is related (e.g. 3208 - Transfer ID not found).
 
-## List of Teste Cases <a name="tc"></a>
+## List of Test Cases <a name="tc"></a>
 
 ### Merchant-Initiated Merchant Payment <a name="mimp"></a>
+
+| Test Case | Test Scenario | Results | Status | Error|
+|:----------:|---------------|:-------:|:------:|:----:|
+|[MC0100](files/tc/mc/MC0100.yml)|Authorized Transaction|Approved|Pass|-|
+|[MC0200](files/tc/mc/MC0200.yml)|Authorized Transaction w/ Account Lookup|Approved|Pass|-|
+|[MC0300](files/tc/mc/MC0300.yml)|Authorized Transaction w/ Authorisation Codes|Approved|Pass|-|
+|[MC0400](files/tc/mc/MC0400.yml)|Declined Transacation|Declined|Fail|400|
+|[MC0500](files/tc/mc/MC0500.yml)|Declined Transacation|Declined|Fail|401|
+|[MC0600](files/tc/mc/MC0600.yml)|Declined Transacation|Declined|Fail|404|
+|[MC0700](files/tc/mc/MC0700.yml)|Declined Transacation|Declined|Fail|500|
+|[MC0800](files/tc/mc/MC0800.yml)|Declined Transacation|Declined|Fail|503|
+|[MC5001](files/tc/mc/MC5001.yml)|Rejected Quote|Rejected Quote by Payee|Fail|5103|
+|[MC5002](files/tc/mc/MC5102.yml)|Rejected Transaction|Rejected Transaction by Payer|Fail|5103|
+|[MC5003](files/tc/mc/MC5003.yml)|Rejected Transaction Request|Rejected Transaction Request by Payer|Fail|5103|
 
 ### Customer-Initiated Merchant Payment <a name="cimp"></a>
 
@@ -41,16 +55,16 @@ Under development
 
 ### Use Case: Peer-2-Peer <a name="p2p"></a>
 
-| Teste Case | Test Scenario | Results | Status | Error|
+| Test Case | Test Scenario | Results | Status | Error|
 |:----------:|---------------|:-------:|:------:|:----:|
-|[P2P0100](files/tc/p2p/P2P0100.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Non-Disclosing|Aproved|Pass|-|
-|[P2P0200](files/tc/p2p/P2P0200.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Non-Disclosing|Aproved|Pass|-|
-|[P2P0300](files/tc/p2p/P2P0300.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Disclosing|Aproved|Pass|-|
-|[P2P0400](files/tc/p2p/P2P0400.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Disclosing|Aproved|Pass|-|
-|[P2P0500](files/tc/p2p/P2P0500.yml)|P2P transference ALS:YES / AmountType: Receive / Fee: Non-Disclosing|Aproved|Pass|-|
-|[P2P0600](files/tc/p2p/P2P0600.yml)|P2P transference ALS:YES / AmountType: Send / Fee: Non-Disclosing|Aproved|Pass|-|
-|[P2P0700](files/tc/p2p/P2P0700.yml)|P2P transference ALS:YES / AmountType: Receive / Fee: Disclosing|Aproved|Pass|-|
-|[P2P0800](files/tc/p2p/P2P0800.yml)|P2P transference ALS:YES / AmountType: Send / Fee: Disclosing|Aproved|Pass|-|
+|[P2P0100](files/tc/p2p/P2P0100.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Non-Disclosing|Approved|Pass|-|
+|[P2P0200](files/tc/p2p/P2P0200.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Non-Disclosing|Approved|Pass|-|
+|[P2P0300](files/tc/p2p/P2P0300.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Disclosing|Approved|Pass|-|
+|[P2P0400](files/tc/p2p/P2P0400.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Disclosing|Approved|Pass|-|
+|[P2P0500](files/tc/p2p/P2P0500.yml)|P2P transference ALS:YES / AmountType: Receive / Fee: Non-Disclosing|Approved|Pass|-|
+|[P2P0600](files/tc/p2p/P2P0600.yml)|P2P transference ALS:YES / AmountType: Send / Fee: Non-Disclosing|Approved|Pass|-|
+|[P2P0700](files/tc/p2p/P2P0700.yml)|P2P transference ALS:YES / AmountType: Receive / Fee: Disclosing|Approved|Pass|-|
+|[P2P0800](files/tc/p2p/P2P0800.yml)|P2P transference ALS:YES / AmountType: Send / Fee: Disclosing|Approved|Pass|-|
 |[P2P5001](files/tc/p2p/P2P5001.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Non-Disclosing|Rejected Quote by Payee|Fail|5103|
 |[P2P5002](files/tc/p2p/P2P5002.yml)|P2P transference ALS:NO / AmountType: Send / Fee: Non-Disclosing|Rejected Quote by Payee|Fail|5103|
 |[P2P5003](files/tc/p2p/P2P5003.yml)|P2P transference ALS:NO / AmountType: Receive / Fee: Disclosing|Rejected Quote by Payee|Fail|5103|

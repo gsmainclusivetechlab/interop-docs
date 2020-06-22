@@ -52,7 +52,7 @@ Zuri needs to transfer money to his brother who lives in another city through hi
 
 |Use Case Name:| Peer-2-Peer |
 |-:|:-|
-|Sumary:| This testcase simulates a scenario where the Payer would like to send money to a Payee but each of them uses different providers|
+|Summary:| This testcase simulates a scenario where the Payer would like to send money to a Payee but each of them uses different providers|
 |Actors:|<ul><li>Payer</li><li>Payee</li><li>Payer FSP</li><li>Payee FSP</li><li>Mobile Money Operator</li><li>Switch</li></ul>|
 |Preconditions:| <ul><li>The user has permission to use P2P transer</li><li>FSPs are capable of handled async calls.</li><li>Payer FSP and Payee FSP exist in Mojaloop as Participants.</li><li>Payee and Payer exist in Switch as Parties.</li></ul> |
 |Description:| <ol><li>Payer shows interest in making a transfer;</li><li>Payer FSP performs the transfer quote via switch to Payee FSP;</li><li>After receiving the quote with fees and commissions, Payer decides to proceed with the transfer;</li><li>Payer FSP transfers to Payee FSP via Switch;</li><li>Payee FSP notifies Payee of receipt of the transfer.</li></ol> |
