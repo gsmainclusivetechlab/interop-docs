@@ -35,17 +35,17 @@ All test cases currently available on the ITP platform are listed below. As new 
 
 | Test Case | Test Scenario | Results | Status | Error|
 |:----------:|---------------|:-------:|:------:|:----:|
-|[MC0100](files/tc/mc/MC0100.yml)|Authorized Transaction|Approved|Pass|-|
-|[MC0200](files/tc/mc/MC0200.yml)|Authorized Transaction w/ Account Lookup|Approved|Pass|-|
-|[MC0300](files/tc/mc/MC0300.yml)|Authorized Transaction w/ Authorisation Codes|Approved|Pass|-|
-|[MC0400](files/tc/mc/MC0400.yml)|Declined Transacation|Declined|Fail|400|
-|[MC0500](files/tc/mc/MC0500.yml)|Declined Transacation|Declined|Fail|401|
-|[MC0600](files/tc/mc/MC0600.yml)|Declined Transacation|Declined|Fail|404|
-|[MC0700](files/tc/mc/MC0700.yml)|Declined Transacation|Declined|Fail|500|
-|[MC0800](files/tc/mc/MC0800.yml)|Declined Transacation|Declined|Fail|503|
-|[MC5001](files/tc/mc/MC5001.yml)|Rejected Quote|Rejected Quote by Payee|Fail|5103|
-|[MC5002](files/tc/mc/MC5102.yml)|Rejected Transaction|Rejected Transaction by Payer|Fail|5103|
-|[MC5003](files/tc/mc/MC5003.yml)|Rejected Transaction Request|Rejected Transaction Request by Payer|Fail|5103|
+|[MC0100](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/authorized-transaction.yaml)|Authorized Transaction|Approved|Pass|-|
+|[MC0200](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/authorized-with-account-lookup.yaml)|Authorized Transaction w/ Account Lookup|Approved|Pass|-|
+|[MC0300](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/merchant-autorisationcodes.yaml)|Authorized Transaction w/ Authorisation Codes|Approved|Pass|-|
+|[MC0400](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-400.yaml)|Declined Transacation|Declined|Fail|400|
+|[MC0500](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-401.yaml)|Declined Transacation|Declined|Fail|401|
+|[MC0600](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-404.yaml)|Declined Transacation|Declined|Fail|404|
+|[MC0700](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-500.yaml)|Declined Transacation|Declined|Fail|500|
+|[MC0800](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-503.yaml)|Declined Transacation|Declined|Fail|503|
+|[MC5001](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/rejected-quote-by-payee-fsp.yaml)|Rejected Quote|Rejected Quote by Payee|Fail|5103|
+|[MC5002](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/rejected-transaction-by-payer-fsp.yaml)|Rejected Transaction|Rejected Transaction by Payer|Fail|5103|
+|[MC5003](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/rejected-transaction-request-by-payer-fsp.yaml)|Rejected Transaction Request|Rejected Transaction Request by Payer|Fail|5103|
 
 ### Customer-Initiated Merchant Payment <a name="cimp"></a>
 
