@@ -15,11 +15,11 @@ sidebar_label: Test Cases List
 
 ## ITP Test Cases <a name="what"></a>
 
-ITP Test Cases approach all diferent paths related to a specific use case to validade if the requirements are met. In way to assure the quality of a system, the test cases are separated into happy and unhappy so that they cover all the existing possibilities for a use case. Tests typically include several alternative paths that evaluate the exceptions and errors in the use case. It is also possible that there are several happy paths, addressing different business rules that allow to obtain the expected result.
+ITP Test Cases approach all diferent paths related to a specific use case to validade if the requirements are met. In way to assure the quality of a system, the test cases are separated into happy and unhappy so that they cover all the existing possibilities for a use case. Tests typically include several alternative paths that evaluate the exceptions and errors in the use case. It is also possible that there are several happy paths, addressing different business rules that allow to obtain the expected results.
 
 All test cases currently available on the ITP platform are listed below. As new test cases are created, the documentation, and therefore the list, is updated. The list of test cases is divided by use case and contains the following attributes:
 
-**Test Case Code:** Code that identifies the test case in relation to the others. The TC code contains the acronym. The code consists of two parts: an acronym that is directly related to the use case, and a code that differentiates tests for the test group to which it belongs (e.g. P2P0057 is the test case 0057 for the use case P2P).
+**Test Case Code:** Code that identifies the test case in relation to the others. The code consists of two parts: an acronym that is directly related to the use case, and a code that differentiates tests for the test group to which it belongs (e.g. P2P0057 is the test case 0057 for the use case P2P).
 
 **Test Case Scenario:** This field is made up of properties that define the scenario in which the test case is being executed. Through these properties we can obtain specific information necessary for a better characterization of the transaction, such as: involved fees and commissions, use of account lookup system, provider supported currencies, etc.
 

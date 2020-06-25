@@ -6,7 +6,7 @@ sidebar_label: Creating a Test Case
 
 The ITP test cases are described using YAML files. Each file is composed of several fields that are interpreted by the platform to carry out tests and validations of the different use cases paths. Thus, the purpose of this manual is to describe the basic model of a YAML file for ITP. Using this template it is possible to understand how the fields are used by the ITP and how to create (or propose) new test cases.
 
-### Proposing New Test Cases
+## Proposing New Test Cases
 
 Any party interested in using the Interoperability Test Platform can propose new test cases using the template presented here. For this, it is important to follow the creation guide starting from a use case, to understand its application context, then determine which paths should/need to be tested. Then, it is possible to use the template shown here to create the test cases for each path. Therefore, the creation of new test cases is based on the following roadmap:
 

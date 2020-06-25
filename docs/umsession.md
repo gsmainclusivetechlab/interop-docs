@@ -12,15 +12,15 @@ Home screen with the user sessions:
 
 ## Creting a Test Session
 
-During the creation of a session the user must perform three main steps. In each step the user must insert information and parameters related to the session to be created. Following, each step and the form required fields are described.
+During the creation of a session the user must perform three main steps. In each step the user might insert information and parameters related to the session to be created. Following, each step and the form required fields are described.
 
 ### Step 01: SUT Selection
 
 In this step, the user must enter the information about the SUT that will be tested by the platform. The form consists of two fields: type of **SUT** and **URL**.
 
-**SUT:** The user must choose the type of SUT to be tested, being able to choose between Service Provider, Mobile Money Operator 1 and Mobile Money Operator 2.
+**SUT:** The user must choose the type of SUT to be included in the session. The current types are Service Provider, Mobile Money Operator 1 and Mobile Money Operator 2.
 
-**URL:** The user inserts the link of the SUT that he wants to test. In this sense, the user can choose to test with his own SUT<sup>[1](#instancedsut)</sup> or with a SUT simulated by the platform<sup>[2](#simulatedsut)</sup>.
+**URL:** The user inserts the link of the SUT included in the session. There are two possibilities: the user can choose to test with his own SUT<sup>[1](#instancedsut)</sup> or with a SUT simulated by the platform<sup>[2](#simulatedsut)</sup>.
 
 Step 01 - Selecting the system under test:
 ![ITP Session SUT Selection](/img/itpselectsut.png)
@@ -29,7 +29,7 @@ Step 01 - Selecting the system under test:
 
 In this step the user must provide information for the definition and creation of the session using 3 main fields, which are:
 
-**Name:** Alias used to name the session
+**Name:** Alias used to name the session. This name will be visible in the dashboard.
 
 **Description:** Information described by the user to help understand the purpose of the section created.
 
@@ -40,12 +40,12 @@ Step 02 - Session information form:
 
 ### Step 03: Configure Components
 
-In this step, the components other than the SUT, which must be present in the execution of the tests, are automatically filled with addresses simulated by the platform. During the execution of tests for a session, these addresses remain at the user's view so that they can be copied and used in the execution of tests using an API client tool, such as [Postman](https://www.postman.com) or [Insomnia](https://insomnia.rest), for example.
+In this step, the components other than the SUT, which must be present in the execution of the tests, are automatically filled with addresses of components simulated by the platform. During the execution of tests for a session, these addresses remain at the user's view so that they can be copied and used in the execution of tests using an API client tool, such as [Postman](https://www.postman.com) or [Insomnia](https://insomnia.rest), for example.
 
 Step 03 - Information about the configure components:
 ![ITP Session Configure Compponents](/img/itpsessionconfigure.png)
 
-After the session has been created, the user has at his disposal the group of test cases selected during the creation steps. From there, it is possible to select the desired test cases and proceed with the execution.
+After the session has been created, the user has at his disposal the group of test cases selected during the creation steps. From there, it is possible to select a specific test case and proceed with the test execution.
 
 Example of session main screen after its creation:
 ![Session Screen](/img/itpsessionscreen.png)
