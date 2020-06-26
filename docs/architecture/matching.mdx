@@ -4,4 +4,101 @@ title: Test Case Matching
 sidebar_label: Test Case Matching
 ---
 
-## TODO: Test Step Matching
+A single testing session will contain tests for multiple use cases, each of
+which may contain multiple test cases. This is useful for rapid testing under a
+variety of conditions, but means the platform must identify which test case is
+being executed when a request arrives at the platform. For example, a session
+may contain two flows which differ only in whether a quote is accepted or
+rejected by a remote DFSP. In this case, the test platform must identify which
+flow is being executed, in order to instruct the remote DFSP simulator to accept
+or reject the quote.
+
+For every test case within the session, the first unmatched step is selected to
+compare against the incoming request. For test cases which have not yet been
+started, the very first step of the test case is selected. First, the request's
+basic characteristics are considered to determine which of the test steps may
+match. These characteristics are:
+
+- The request **method** (`GET`, `POST`, `PUT`, etc)
+- The request **path** (`/transactions`, `quotes/{ID}`)
+- The request **source and destination components** (`Mojaloop Hub`,
+  `Service Provider`, `DFSP1`, etc)
+
+It is frequently the case that multiple test steps will still be possible
+matches at this stage, since many test-cases test fairly similar flows. In the
+example given above for example, these characteristics would be identical for
+both the accepted and rejected cases, since both follow the same basic flow of
+requests. To disambiguate between them, a further check is required, known as
+test _triggers_.
+
+## Test Triggers
+
+A test trigger takes the form of a JSON object which must be present within the
+body of a request for it to match against the test step. For example, a test
+step might be defined with a trigger of:
+
+```json
+{ "amount": 20.03 }
+```
+
+If a request arrives at the platform with a body containing the following, the
+test case would be considered a match:
+
+```json
+{
+  "payerid": { "type": "MSISDN", "id": "123456789" },
+  "amount": 20.03,
+  "currency": "EUR"
+}
+```
+
+However, a request with this body would not be considered a match:
+
+```json
+{
+  "payerid": { "type": "MSISDN", "id": "123456789" },
+  "amount": 20.04,
+  "currency": "EUR"
+}
+```
+
+In this way, multiple test cases can be defined unambiguously while sharing
+almost identical flows. Returning the example above, the accepted case may be
+defined with a trigger of `{"amount": 20.03}` while the rejected case is defined
+with a trigger of `{"amount": 20.04}`. The two test cases can then be executed
+in any order (or even simultaneously) with no conflict between them.
+
+### Requests without a body
+
+Some requests (such as `GET` requests) do not have a payload body with which a
+trigger could be set up. In this case, it may be possible to write a test case
+with a trigger embedded within the test step path. For example, a request to an
+account lookup service might involve a request of the form
+`GET /parties/{TYPE}/{ID}`. Two test cases could be defined which differ in the
+participant ID used. Since the paths are tested using a regular expression
+pattern, these might be defined as such:
+
+```yaml
+# Test case 1
+# ...
+test_steps:
+  - pattern: '^parties/[^/]+/7777777771$'
+	# ...
+
+# Test case 2
+# ...
+test_steps:
+  - pattern: '^parties/[^/]+/7777777772$'
+	# ...
+```
+
+In the case that the request path does not contain any data which may be used as
+a trigger, it is not currently possible to disambiguate any further. In a future
+version of the test platform, it may be possible to use a custom request header
+as a test trigger.
+
+It is also worth noting that these test triggers are only required in the case
+of ambiguity between multiple steps in different test cases. This is most
+important for the first step of each test case, since it is generally possible
+to avoid ambiguity in later steps by simply running each test case one at a
+time.
