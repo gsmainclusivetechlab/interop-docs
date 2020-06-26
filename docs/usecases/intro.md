@@ -1,7 +1,7 @@
 ---
-id: usecases
+id: intro
 title: Guide for ITP Use Cases
-sidebar_label: Use Cases Guide
+sidebar_label: Introduction
 ---
 
 ### ITP Use Cases <a name="what"></a>

@@ -1,5 +1,5 @@
 ---
-id: tctemplate
+id: creation
 title: Test Case Template
 sidebar_label: Creating a Test Case
 ---
