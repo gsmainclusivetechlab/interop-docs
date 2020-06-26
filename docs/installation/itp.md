@@ -134,8 +134,8 @@ $ rsync -auvz ./ ~/backups/`date +%Y-%m-%d`_itp_full
 
 ### Fetching Updates
 
-To update the project code, simply pull the latest changes using git. You
-can also update service images (such as those used for mysql and redis) with
+To update the project code, simply pull the latest changes using git. You can
+also update service images (such as those used for mysql and redis) with
 `docker-compose`:
 
 ```bash

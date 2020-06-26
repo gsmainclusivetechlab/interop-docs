@@ -1,12 +1,14 @@
---- 
+---
 id: mojaloop
 title: Mojaloop Installation Guide
 sidebar_label: Mojaloop
---- 
+---
 
-:::tip System Requrements
-This guide is intended for users who wish to install the Mojaloop 1.0. The Guide was created taking into account the Ubuntu 18 operating system and minimal requirements: 1 GB RAM \ 15 GB Storagespace \ 1 VCpu. In way to install other Mojaloop versions please check more information here: https://docs.mojaloop.io/documentation/
-:::
+:::tip System Requrements This guide is intended for users who wish to install
+the Mojaloop 1.0. The Guide was created taking into account the Ubuntu 18
+operating system and minimal requirements: 1 GB RAM \ 15 GB Storagespace \ 1
+VCpu. In way to install other Mojaloop versions please check more information
+here: https://docs.mojaloop.io/documentation/ :::
 
 ## Mojaloop <a name="moja"></a>
 
@@ -19,7 +21,7 @@ This guide is intended for users who wish to install the Mojaloop 1.0. The Guide
 :::important
 
 1. \# - means that command should be executed by root user <br/>
-2. $ - means that command should be executed by regular user
+2. \$ - means that command should be executed by regular user
 
 :::
 
@@ -31,13 +33,14 @@ This guide is intended for users who wish to install the Mojaloop 1.0. The Guide
 :::
 
 ```bash
-$ kubectl apply -f "https://raw.githubusercontent.com/weaveworks/weave/master/prog/weave-kube/weave-daemonset-k8s-1.9.yaml" 
+$ kubectl apply -f "https://raw.githubusercontent.com/weaveworks/weave/master/prog/weave-kube/weave-daemonset-k8s-1.9.yaml"
 ```
+
 k8s installation steps
 
 ```bash
 # apt update
-# apt install apt-transport-https ca-certificates curl gnupg-agent 	software-properties-common 
+# apt install apt-transport-https ca-certificates curl gnupg-agent 	software-properties-common
 # curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 # apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 # swapoff -a
@@ -51,7 +54,8 @@ $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 $ kubectl apply -f "https://raw.githubusercontent.com/weaveworks/weave/master/prog/weave-kube/weave-daemonset-k8s-1.9.yaml"
 ```
 
-The K8s installation process is based on this article: https://www.linuxtechi.com/install-configure-kubernetes-ubuntu-18-04-ubuntu-18-10/
+The K8s installation process is based on this article:
+https://www.linuxtechi.com/install-configure-kubernetes-ubuntu-18-04-ubuntu-18-10/
 
 #### 3. Install helm: https://helm.sh/docs/intro/install/
 
@@ -74,8 +78,6 @@ spec:
 After adding the line, it should look like this:
 ![Install Example](/img/mojahelm.png)
 
-
-
 #### 5. Add helm repos
 
 ```bash
@@ -94,18 +96,22 @@ $ kubectl taint nodes --all node-role.kubernetes.io/master-
 $ kubectl create namespace moja880
 $ helm --namespace moja880 install mojaloop/mojaloop --version 8.8.0 --name-template mj8
 ```
+
 :::important
 
-For some reasons proxying through nginx-ingress by hostname cause freezeson on about each 3-5 requests to any of moja services. Its need a lots of time to investigate the issue and fix. So i suggest to use nginx in OS level to proxying traffic to k8s pods by IP
+For some reasons proxying through nginx-ingress by hostname cause freezeson on
+about each 3-5 requests to any of moja services. Its need a lots of time to
+investigate the issue and fix. So i suggest to use nginx in OS level to proxying
+traffic to k8s pods by IP
 
 :::
 
-#### 7. Install nginx. 
+#### 7. Install nginx.
 
 ```bash
-# apt-get install nginx 
+# apt-get install nginx
 ```
- 
+
 #### 8. Configure nginx vhost
 
 ##### a. Create a new vhost file: /etc/nginx/sites-available/mojaloop.conf
@@ -115,7 +121,7 @@ For some reasons proxying through nginx-ingress by hostname cause freezeson on a
 IP addresses for each service can be allocated by command:
 
 ```bash
-$ kubectl get services --all-namespaces 
+$ kubectl get services --all-namespaces
 ```
 
 ```bash
@@ -318,15 +324,18 @@ server {
 
 #### 9. Modify postman collection environments according to you mojaloop server url and import into postman
 
-To get more information check the environment JSON sample file available in the section [configuration files](#envjson)
+To get more information check the environment JSON sample file available in the
+section [configuration files](#envjson)
 
 #### 10. Run the new deployment postman collection:
 
-To get more information check the new deployment Postman collection sample file available in the section [configuration files](#deployjson)
+To get more information check the new deployment Postman collection sample file
+available in the section [configuration files](#deployjson)
 
 #### 11. Run mojaloop participants endpoint setup postman collection:
 
-To get more information check the Mojaloop participants endpoint setup sample file available in the section [configuration files](#mojajson)
+To get more information check the Mojaloop participants endpoint setup sample
+file available in the section [configuration files](#mojajson)
 
 ### Kubernetes Dashboard installation
 
@@ -344,9 +353,11 @@ $ kubectl -n kube-system describe  secrets/kubernetes-dashboard-token-s5v6b
 ```
 
 #### 3. Add permissions
-$ kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 
-#### 4. Create .httpasswd 
+\$ kubectl create clusterrolebinding kubernetes-dashboard -n kube-system
+--clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+
+#### 4. Create .httpasswd
 
 ```bash
 # apt install apache2-utils
@@ -354,11 +365,10 @@ $ kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --cluste
 # htpasswd -c /etc/nginx/basic_auth/.htpasswd username
 ```
 
-#### 5. Configure nginx 
+#### 5. Configure nginx
 
-:::tip
-For kubernetes dashboard you should use https. Selfsigned SSL is fine. So the nginx location should look like this:
-:::
+:::tip For kubernetes dashboard you should use https. Selfsigned SSL is fine. So
+the nginx location should look like this: :::
 
 ```bash
 server {
@@ -389,9 +399,7 @@ server {
 
 ### Updating
 
-:::warning
-updating works only with helm 3.2 or 2.6
-:::
+:::warning updating works only with helm 3.2 or 2.6 :::
 
 #### 1. Perform dry-run upgrade:
 
