@@ -1,5 +1,5 @@
 ---
-id: testcases
+id: intro
 title: Guide for ITP Test Cases
 sidebar_label: Test Cases Guide
 ---

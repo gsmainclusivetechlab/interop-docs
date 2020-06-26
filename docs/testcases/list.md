@@ -1,5 +1,5 @@
 ---
-id: tclist
+id: list
 title: ITP Test Case List
 sidebar_label: Test Cases List
 ---
