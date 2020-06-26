@@ -17,19 +17,19 @@ module.exports = {
       "installation/mojaloop",
     ],
     "Use Cases": [
-      "usecases", 
-      "uclist", 
-      "uccreation"
+      "usecases/intro", 
+      "usecases/list", 
+      "usecases/creation"
     ],
     "Test Cases": [
-      "tclist", 
-      "tctemplate"
+      "testcases/list", 
+      "testcases/creation"
     ],
     "User Manual": [
-      "quickguide", 
-      "session", 
-      "results",
-      "postman-sut"
+      "manual/quickguide", 
+      "manual/session", 
+      "manual/postman-sut", 
+      "manual/results"
     ],
   },
 };
