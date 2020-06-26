@@ -44,10 +44,11 @@ $ docker-compose up -d
 ## Database Installation
 
 At this point, `docker-compose` has launched all services required for the test
-platform, but they will require further set-up. In a future version of the test
-platform, the images used by Docker will be pre-configured, so this step will
-not be necessary. In the meantime, you can set up the database and install any
-missing dependencies by running the following `make` script.
+platform, but they will require further set-up. You can now set up the database
+and install any missing dependencies by running the following `make` script.
+
+> In a future version of the test platform, the images used by Docker will be
+> pre-configured, so this step will not be necessary.
 
 ```bash
 $ make install
@@ -80,8 +81,11 @@ $ id -g
 Once you have set up all simulator components, you must add the URLs for the
 simulators into the `src/.env` file. When these URLs are updated, the
 installation script above should be re-run to ensure that the URLs are persisted
-to the database. It is a current limitation of the test platform that this
-process will also erase other contents of the database.
+to the database.
+
+> It is a current limitation of the test platform that this process will also
+> erase other contents of the database. To work around this, it is possible to
+> update the `components` table of the MySQL database directly.
 
 ## Logging In
 
@@ -97,13 +101,15 @@ platform.
 
 ## Production Use
 
-To set up the test platform for production use, a few changes are recommended.
-Firstly, the `mailhog` service should be disabled and a real SMTP server
-connected to allow user registration emails. The remaining services should be
-configured to restart on failure by adding `restart: always` into the
-docker-compose configuration. Finally, you may choose to add a reverse proxy
-(for example using [`nginx`](https://www.nginx.com/)) to make the platform
-available on other hostnames.
+To set up the test platform for production use, a few changes are recommended:
+
+- The `mailhog` service should be disabled and a real SMTP server connected to
+  allow user registration emails.
+- Other services should be configured to restart on failure by adding
+  `restart: always` into the docker-compose configuration.
+- You may choose to add a reverse proxy (for example using
+  [`nginx`](https://www.nginx.com/)) to make the platform available on other
+  hostnames.
 
 ## Updating
 

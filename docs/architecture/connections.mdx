@@ -104,7 +104,8 @@ https://interop.gsmainclusivetechlab.io/testing/41a2e8d5-3ce4-459b-a6eb-1a1e2988
 Since the simulators are within the control of the test platform, we can
 slightly simplify the request URLs compared to SUTs. In particular, the
 simulators use a `traceparent` header in place of the `session_uuid` from above.
-For this reason base URLs used by each simulator have this structure.
+For this reason base URLs used by each simulator have a simpler structure
+without the `session_uuid`.
 
 ```handlebars
 https://{itp_url}/testing/{my_uuid}/{recipient_uuid}/simulator/

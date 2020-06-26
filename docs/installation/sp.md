@@ -63,10 +63,11 @@ $ docker-compose up -d
 ### Database Installation
 
 At this point, `docker-compose` has launched all services required for the
-simulator, but they still require further set-up. In a future version of the
-MMO1 simulator , the images used by Docker will be pre-configured, so this step
-will not be necessary. In the meantime, you can set up the database and install
-any missing dependencies by simply running `make install`:
+simulator, but they still require further set-up. You can now set up the
+database and install any missing dependencies by simply running `make install`:
+
+> In a future version of the MMO1 simulator, the images used by Docker will be
+> pre-configured, so this step will not be necessary.
 
 ```bash
 $ make install
@@ -146,9 +147,10 @@ $ make update
 
 ## Production Use
 
-To set up the simulators for production use, a few changes are recommended.
-Firstly, the services defined in `docker-compose.yml` should be configured to
-restart on failure by adding `restart: always` into the docker-compose
-configuration. Secondly, you may choose to add a reverse proxy (for example
-using [`nginx`](https://www.nginx.com/)) to make the simulator available on
-other hostnames.
+To set up the simulators for production use, a few changes are recommended:
+
+- The services defined in `docker-compose.yml` should be configured to restart
+  on failure by adding `restart: always` into the docker-compose configuration.
+- You may choose to add a reverse proxy (for example using
+  [`nginx`](https://www.nginx.com/)) to make the simulator available on other
+  hostnames.
