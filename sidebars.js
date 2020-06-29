@@ -28,8 +28,8 @@ module.exports = {
     "User Manual": [
       "quickguide", 
       "session", 
-      "tests", 
-      "results"
+      "results",
+      "postman-sut"
     ],
   },
 };

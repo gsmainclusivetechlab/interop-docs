@@ -5,87 +5,83 @@ sidebar_label: Test Sessions
 ---
 
 The execution of tests in the Interoperability Test Platform (ITP) is performed
-through the creation of sessions. Sessions are a group of use cases and test
-cases with a validation purpose and possibly a common scope. Through the
-sessions it is possible to modularize the groups of tests by affinity, as the
-user wishes and taking into account the selection of the System Under Test
-(SUT). During the creation of a session, the user sets the address of the SUT,
-defines information related to the session and selects the test cases to be
-included. After creation, it is possible to run tests by changing parameters for
-each test case. The created session is available on the home screen of the ITP
-(as shown in the picture below), allowing the user to consult previously run
-tests, delete and run new tests.
+through the creation of sessions. Sessions are a selection of use cases and test
+cases with a validation purpose and possibly a common scope. During the creation
+of a session, the user sets the address of the SUT, defines information related
+to the session and selects the test cases to be included. After creation, it is
+possible to run tests by changing parameters for each test case. The created
+session is available on the home screen of the ITP (as shown in the picture
+below), allowing the user to consult previously run tests, delete and run new
+tests.
 
 Home screen with the user sessions: ![ITP Home](/img/itphome.png)
 
-## Creting a Test Session
+## Creating a Test Session
 
-During the creation of a session the user must perform three main steps. In each
-step the user might insert information and parameters related to the session to
-be created. Following, each step and the form required fields are described.
+To create a session you must perform three main steps: SUT Selection, Session
+Setup and SUT Configuration.
 
-### Step 01: SUT Selection
+### Step 1: SUT Selection
 
-In this step, the user must enter the information about the SUT that will be
-tested by the platform. The form consists of two fields: type of **SUT** and
-**URL**.
+In this step, you must enter basic information about the system under test (SUT)
+by the platform: the type of the **SUT** and its **URL**.
 
-**SUT:** The user must choose the type of SUT to be included in the session. The
-current types are Service Provider, Mobile Money Operator 1 and Mobile Money
-Operator 2.
+**SUT:** The currently supported SUT types are `Service Provider`,
+`Mobile Money Operator 1` and `Mobile Money Operator 2`.
 
-**URL:** The user inserts the link of the SUT included in the session. There are
-two possibilities: the user can choose to test with his own
-SUT<sup>[1](#instancedsut)</sup> or with a SUT simulated by the
-platform<sup>[2](#simulatedsut)</sup>.
+**URL:** To test your system, it must be accessible from the test platform.
+Enter the URL of your SUT, which the test platform will use to send requests as
+part of test execution.
+
+If you do not currently have a SUT, but still wish to explore the
+interoperability test platform, you can simulate a Service Provider SUT using
+the instructions [here](postman-sut).
 
 Step 01 - Selecting the system under test:
 ![ITP Session SUT Selection](/img/itpselectsut.png)
 
-### Step 02: Session Info
+### Step 2: Session Setup
 
-In this step the user must provide information for the definition and creation
-of the session using 3 main fields, which are:
+In this step, you can add information about the session you are creating:
 
 **Name:** Alias used to name the session. This name will be visible in the
 dashboard.
 
-**Description:** Information described by the user to help understand the
-purpose of the section created.
+**Description:** Information about the session, to help explain the purpose of
+the session.
 
-**Use Cases:** In this part, considering the type of SUT chosen, all use cases
-and their respective test cases are shown. The user can then select the test
-cases to be used by the session under creation. It is worth mentioning that the
-test cases for each use case are divided into happy flow and unhappy flow.
+**Use Cases:** All use case and test cases which are relevant for the
+currently-selected SUT type are displayed here. You can select any set of test
+cases to run during this session.
 
-Step 02 - Session information form: ![ITP Session Info](/img/itpsessioninfo.png)
+Step 2 - Session Setup form: ![ITP Session Info](/img/itpsessioninfo.png)
 
-### Step 03: Configure Components
+### Step 3: Configure SUT
 
-In this step, the components other than the SUT, which must be present in the
-execution of the tests, are automatically filled with addresses of components
-simulated by the platform. During the execution of tests for a session, these
-addresses remain at the user's view so that they can be copied and used in the
-execution of tests using an API client tool, such as
-[Postman](https://www.postman.com) or [Insomnia](https://insomnia.rest), for
-example.
+During the execution of the tests, your SUT will need to communicate with other
+components (such as FSP simulators). In step 3 of the session creation wizard,
+you will be presented with the URLs that your SUT should use for this
+communication. These URLs can also be retrieved after the session has been
+created from the session results page.
 
-Step 03 - Information about the configure components:
-![ITP Session Configure Compponents](/img/itpsessionconfigure.png)
+Step 3 - Component URLs:
+![ITP Session Configure Components](/img/itpsessionconfigure.png)
 
-After the session has been created, the user has at his disposal the group of
-test cases selected during the creation steps. From there, it is possible to
-select a specific test case and proceed with the test execution.
+After the session has been created, you will be able to see the test cases
+selected during creation. From there, it is possible to select a specific test
+case and proceed with the test execution.
 
 Example of session main screen after its creation:
 ![Session Screen](/img/itpsessionscreen.png)
 
----
+## Running Tests
 
-##### Footnotes
+Once your test session has been created, there are two ways to trigger test
+execution, depending on the flow under test. For flows which begin with a
+request from the SUT, simply trigger this request on your SUT. For flows which
+begin with a request from another component, a button will be visible on the
+test case results page labelled "Run Test Case". Clicking the button will send
+this initial request, and the remainder of the test flow will proceed according
+to the test case definition.
 
-- <a name="instancedsut">1</a>: To understand about how to run your ouwn SUT
-  read more in the installation section.
-- <a name="simulatedsut">2</a>: This possibility in under construction and will
-  allow the user to use the platform simulating all componentes, including the
-  SUT.
+![Run Test Case](/img/run-test-case.png)
