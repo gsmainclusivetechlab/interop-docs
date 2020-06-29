@@ -43,9 +43,9 @@ application without the need for a dedicated API.
 
 This is the core of the test platform, containing test case management, test
 runners and validators. The test manager supports 2 types of validation: Schema
-validation and Business Rule validations (more details [here]()). Business rule
-validations are controlled by custom logic defined within the test case
-specification, while schema validation is powered by the
+validation and Business Rule validations. Business rule validations are
+controlled by custom logic defined within the test case specification, while
+schema validation is powered by the
 [OpenAPI PSR-7 Message Validator](https://github.com/thephpleague/openapi-psr7-validator),
 which leverages the power of OpenAPI specifications to automatically validate
 all messages (requests & responses) within the platform.
@@ -114,31 +114,35 @@ to Mobile Money Operator 1.
 ### Mobile Money Operator 1
 
 Acts as a mock financial services provider (FSP) such as a Mobile Money Operator
-or Bank to simulate their role in a transaction.<br /> This simulator can
-perform two types of actions:
+or Bank to simulate their role in a transaction. Mobile Money Operator 1 will
+always act as the initiator of a transaction.<br /> This simulator can perform
+two types of actions:
 
 - Receive messages through the GSMA Mobile Money API and map them to a Mojaloop
   API.<br /> This simulates a scenario when a Mobile Money Operator receives a
   request from a Service Provider to perform a transaction, acting as the payee.
-  For more details, see the [Merchant-Initiated Merchant Payment](/uclist#mimp)
+  For more details, see the [Merchant-Initiated Merchant Payment](/usecases/list#mimp)
   use case.
 - Initiate messages directly through Mojaloop API.<br /> This simulates a
   scenario when an FSP starts a transaction to a Mojaloop network, acting as
-  Payer. For more details, see the [P2P](/uclist#p2p) use case.
+  payer. For more details, see the [P2P](/usecases/list#p2p) use case.
 
 ### Mobile Money Operator 2
 
 Acts as a mock financial services provider (FSP) such as a Mobile Money Operator
-or Bank to simulate their role in a transaction.<br /> This simulator can
-perform one action:
+or Bank to simulate their role in a transaction. While Mobile Money Operator 1
+always acts as the _initiator_ of a transaction, Mobile Money Operator 2 always
+acts as the recipient of a transaction. Note that the recipient of a transaction
+may be the sender of funds, as in the case of a merchant-initiated transaction
+request.<br /> This simulator can perform one action:
 
 - Send and receive messages through the Mojaloop API.<br /> This simulates a
   scenario when an FSP receives a request to initiate a transaction
-  (`transactionRequest`) to a Mojaloop network, acting as Payer. For more
-  details, see the [Merchant-Initiated Merchant Payment](/uclist#mimp) use case.
+  (`transactionRequest`) to a Mojaloop network, acting as payer. For more
+  details, see the [Merchant-Initiated Merchant Payment](/usecases/list#mimp) use case.
   The same flow simulates a scenario when an FSP replies to a transaction from a
-  Mojaloop network, acting as Payee. For more details, see the
-  [P2P](/uclist#p2p) use case.
+  Mojaloop network, acting as payee. For more details, see the
+  [P2P](/usecases/list#p2p) use case.
 
 ### Mojaloop
 
