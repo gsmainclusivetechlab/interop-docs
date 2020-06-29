@@ -48,14 +48,17 @@ describing a new UC we suggest understanding and filling out this information.
 | Exceptions<sup>[1](#exceptions)</sup>: | The exceptions that you want to address during the validation of the use case |
 |                        Postconditions: | What states of post conditions can we expect after simulating the use case    |
 
-:::note PlantUML To create the sequence diagrams that describe each path of the
+:::note PlantUML
+To create the sequence diagrams that describe each path of the
 use case, we use the tool [PlantUML](https://plantuml.com/). If you would like
 to attach test flow examples along with the suggested use case/test case, we
-have provided an example file for the
-[Test Case P2P0100](/files/diagrams/p2p0100.plantuml). :::
+have provided an example file for the [Test Case P2P0100](/files/diagrams/p2p0100.plantuml).
+:::
 
-:::note Use Case Submission Suggestions for new test cases please contact the
-GSAMA Inclusive Tech Lab - [www.gsma.com/lab](www.gsma.com/lab) :::
+:::note Use Case Submission
+Suggestions for new test cases please contact the
+GSAMA Inclusive Tech Lab - [www.gsma.com/lab](www.gsma.com/lab)
+:::
 
 ---
 

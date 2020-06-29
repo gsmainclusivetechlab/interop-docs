@@ -24,10 +24,12 @@ or goods from a merchant. The transaction is initiated by the merchant and needs
 to be validated by the user (payer). The user story below details how this use
 case could be executed:
 
-:::note User Story Didier walks into a store to purchase a modem for his home.
+:::note User Story
+Didier walks into a store to purchase a modem for his home.
 After giving his information to the merchant, the latter generates a transaction
 request which gets processed through the system. Didier proceeds with the
-payment and both parties get a confirmation of payment. :::
+payment and both parties get a confirmation of payment.
+:::
 
 |                         Use Case Name: | Merchant-Initiated Merchant Payment                                                                                                                                                                                                                                                                                                                                                                        |
 | -------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +46,9 @@ The sequence diagram below shows the typical flow for an authorized transaction:
 
 ### UC02 - Customer-Initiated Merchant Payment <a name="cimp"></a>
 
-:::note Under development :::
+:::note
+Under development
+:::
 
 ### UC03 - Peer-2-Peer <a name="p2p"></a>
 
@@ -53,13 +57,15 @@ out a transaction to send money to another user (payee) and who are at different
 service providers. The following is a user story describing an example of how
 the user would behave to perform a P2P transfer.
 
-:::note User Story Zuri needs to transfer money to his brother who lives in
+:::note User Story
+Zuri needs to transfer money to his brother who lives in
 another city through his mobile money service provider. Both have phones but are
 at different service providers. After entering her brother's information, or
 using previously saved information, she starts the transfer process. Zuri has
 access to full rates (including exchange rates, if any) and decides to proceed
 with the transfer. A few seconds later, Zuri receives confirmation of the
-transaction and her brother receives the money in his mobile money account. :::
+transaction and her brother receives the money in his mobile money account.
+:::
 
 |                         Use Case Name: | Peer-2-Peer                                                                                                                                                                                                                                                                                                                                                    |
 | -------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -75,7 +81,9 @@ Sequence diagram for one of the basic paths (happy flow) for P2P:
 
 ### UC04 - International Remmittance <a name="ir"></a>
 
-:::note Under development :::
+:::note
+Under development
+:::
 
 ---
 
