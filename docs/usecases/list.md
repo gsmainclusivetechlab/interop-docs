@@ -65,7 +65,7 @@ receives the money in his mobile money account.
 
 :::
 
-|                         Use Case Name: | Peer to Peer                                                                                                                                                                                                                                                                                                                                                    |
+|                         Use Case Name: | Peer to Peer                                                                                                                                                                                                                                                                                                                                                   |
 | -------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |                               Summary: | This use case simulates a scenario where the Payer would like to send money to a Payee but each of them is using different wallet providers                                                                                                                                                                                                                    |
 |                                Actors: | <ul><li>Payer</li><li>Payee</li><li>Payer FSP</li><li>Payee FSP</li><li>Mobile Money Operator</li><li>Switch</li></ul>                                                                                                                                                                                                                                         |
@@ -79,7 +79,11 @@ Sequence diagram for one of the basic paths (happy flow) for P2P:
 
 ## UC04 - International Remittance <a name="ir"></a>
 
-:::note Under development This section is still under development. :::
+:::note Under development
+
+This section is still under development.
+
+:::
 
 ---
 
