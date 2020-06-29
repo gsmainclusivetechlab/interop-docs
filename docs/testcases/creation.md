@@ -34,14 +34,14 @@ used as a header to specify particular characteristics related to the test case
 and the use case it belongs to. Below you can see a table with the fields used
 in the header and an example of the test case data in a YAML file.
 
-| Name           | Description                                                                                                                                                                                       | Example                                                                                                                                 |
-| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`         | The name of the Test Case that will be shown to users. Names do not need to be unique, so it is possible to have multiple Test Cases with the same name.                                          | Authorized Transaction by Payer FSP                                                                                                     |
+| Name           | Description                                                                                                                                                                                       | Example                                                                                                                                             |
+| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`         | The name of the Test Case that will be shown to users. Names do not need to be unique, so it is possible to have multiple Test Cases with the same name.                                          | Authorized Transaction by Payer FSP                                                                                                                 |
 | `use_case`     | The name of the Use Case that the Use Case is related to. This should be identical for all Test Cases sharing a Use Case.                                                                         |
-| `behavior`     | Defines the type of the Test Case, i.e. "Happy flow" (`positive`) and "Unhappy flow" (`negative`).                                                                                                | <ul><li>`positive`</li><li>`negative`</li></ul>                                                                                         |
-| `description`  | A description of the Test Case. It is useful to include some business background of what we are trying to achieve in this case.                                                                   | The Service Provider wants to test if he is capable of receiving a transaction from a different wallet...                               |
+| `behavior`     | Defines the type of the Test Case, i.e. "Happy flow" (`positive`) and "Unhappy flow" (`negative`).                                                                                                | <ul><li>`positive`</li><li>`negative`</li></ul>                                                                                                     |
+| `description`  | A description of the Test Case. It is useful to include some business background of what we are trying to achieve in this case.                                                                   | The Service Provider wants to test if he is capable of receiving a transaction from a different wallet...                                           |
 | `precondition` | An additional area describing specific values that should be used to execute a Test Case. This may include directions for using test case [triggers](/architecture/matching).                     |
-| `components`   | A list of components involved in the that the Test Case. Some Test Cases involve MMOs only (P2P transfer) or contain some specific errors that can only be received by SUT and not handled by it. | <ul><li>Service Provider</li><li>Mobile Money Operator 1</li><li>Mobile Money Operator 2</li><li>Any combination of the above</li></ul> |
+| `components`   | A list of components involved in the that the Test Case. Some Test Cases involve FSPs only (P2P transfer) or contain some specific errors that can only be received by SUT and not handled by it. | <ul><li>Service Provider</li><li>Financial Services Provider 1</li><li>Financial Services Provider 2</li><li>Any combination of the above</li></ul> |
 | `test_steps`   | Contains details of the steps involved in the test case.                                                                                                                                          |
 
 #### Example of test case data in a YAML file
@@ -60,15 +60,15 @@ description: |
 precondition: |
   - Service Provider has GSMA Mobile Money API Implemented.
   - Service Provider is capable of handling async calls.
-  - Payee and Payer MMOs exist in Mojaloop as Participants.
+  - Payee and Payer FSPs exist in Mojaloop as Participants.
   - Payee and Payer exist in Mojaloop as Parties.
   - Amount should be the value "1001".
   - Debit party should be identified by account identifier "msisdn" with the value "+33555123456".
   - Credit party should be identified by account identifier "msisdn" with the value "+33555789123".
 components:
   - Service Provider
-  - Mobile Money Operator 1
-  - Mobile Money Operator 2
+  - Financial Services Provider 1
+  - Financial Services Provider 2
 test_steps:
   # ...
 ```
@@ -89,8 +89,8 @@ These common values are present in every step of the test case.
 | `method`   | The request method that will be used to [match a message](/architecture/matching).                                                    | <ul><li>`POST`</li><li>`PUT`</li><li>etc.</li></ul>                                                                                                 |
 | `pattern`  | The a regular expression will be used to [match a message](/architecture/matching) using the request path.                            | <ul><li>`^transactionRequests\$`</li><li>`^quotes/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\$`</li><li>etc.</li></ul> |
 | `path`     | The path that will be shown on Flow Diagrams and on Test Run steps that were not executed.                                            | <ul><li>`/quotes/{ID}`</li><li>`/transactionRequests`</li><li>etc.</li></ul>                                                                        |
-| `source`   | The sender of the request. Should be a Component name from the database. Will be used to [match a message](/architecture/matching)    | <ul><li>Service Provider</li><li>Mobile Money Operator 1</li><li>Mojaloop </li><li>Mobile Money Operator 2</li></ul>                                |
-| `target`   | The recipient of the request. Should be a Component name from the database. Will be used to [match a message](/architecture/matching) | <ul><li>Service Provider</li><li>Mobile Money Operator 1</li><li>Mojaloop </li><li>Mobile Money Operator 2</li></ul>                                |
+| `source`   | The sender of the request. Should be a Component name from the database. Will be used to [match a message](/architecture/matching)    | <ul><li>Service Provider</li><li>Financial Services Provider 1</li><li>Mojaloop </li><li>Financial Services Provider 2</li></ul>                    |
+| `target`   | The recipient of the request. Should be a Component name from the database. Will be used to [match a message](/architecture/matching) | <ul><li>Service Provider</li><li>Financial Services Provider 1</li><li>Mojaloop </li><li>Financial Services Provider 2</li></ul>                    |
 | `trigger`  | The trigger value(s) that should be used to [match a message](/architecture/matching).                                                | <ul><li>`{amount: '99'}`</li><li>etc.</li></ul>                                                                                                     |
 | `api_spec` | The API spec to perform schema validation. Should be a Specification name from the database.                                          | <ul><li>Mojaloop v1.0</li><li>MM v1.1.2</li><li>etc.</li></ul>                                                                                      |
 
@@ -101,7 +101,7 @@ These common values are present in every step of the test case.
   pattern: "^quotes/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
   method: PUT
   source: Mojaloop
-  target: Mobile Money Operator 1
+  target: Financial Services Provider 1
   api_spec: Mojaloop v1.0
   trigger:
     transferAmount:

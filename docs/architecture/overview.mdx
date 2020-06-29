@@ -109,40 +109,40 @@ from the real scenario, and any of them can be replaced to be the SUT.
 Acts as a mock service provider (SP) such as a utility company or supermarket
 checkout to simulate their role in a transaction.<br /> This simulator can
 receive and send messages through the GSMA Mobile Money API and has a connection
-to Mobile Money Operator 1.
+to Financial Services Provider 1.
 
-### Mobile Money Operator 1
+### Financial Services Provider 1
 
 Acts as a mock financial services provider (FSP) such as a Mobile Money Operator
-or Bank to simulate their role in a transaction. Mobile Money Operator 1 will
-always act as the initiator of a transaction.<br /> This simulator can perform
-two types of actions:
+or Bank to simulate their role in a transaction. FSP 1 will always act as the
+initiator of a transaction.<br /> This simulator can perform two types of
+actions:
 
 - Receive messages through the GSMA Mobile Money API and map them to a Mojaloop
-  API.<br /> This simulates a scenario when a Mobile Money Operator receives a
-  request from a Service Provider to perform a transaction, acting as the payee.
-  For more details, see the [Merchant-Initiated Merchant Payment](/usecases/list#mimp)
-  use case.
+  API.<br /> This simulates a scenario when a Financial Services Provider
+  receives a request from a Service Provider to perform a transaction, acting as
+  the payee. For more details, see the
+  [Merchant-Initiated Merchant Payment](/usecases/list#mimp) use case.
 - Initiate messages directly through Mojaloop API.<br /> This simulates a
   scenario when an FSP starts a transaction to a Mojaloop network, acting as
   payer. For more details, see the [P2P](/usecases/list#p2p) use case.
 
-### Mobile Money Operator 2
+### Financial Services Provider 2
 
 Acts as a mock financial services provider (FSP) such as a Mobile Money Operator
-or Bank to simulate their role in a transaction. While Mobile Money Operator 1
-always acts as the _initiator_ of a transaction, Mobile Money Operator 2 always
-acts as the recipient of a transaction. Note that the recipient of a transaction
-may be the sender of funds, as in the case of a merchant-initiated transaction
-request.<br /> This simulator can perform one action:
+or Bank to simulate their role in a transaction. While FSP1 always acts as the
+_initiator_ of a transaction, FSP2 always acts as the recipient of a
+transaction. Note that the recipient of a transaction may be the sender of
+funds, as in the case of a merchant-initiated transaction request.<br /> This
+simulator can perform one action:
 
 - Send and receive messages through the Mojaloop API.<br /> This simulates a
   scenario when an FSP receives a request to initiate a transaction
   (`transactionRequest`) to a Mojaloop network, acting as payer. For more
-  details, see the [Merchant-Initiated Merchant Payment](/usecases/list#mimp) use case.
-  The same flow simulates a scenario when an FSP replies to a transaction from a
-  Mojaloop network, acting as payee. For more details, see the
-  [P2P](/usecases/list#p2p) use case.
+  details, see the [Merchant-Initiated Merchant Payment](/usecases/list#mimp)
+  use case. The same flow simulates a scenario when an FSP replies to a
+  transaction from a Mojaloop network, acting as payee. For more details, see
+  the [P2P](/usecases/list#p2p) use case.
 
 ### Mojaloop
 
@@ -155,6 +155,6 @@ real [Mojaloop software](https://mojaloop.io/).
 
 A System Under Test (SUT) is the entity which is being tested. Currently the
 test platform can handle two types of System Under Test: Service Providers and
-Financial Service Providers.<br /> Once a SUT is selected in the platform, it
+Financial Services Providers.<br /> Once a SUT is selected in the platform, it
 replaces the simulator representing the same entity for the duration of the
 test, so we can ensure that the SUT is properly tested.

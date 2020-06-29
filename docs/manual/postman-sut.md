@@ -35,7 +35,7 @@ second page, select all "Merchant-Initiated Merchant Payment" test cases.
 
 Finally, like any other SUT, the Postman SUT needs to be configured with the
 component URLs presented within the test platform. In particular, we will need
-to set up the URL for Mobile Money Operator 1, which is provided to you in
+to set up the URL for Financial Services Provider 1, which is provided to you in
 step 3. Copy the URL, and then open up the Postman environment variable window.
 Select the "Current Value" field for the environment variable `full_url` and
 paste in the URL just copied.
@@ -47,7 +47,7 @@ are ready to run the first test. Looking through the test flow for any of the
 test cases selected in the previous step, you can see that every interaction
 begins with a message sent by the service provider. To start the test execution,
 then, we simply need to return to Postman, select one of the test cases in the
-imported collection, and click "Send". When you do, the response from MMO1
+imported collection, and click "Send". When you do, the response from FSP1
 should look like this:
 
 ```json
@@ -58,7 +58,7 @@ should look like this:
 }
 ```
 
-That means that MMO1 has accepted the API call, and you can now return to the
+That means that FSP1 has accepted the API call, and you can now return to the
 ITP dashboard to view the test results. Select the test case corresponding to
 the request you just sent, and examine the test results just as you would for a
 normal SUT.

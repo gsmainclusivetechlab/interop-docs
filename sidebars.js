@@ -1,9 +1,6 @@
 module.exports = {
   someSidebar: {
-    Introduction: [
-      'intro',
-      'docsguide'
-    ],
+    Introduction: ["intro", "docsguide"],
     Architecture: [
       "architecture/overview",
       "architecture/connections",
@@ -12,24 +9,17 @@ module.exports = {
     Installation: [
       "installation/introduction",
       "installation/itp",
-      "installation/mmo",
+      "installation/fsp",
       "installation/sp",
       "installation/mojaloop",
     ],
-    "Use Cases": [
-      "usecases/intro", 
-      "usecases/list", 
-      "usecases/creation"
-    ],
-    "Test Cases": [
-      "testcases/list", 
-      "testcases/creation"
-    ],
+    "Use Cases": ["usecases/intro", "usecases/list", "usecases/creation"],
+    "Test Cases": ["testcases/list", "testcases/creation"],
     "User Manual": [
-      "manual/quickguide", 
-      "manual/session", 
-      "manual/postman-sut", 
-      "manual/results"
+      "manual/quickguide",
+      "manual/session",
+      "manual/postman-sut",
+      "manual/results",
     ],
   },
 };

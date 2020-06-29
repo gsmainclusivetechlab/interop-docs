@@ -1,16 +1,16 @@
 ---
-id: mmo
-title: Mobile Money Operator Installation Guide
-sidebar_label: Mobile Money Operator
+id: fsp
+title: Financial Services Provider Installation Guide
+sidebar_label: Financial Services Providers
 ---
 
-The GSMA Interoperability Test Platform currently supports simulation of mobile
-money operators (MMO) in two configurations. In the first configuration, the MMO
-can communicate with a service provider via the
+The GSMA Interoperability Test Platform currently supports simulation of
+Financial Services Providers (FSP) in two configurations. In the first
+configuration, the FSP can communicate with a service provider via the
 [GSMA Mobile Money API](https://developer.mobilemoneyapi.io/) and with an
-interoperability hub using the Mojaloop API (MMO1 in the diagram below). In the
-second configuration, the MMO will communicate exclusively with the Mojaloop API
-(MMO2 in the diagram below).
+interoperability hub using the Mojaloop API (FSP1 in the diagram below). In the
+second configuration, the FSP will communicate exclusively with the Mojaloop API
+(FSP2 in the diagram below).
 
 import { Graphviz } from "graphviz-react";
 
@@ -24,16 +24,16 @@ import { Graphviz } from "graphviz-react";
       rankdir="LR"
       ratio="fill";
       sp [label="Service Provider"]
-      mmo1 [label="MMO1"]
+      FSP1 [label="FSP1"]
       mojaloop [label="Interoperability\nHub (Mojaloop)"]
-      mmo2 [label="MMO2"]
-      sp -> mmo1 [dir="both", color="#DE002B", label="MM API", fontcolor="#DE002B"]
-      mmo1 -> mojaloop -> mmo2 [dir="both", label="Mojaloop API", fontcolor="#00A3FF", color="#00A3FF"]
+      FSP2 [label="FSP2"]
+      sp -> FSP1 [dir="both", color="#DE002B", label="MM API", fontcolor="#DE002B"]
+      FSP1 -> mojaloop -> FSP2 [dir="both", label="Mojaloop API", fontcolor="#00A3FF", color="#00A3FF"]
     }
 `}
 />
 
-## MMO1 Simulator Set-up
+## FSP1 Simulator Set-up
 
 To begin with, download the code for the simulator onto your machine. To do this
 using git, run:
@@ -73,7 +73,7 @@ At this point, `docker-compose` has launched all services required for the
 simulator, but they still require further set-up. You can now set up the
 database and install any missing dependencies by simply running `make install`:
 
-> In a future version of the MMO1 simulator, the images used by Docker will be
+> In a future version of the FSP1 simulator, the images used by Docker will be
 > pre-configured, so this step will not be necessary.
 
 ```bash
@@ -101,7 +101,7 @@ configured with URLs that follow a consistent structure:
 https://{itp_url}/testing/{my_uuid}/{recipient_uuid}/simulator/
 ```
 
-- Within MMO1, `my_uuid` should always be equal to
+- Within FSP1, `my_uuid` should always be equal to
   `e5f5e817-94d6-4a43-a7ec-f7274b6d85c2`
 - For the service provider, set
   `recipient_uuid=114511be-74e9-49d5-b93e-b4a461e01626`.
@@ -126,7 +126,7 @@ HOST_ML_API_ADAPTER=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e016
 HOST_QUOTING_SERVICE=https://{itp_url}/testing/114511be-74e9-49d5-b93e-b4a461e01626/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/simulator/
 ```
 
-## MMO2 Simulator Set-up
+## FSP2 Simulator Set-up
 
 To begin with, download the code for the simulator onto your machine. To do this
 using git, run:
@@ -151,9 +151,9 @@ follow a consistent structure:
 https://{itp_url}/testing/{my_uuid}/{recipient_uuid}/simulator/
 ```
 
-- Within MMO2, `my_uuid` should always be equal to
+- Within FSP2, `my_uuid` should always be equal to
   `e602a859-a25f-4d37-9abe-0ac09fb734af`
-- Within MMO2, `recipient_uuid` should always be equal to
+- Within FSP2, `recipient_uuid` should always be equal to
   `b2a85076-b748-4d93-8df1-2b39844e6d4b` (the Mojaloop hub).
 
 This URL must be updated in several places within `.env`. In the end, the file
@@ -185,7 +185,7 @@ The simulator should be accessible at `http://localhost:8444`.
 
 Updating either simulator is very straightforward and unlikely to cause any data
 loss. Before you proceed, you may nonetheless choose to make a backup of your
-database with the following command (this is not necessary on MMO2, where no
+database with the following command (this is not necessary on FSP2, where no
 database is used):
 
 ```bash
@@ -229,12 +229,12 @@ $ docker-compose pull
 # Pulling web     ... done
 ```
 
-Once you have obtained the latest code, the procedure differs slightly for MMO1
-and MMO2.
+Once you have obtained the latest code, the procedure differs slightly for FSP1
+and FSP2.
 
-#### MMO1
+#### FSP1
 
-For MMO1, the services can immediately be restarted, and any missing
+For FSP1, the services can immediately be restarted, and any missing
 dependencies can be installed using the `make update` script:
 
 ```bash
@@ -249,9 +249,9 @@ $ make update
 # make[1]: Leaving directory '~/Code/GSMA/interop-mm-simulator'
 ```
 
-#### MMO2
+#### FSP2
 
-For MMO2, the simulator image must be rebuilt before restarting the services,
+For FSP2, the simulator image must be rebuilt before restarting the services,
 and there is no need to run a `make update` script:
 
 ```bash

@@ -39,59 +39,59 @@ EntityBackgroundColor White
 !$amType = "amountType"
 !$transAm ="transferAmount"
 !$payeeRA = "payeeReceiveAmount"
-!$mmo2com = "mmo2Commission"
+!$fsp2com = "fsp2Commission"
 
 '----------------Participant Parameters-------------------'
 actor Payer order 1
-participant "MMO 1" as mmo1 order 2
+participant "FSP 1" as fsp1 order 2
 participant "Mojaloop" as Switch order 3
-participant "MMO 2" as mmo2 order 5
+participant "FSP 2" as fsp2 order 5
 actor Payee order 6
 
 '------------------Sequence Messages----------------------'
 '---------------------------------------------------------'
 
-Payer -> mmo1: I would like Payee \n to receive 100 USD
-activate mmo1
-mmo1 -> Switch: $postq\n$amType=RECEIVE,\n$am=100)
+Payer -> fsp1: I would like Payee \n to receive 100 USD
+activate fsp1
+fsp1 -> Switch: $postq\n$amType=RECEIVE,\n$am=100)
 activate Switch
-mmo1 <-- Switch: $http202
-Switch -> mmo2: $postq\n($amType=RECEIVE,\n$am=100)
-activate mmo2
-Switch <-- mmo2: $http202
-mmo2 -> mmo2: Commission is 1 USD in\nPayee FSP for P2P
-Switch <- mmo2: $putq///<ID>//\n$transAm=99 USD,\n$payeeRA=100 USD,\n$mmo2com=1 USD)
-Switch --> mmo2: $http200
-deactivate mmo2
-mmo1 <-- Switch: $putq///<ID>//\n$transAm=99 USD,\n$payeeRA=100 USD,\n$mmo2com=1 USD)
-mmo1 --> Switch: $http200
+fsp1 <-- Switch: $http202
+Switch -> fsp2: $postq\n($amType=RECEIVE,\n$am=100)
+activate fsp2
+Switch <-- fsp2: $http202
+fsp2 -> fsp2: Commission is 1 USD in\nPayee FSP for P2P
+Switch <- fsp2: $putq///<ID>//\n$transAm=99 USD,\n$payeeRA=100 USD,\n$fsp2com=1 USD)
+Switch --> fsp2: $http200
+deactivate fsp2
+fsp1 <-- Switch: $putq///<ID>//\n$transAm=99 USD,\n$payeeRA=100 USD,\n$fsp2com=1 USD)
+fsp1 --> Switch: $http200
 deactivate Switch 
-mmo1 -> mmo1: Payer FSP keeps commission\nas fee, Payer should also pay\nfee of 1 USD
-Payer <- mmo1: Transferirg 100USD to Payee \n will cost you 101 USD \n including fees        
-deactivate mmo1
+fsp1 -> fsp1: Payer FSP keeps commission\nas fee, Payer should also pay\nfee of 1 USD
+Payer <- fsp1: Transferirg 100USD to Payee \n will cost you 101 USD \n including fees        
+deactivate fsp1
 
 
-Payer -> mmo1: Perform Transaction
-activate mmo1
-mmo1 -> mmo1: Reserve 99 USD from Payer FSP\naccount to Payee FSP account
-mmo1 -> Switch: $postt\n($am=99 USD)
+Payer -> fsp1: Perform Transaction
+activate fsp1
+fsp1 -> fsp1: Reserve 99 USD from Payer FSP\naccount to Payee FSP account
+fsp1 -> Switch: $postt\n($am=99 USD)
 activate Switch
-mmo1 <-- Switch: $http202
+fsp1 <-- Switch: $http202
 Switch -> Switch: Reserve 99 USD from Payer FSP\naccount to Payee FSP account
-Switch -> mmo2: $postt\n($am=99 USD)
-activate mmo2
-Switch <-- mmo2:  $http202
-mmo2 -> mmo2: Transfer 99 USD from Switch\naccount and 1 USD from\ncomission account\nto Payee account
-mmo2 -> Payee: You have received 100 USD\nfrom Payer
-Switch <- mmo2: $putt///<ID>//
-Switch --> mmo2: $http200
-deactivate mmo2
+Switch -> fsp2: $postt\n($am=99 USD)
+activate fsp2
+Switch <-- fsp2:  $http202
+fsp2 -> fsp2: Transfer 99 USD from Switch\naccount and 1 USD from\ncomission account\nto Payee account
+fsp2 -> Payee: You have received 100 USD\nfrom Payer
+Switch <- fsp2: $putt///<ID>//
+Switch --> fsp2: $http200
+deactivate fsp2
 Switch -> Switch: Commit reserved transfer
-mmo1 <- Switch: $putt///<ID>//
-mmo1 --> Switch: $http200
+fsp1 <- Switch: $putt///<ID>//
+fsp1 --> Switch: $http200
 deactivate Switch
-Payer <- mmo1: Transaction successful,\nyou have paid 1 USD in fee
-deactivate mmo1
+Payer <- fsp1: Transaction successful,\nyou have paid 1 USD in fee
+deactivate fsp1
 
 
 @enduml

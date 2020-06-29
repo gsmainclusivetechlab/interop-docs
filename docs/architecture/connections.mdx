@@ -4,8 +4,8 @@ title: Connections between Components
 sidebar_label: Component Connections
 ---
 
-In normal operation, the payer's MMO would connect directly to Mojaloop to
-arrange a funds transfer to the payee's MMO. In testing, however, we must
+In normal operation, the payer's FSP would connect directly to Mojaloop to
+arrange a funds transfer to the payee's FSP. In testing, however, we must
 inspect every message to validate that they are correctly formed. To achieve
 this, the ITP acts as a transparent proxy between all components. By configuring
 endpoint URLs within component A to point at the ITP instead of directly to
@@ -25,20 +25,20 @@ import { Graphviz } from "graphviz-react";
       ];
       edge [fontname="var(--ifm-font-family)", penwidth=2];
       sp [label="SP"]
-      mmo1 [label="MMO1"]
+      FSP1 [label="FSP1"]
       mojaloop [label="Mojaloop"]
-      mmo2 [label="MMO2"]
+      FSP2 [label="FSP2"]
       ITP [label="Test Platform"]
       subgraph sim {
         rank="same"
         edge[style="dashed", dir="both"]
-        sp -> mmo1 [color="#67ab9f"]
-        mmo1 -> mojaloop -> mmo2 
+        sp -> FSP1 [color="#67ab9f"]
+        FSP1 -> mojaloop -> FSP2 
       }
       {
         edge[dir="both"]
-        ITP -> {sp mmo1} [color="#67ab9f"]
-        ITP -> {mmo1 mojaloop mmo2}
+        ITP -> {sp FSP1} [color="#67ab9f"]
+        ITP -> {FSP1 mojaloop FSP2}
         ITP -> mojaloop[style="invis"]
       }
       subgraph leg {
@@ -54,7 +54,7 @@ import { Graphviz } from "graphviz-react";
           e -> f [label="Logical message\n(Mojaloop API)", style=dashed] ;
         }
         edge[style="invis"]
-        {mmo1 mojaloop} -> b
+        {FSP1 mojaloop} -> b
         b -> e
       }
     }
@@ -72,9 +72,9 @@ that it is not necessary to know which component corresponds to which UUID, but
 it can be helpful for debugging to know which UUID is which:
 
 - **SP**: 114511be-74e9-49d5-b93e-b4a461e01626
-- **MMO1**: e5f5e817-94d6-4a43-a7ec-f7274b6d85c2
+- **FSP1**: e5f5e817-94d6-4a43-a7ec-f7274b6d85c2
 - **Mojaloop**: b2a85076-b748-4d93-8df1-2b39844e6d4b
-- **MMO2**: e602a859-a25f-4d37-9abe-0ac09fb734af
+- **FSP2**: e602a859-a25f-4d37-9abe-0ac09fb734af
 
 ## SUT URLs
 
@@ -92,7 +92,7 @@ the test platform (e.g. `interop.gsmainclusivetechlab.io`). `my_uuid` is the
 UUID of the component which is being tested, and `recipient_uuid` is the UUID of
 the component to which the request will be made.
 
-Thus, the URL that an MMO1 test subject should use to send messages to Mojaloop
+Thus, the URL that an FSP1 test subject should use to send messages to Mojaloop
 (through the test platform) would be:
 
 ```
@@ -111,7 +111,7 @@ without the `session_uuid`.
 https://{itp_url}/testing/{my_uuid}/{recipient_uuid}/simulator/
 ```
 
-Thus, the URL that an MMO1 simulator should use to send messages to Mojaloop
+Thus, the URL that an FSP1 simulator should use to send messages to Mojaloop
 (through the test platform) would be:
 
 ```

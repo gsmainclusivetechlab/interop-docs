@@ -28,9 +28,9 @@ in the codebase. Alternatively, you can run the `make init` command if you have
 
 ### URL Configuration
 
-The simulator must be configured with the URL for the service provider's MMO
+The simulator must be configured with the URL for the service provider's FSP
 inside the `src/.env` file. In our case, you will actually need to add URLs for
-the core test platform, which will redirect requests to the MMO. All simulators
+the core test platform, which will redirect requests to the FSP. All simulators
 must be configured with URLs that follow a consistent structure:
 
 ```
@@ -40,7 +40,7 @@ https://{itp_url}/testing/{my_uuid}/{recipient_uuid}/simulator/
 - Within the SP simulator, `my_uuid` should always be equal to
   `114511be-74e9-49d5-b93e-b4a461e01626`
 - Within the SP simulator, `recipient_uuid` should always be equal to
-  `e5f5e817-94d6-4a43-a7ec-f7274b6d85c2` (MMO1 simulator).
+  `e5f5e817-94d6-4a43-a7ec-f7274b6d85c2` (FSP1 simulator).
 
 The configured URL should end up looking like this:
 
@@ -66,7 +66,7 @@ At this point, `docker-compose` has launched all services required for the
 simulator, but they still require further set-up. You can now set up the
 database and install any missing dependencies by simply running `make install`:
 
-> In a future version of the MMO1 simulator, the images used by Docker will be
+> In a future version of the FSP1 simulator, the images used by Docker will be
 > pre-configured, so this step will not be necessary.
 
 ```bash

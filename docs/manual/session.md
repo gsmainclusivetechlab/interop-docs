@@ -27,7 +27,7 @@ In this step, you must enter basic information about the system under test (SUT)
 by the platform: the type of the **SUT** and its **URL**.
 
 **SUT:** The currently supported SUT types are `Service Provider`,
-`Mobile Money Operator 1` and `Mobile Money Operator 2`.
+`Financial Services Provider 1` and `Financial Services Provider 2`.
 
 **URL:** To test your system, it must be accessible from the test platform.
 Enter the URL of your SUT, which the test platform will use to send requests as

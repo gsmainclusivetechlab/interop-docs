@@ -4,7 +4,7 @@ title: ITP Use Cases
 sidebar_label: Introduction
 ---
 
-### What is a Use Case? 
+### What is a Use Case?
 
 Within the interoperability test platform (ITP), "_Use Cases_" (UC) represent
 the different goals that actors within the system may have. For example, a
@@ -45,13 +45,13 @@ transaction.
 sources that are defined by Initiator Type. This source also limits the types of
 transactions that can occur.
 
-| Transaction Scenarios |   Initiating Party    | Initiator Type |
-| :-------------------: | :-------------------: | :------------: |
-|       Transfer        |         Payer         |    Consumer    |
-|        Deposit        |         Payee         |    Business    |
-|      Withdrawal       |   Service Provider    |     Device     |
-|        Payment        | Mobile Money Operator |     Agent      |
-|        Refund         |           -           |       -        |
+| Transaction Scenarios |      Initiating Party       | Initiator Type |
+| :-------------------: | :-------------------------: | :------------: |
+|       Transfer        |            Payer            |    Consumer    |
+|        Deposit        |            Payee            |    Business    |
+|      Withdrawal       |      Service Provider       |     Device     |
+|        Payment        | Financial Services Provider |     Agent      |
+|        Refund         |              -              |       -        |
 
 These elements can be combined in different ways to define the use case under
 evaluation. For example, in a merchant-initiated merchant payment transaction we
