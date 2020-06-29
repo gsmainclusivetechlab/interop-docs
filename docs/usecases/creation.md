@@ -59,10 +59,11 @@ example file for the [Test Case P2P0100](/files/diagrams/p2p0100.plantuml).
 
 :::
 
-:::note Use Case Submission
+:::note Use Case Suggestions
 
-Suggestions for new test cases please contact the GSAMA Inclusive Tech Lab -
-[www.gsma.com/lab](www.gsma.com/lab)
+If you have any suggestions for new use cases, please contact the GSMA Inclusive
+Tech Lab through the website at [www.gsma.com/lab](https://www.gsma.com/lab) or
+by email at [inclusivetechlab@gsma.com](mailto:inclusivetechlab@gsma.com).
 
 :::
 
