@@ -1,5 +1,5 @@
 ---
-id: uclist
+id: list
 title: ITP Use Cases List
 sidebar_label: Use Cases List
 ---

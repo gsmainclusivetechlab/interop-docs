@@ -1,7 +1,7 @@
 ---
 id: introduction
 title: Installation Guide
-sidebar_label: Introduction
+sidebar_label: Installation Guide
 ---
 
 The interoperability test platform is built using
