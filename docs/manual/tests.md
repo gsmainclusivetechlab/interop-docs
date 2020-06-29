@@ -52,18 +52,22 @@ Note that the address used for Mobile Money Operator 1 is the address of the SUT
 and the addresses of Mojaloop and Service Provider are provided by the platform
 when creating a session.
 
-:::important The environment variables used for the components are respectively:
+:::important
+The environment variables used for the components are respectively:
 Service Provider - **sp_url**, Mobile Money Operator 1 - **mmo1_url**, Mojaloop
 (switch) - **moja_url** and when necessary, Mobile Money Operator 2 -
-**mm2_url**. :::
+**mm2_url**.
+:::
 
 Creating a New Environment in Postman:
 ![Creating a New Env](/img/creatingenv.png)
 
-:::tip Remember that when creating a new session, the parameters of the SUT need
+:::tip
+Remember that when creating a new session, the parameters of the SUT need
 to reference the simulated components. For our example in which the SUT is MMO1,
 we need to configure the .env file of our local system under test with the
-addresses provided for the SP and the Switch. :::
+addresses provided for the SP and the Switch. 
+:::
 
 ### Sending a Test Request
 
