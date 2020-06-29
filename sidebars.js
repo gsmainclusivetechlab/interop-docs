@@ -28,7 +28,7 @@ module.exports = {
     "User Manual": [
       "manual/quickguide", 
       "manual/session", 
-      "manual/tests", 
+      "manual/postman-sut", 
       "manual/results"
     ],
   },

@@ -9,7 +9,7 @@ features pre-existing on the platform. If the modules needed for a UC creation
 are already present, the inclusion of the use cases and test cases may occur
 quickly or even immediately. However, if a use case involves other components
 besides those that already exist, the
-[GSMA Inclusive Tech Lab](http://www.gsma.com/lab) is on hand to accept
+[GSMA Inclusive Tech Lab](https://www.gsma.com/lab) is on hand to accept
 suggestions, and incorporate them into future Interoperability Test Platform
 updates.
 

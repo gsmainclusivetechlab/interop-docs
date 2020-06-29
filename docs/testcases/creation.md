@@ -218,7 +218,7 @@ test_steps:
       headers:
         accept: "application/json"
         content-type: "application/json"
-        x-callback-url: "http://example.com/example"
+        x-callback-url: "https://example.com/example"
         x-date: "2000-01-01T00:00:00.000Z"
       body:
         amount: "1005"
