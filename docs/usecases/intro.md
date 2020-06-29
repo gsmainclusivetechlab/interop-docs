@@ -1,10 +1,10 @@
 ---
 id: intro
-title: Test Use Cases
+title: ITP Use Cases
 sidebar_label: Introduction
 ---
 
-### What is a Use Case? <a name="what"></a>
+### What is a Use Case? 
 
 Within the interoperability test platform (ITP), "_Use Cases_" (UC) represent
 the different goals that actors within the system may have. For example, a
@@ -19,7 +19,7 @@ it is possible to satisfy all user needs. Alternative paths include several
 other situations that are related to the use case, even if they are not desired,
 or less frequent. These alternative flows often include errors, and are also
 called _unhappy flows_. Each of these flows is represented by a
-[Test Case](/testcases/intro) within the platform.
+[Test Case](/testcases/list) within the platform.
 
 This section of the documentation includes more information about use cases in
 general, and about the use cases which are already available to test within the
