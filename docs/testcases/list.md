@@ -1,5 +1,4 @@
 ---
-id: list
 title: ITP Test Cases
 sidebar_label: List of Test Cases
 ---

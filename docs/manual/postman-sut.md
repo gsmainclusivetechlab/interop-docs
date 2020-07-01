@@ -1,5 +1,4 @@
 ---
-id: postman-sut
 title: Testing without a SUT
 sidebar_label: Testing without a SUT
 ---

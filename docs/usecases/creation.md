@@ -1,5 +1,4 @@
 ---
-id: creation
 title: Creating New Use Cases
 sidebar_label: Creating a Use Case
 ---
