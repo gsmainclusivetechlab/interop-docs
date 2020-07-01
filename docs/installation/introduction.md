@@ -1,5 +1,4 @@
 ---
-id: introduction
 title: Installation Guide
 sidebar_label: Installation Guide
 ---

@@ -1,5 +1,4 @@
 ---
-id: session
 title: Test Sessions
 sidebar_label: Test Sessions
 ---

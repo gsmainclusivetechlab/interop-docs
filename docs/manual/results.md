@@ -1,5 +1,4 @@
 ---
-id: results
 title: Test Results
 sidebar_label: Test Results
 ---
