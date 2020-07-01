@@ -88,7 +88,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/", // Set this value to '/'.
-          homePageId: "intro", // Set to existing document id.
+          homePageId: "home", // Set to existing document id.
           // Please change this to your repo.
           editUrl: "https://github.com/gsmainclusivetechlab/interop-docs/blob/develop/",
         },
