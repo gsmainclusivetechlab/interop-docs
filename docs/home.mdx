@@ -27,9 +27,10 @@ portal, test controller and set of simulators, each of which can be replaced
 with "real" operational software. The diagram below describes an example of this
 flow.
 
-import { Graphviz } from "graphviz-react";
+import {DelayedGraphviz} from "../src/components/DelayedGraphviz";
 
-<Graphviz
+<DelayedGraphviz
+  timeout={1000}
   options={{ width: "100%", height: "auto" }}
   dot={`
     digraph {
