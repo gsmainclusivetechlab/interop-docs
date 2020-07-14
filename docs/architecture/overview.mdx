@@ -58,11 +58,12 @@ platform is able to store and validate messages before forwarding them to the
 correct simulator, and subsequently validate the response.
 
 This diagram illustrates communication through the proxy layer. More details
-about these connections are avalable [here](/architecture/connections).
+about these connections are available [here](/architecture/connections).
 
-import { Graphviz } from "graphviz-react";
+import {DelayedGraphviz} from "../../src/components/DelayedGraphviz";
 
-<Graphviz
+<DelayedGraphviz
+  timeout={1000}
   options={{ width: "100%", height: "auto" }}
   dot={`
     digraph {

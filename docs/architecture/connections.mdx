@@ -10,9 +10,10 @@ this, the ITP acts as a transparent proxy between all components. By configuring
 endpoint URLs within component A to point at the ITP instead of directly to
 component B, the ITP can store all messages and forward them onto component B.
 
-import { Graphviz } from "graphviz-react";
+import {DelayedGraphviz} from "../../src/components/DelayedGraphviz";
 
-<Graphviz
+<DelayedGraphviz
+  timeout={1000}
   options={{ height: "auto", width: "100%" }}
   dot={`
     digraph {

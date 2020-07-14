@@ -11,9 +11,10 @@ interoperability hub using the Mojaloop API (MMO1 in the diagram below). In the
 second configuration, the MMO will communicate exclusively with the Mojaloop API
 (MMO2 in the diagram below).
 
-import { Graphviz } from "graphviz-react";
+import {DelayedGraphviz} from "../../src/components/DelayedGraphviz";
 
-<Graphviz
+<DelayedGraphviz
+  timeout={1000}
   options={{ width: "100%", height: "auto" }}
   dot={`
     digraph { 

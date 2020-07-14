@@ -1,7 +1,7 @@
 module.exports = {
   someSidebar: {
     Introduction: [
-      'intro',
+      'home',
       'docsguide'
     ],
     Architecture: [
