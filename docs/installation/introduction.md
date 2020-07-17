@@ -11,7 +11,7 @@ any environment which supports Docker. Installation guides are available for
 [Windows](https://docs.docker.com/docker-for-windows/install/).
 
 Additionally, each component is developed using microservices which are
-coordinated using [`docker-compose`](https://docs.docker.com/compose/).On
+coordinated using [`docker-compose`](https://docs.docker.com/compose/). On
 Windows and macOS, `docker-compose` should be installed automatically with
 Docker. On a Linux host, `docker-compose` must be installed separately using
 [this guide](https://docs.docker.com/compose/install/).
