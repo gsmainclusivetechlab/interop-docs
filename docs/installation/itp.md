@@ -1,5 +1,4 @@
 ---
-id: itp
 title: Interoperability Test Platform Installation Guide
 sidebar_label: Interoperability Test Platform
 ---

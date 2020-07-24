@@ -1,5 +1,4 @@
 ---
-id: list
 title: List of ITP Use Cases
 sidebar_label: List of Use Cases
 ---

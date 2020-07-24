@@ -31,5 +31,11 @@ module.exports = {
       "manual/postman-sut", 
       "manual/results"
     ],
+    "Contributor's Guide": [
+      "contributors-guide/contributing",
+      "contributors-guide/tools",
+      "contributors-guide/new-code",
+      "contributors-guide/bugs"
+    ]
   },
 };
