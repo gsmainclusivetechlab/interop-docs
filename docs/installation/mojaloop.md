@@ -310,11 +310,11 @@ Mojaloop now needs to be configured with endpoints for the test platform
 corresponding to DFSPs within Mojaloop. We have prepared configuration files to
 allow this to be completed easily with Postman.
 
-1. The [environment](/files/postmanEnvSamples.json) configuration file should be
+1. The [environment](/files/postmanEnvSamples.json.txt) configuration file should be
    edited to reflect your own mojaloop server URL, and then imported.
-2. The [new deployment](/files/postmanDeployment.json) configuration file can
+2. The [new deployment](/files/postmanDeployment.static.json.txt) configuration file can
    now be imported into Postman, and executed to set up the deployment.
-3. Finally, the [new participant](/files/participantsEndpointSetup.json)
+3. Finally, the [new participant](/files/participantsEndpointSetup.json.txt)
    configuration file can be imported and executed to set up the correct
    endpoint URLs for the DFSP simulators.
 

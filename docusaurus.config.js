@@ -88,20 +88,21 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/", // Set this value to '/'.
-          homePageId: "home", // Set to existing document id.
+          // homePageId: "home", // Set to existing document id.
           // Please change this to your repo.
-          editUrl: "https://github.com/gsmainclusivetechlab/interop-docs/blob/develop/",
+          editUrl:
+            "https://github.com/gsmainclusivetechlab/interop-docs/blob/develop/",
         },
         // blog: {
         //   showReadingTime: true,
         //   // Please change this to your repo.
         //   editUrl:
-        //     'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+        //     "https://github.com/facebook/docusaurus/edit/master/website/blog/",
         // },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
       },
     ],
-  ],
+  ]
 };

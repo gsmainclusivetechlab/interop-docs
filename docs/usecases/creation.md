@@ -32,7 +32,7 @@ test cases.
    considered.
 4. **Sequence Diagram:** If possible, the creation of a sequence diagram for the
    different paths will ease the test cases definition. You can also use the
-   section [Creating a Test Case](/testcases/template) to learn how to create a
+   section [Creating a Test Case](/testcases/creation) to learn how to create a
    Test Case YAML file directly.
 
 ### Use Case Description
