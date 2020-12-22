@@ -76,22 +76,22 @@ test_steps:
 
 The second part of the test case file is called Test Step Data. Each step
 represents an HTTP request made as part of the test, and is defined by a series
-of common values, in addition to step-specific parameters such as _assertions_,
-_overrides_ and _request and response examples_.
+of basic values, in addition to detailed parameters such as _assertions_, and
+_request and response templates_.
 
 ### Common Values
 
 These common values are present in every step of the test case.
 
-| Name       | Description                                                                                                                           | Example                                                                                                                                             |
-| :--------- | :------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `method`   | The request method that will be used to [match a message](/architecture/matching).                                                    | <ul><li>`POST`</li><li>`PUT`</li><li>etc.</li></ul>                                                                                                 |
-| `pattern`  | The a regular expression will be used to [match a message](/architecture/matching) using the request path.                            | <ul><li>`^transactionRequests\$`</li><li>`^quotes/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\$`</li><li>etc.</li></ul> |
-| `path`     | The path that will be shown on Flow Diagrams and on Test Run steps that were not executed.                                            | <ul><li>`/quotes/{ID}`</li><li>`/transactionRequests`</li><li>etc.</li></ul>                                                                        |
-| `source`   | The sender of the request. Should be a Component name from the database. Will be used to [match a message](/architecture/matching)    | <ul><li>Service Provider</li><li>Mobile Money Operator 1</li><li>Mojaloop </li><li>Mobile Money Operator 2</li></ul>                                |
-| `target`   | The recipient of the request. Should be a Component name from the database. Will be used to [match a message](/architecture/matching) | <ul><li>Service Provider</li><li>Mobile Money Operator 1</li><li>Mojaloop </li><li>Mobile Money Operator 2</li></ul>                                |
-| `trigger`  | The trigger value(s) that should be used to [match a message](/architecture/matching).                                                | <ul><li>`{amount: '99'}`</li><li>etc.</li></ul>                                                                                                     |
-| `api_spec` | The API spec to perform schema validation. Should be a Specification name from the database.                                          | <ul><li>Mojaloop v1.0</li><li>MM v1.1.2</li><li>etc.</li></ul>                                                                                      |
+| Name       | Description                                                                                                                              | Example                                                                                                                                             |
+| :--------- | :--------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `api_spec` | The API spec to perform schema validation. Should be a Specification name from the database.                                             | <ul><li>Mojaloop v1.0</li><li>MM v1.1.2</li><li>etc.</li></ul>                                                                                      |
+| `method`   | The request method that will be used to [match a message](/architecture/matching).                                                       | <ul><li>`POST`</li><li>`PUT`</li><li>etc.</li></ul>                                                                                                 |
+| `pattern`  | A regular expression will be used to [match a message](/architecture/matching) using the request path.                                   | <ul><li>`^transactionRequests\$`</li><li>`^quotes/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\$`</li><li>etc.</li></ul> |
+| `path`     | The path used to match a request against the API spec. Will also be shown on Flow Diagrams and on Test Run steps that were not executed. | <ul><li>`/quotes/{ID}`</li><li>`/transactionRequests`</li><li>etc.</li></ul>                                                                        |
+| `source`   | The sender of the request. Should be a Component name from the database. Will be used to [match a message](/architecture/matching)       | <ul><li>Service Provider</li><li>Mobile Money Operator 1</li><li>Mojaloop </li><li>Mobile Money Operator 2</li></ul>                                |
+| `target`   | The recipient of the request. Should be a Component name from the database. Will be used to [match a message](/architecture/matching)    | <ul><li>Service Provider</li><li>Mobile Money Operator 1</li><li>Mojaloop </li><li>Mobile Money Operator 2</li></ul>                                |
+| `trigger`  | The trigger value(s) that should be used to [match a message](/architecture/matching).                                                   | <ul><li>`{amount: '99'}`</li><li>etc.</li></ul>                                                                                                     |
 
 #### Example of Global Values in a YAML file
 
@@ -109,10 +109,12 @@ These common values are present in every step of the test case.
 
 ### Assertions
 
-Assertions can be used to validate that certain business conditions hold, in a
-more powerful way than is possible using API schema validation. Assertions can
-be performed for any value in the header or body of the request or response. In
-a response, the `status` field may also be used for assertions.
+Assertions are used to validate that certain business conditions are true, in a
+more powerful way than is possible using API schema validation. Where API schema
+validation can only validate the _structure_ of a message, assertions can be
+used to validate the _content_. Assertions can be performed for any value in the
+header or body of the request or response. In a response, the `status` field may
+also be used for assertions.
 
 | Name                    | Description                                                        |
 | :---------------------- | :----------------------------------------------------------------- |
@@ -124,8 +126,6 @@ defined by a `name` and a list of Laravel validation `rules`. The key for each
 rule is a path to a field using 'dot' syntax within the request/response object.
 For more information on the syntax of these rules, visit the
 [Laravel documentation site](https://laravel.com/docs/7.x/validation#available-validataion-rules).
-Each validation rule should contain the `required` rule at least, otherwise the
-assertion may pass even if the value is wrong or empty.
 
 ```yaml
 test_steps:
@@ -139,74 +139,32 @@ test_steps:
           body.payeeReceiveAmount.currency: "required|regex:/^[A-Z]{3}/"
           body.payeeFspCommission.amount: "required|in:1"
           body.payeeFspCommission.currency: "required|regex:/^[A-Z]{3}/"
+      - name: Callback URL is specified
+        rules:
+          headers.x-callback-url.*: "required|url"
     test_response_scripts:
       - name: Transaction was successfully accepted
         rules:
           status: "required|in:200"
 ```
 
-### Overrides
+### Request and Response Templates
 
-Overrides are used in situations where it is necessary to force a value provided
-by a simulator to have a different value for the purposes of directing the test
-flow.
+Each test step is also defined by a template request and response. This is used
+by the platform to generate simulated traffic for the components which are not
+SUTs in a session. Additionally, the templates also provide guidance for test
+platform users, to outline which data needs to be sent, or can be expected from
+other components during test execution.
 
-| Name                   | Description                                                                                                                                                                        |
-| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `test_request_setups`  | The list of overrides that will be performed for the request.                                                                                                                      |
-| `test_response_setups` | The list of overrides that will be performed for the response.                                                                                                                     |
-| `name`                 | The name of the override that will be shown on the Test Step page.                                                                                                                 |
-| `values`               | The list of overrides that should be performed per request/response. Overriding will override the existing values in the message or create a new one if it does not already exist. |
+| Name    | Description                                              |
+| :------ | :------------------------------------------------------- |
+| method  | The HTTP method used to make the request.                |
+| uri     | A path or URI for used to make the request.              |
+| headers | A list of headers to include in the request or response. |
+| body    | A JSON payload for the request or response.              |
+| status  | The status code that will be used for a response.        |
 
-Override values can either be provided using dot-notation to override a single
-value, or a whole object can be overridden by providing an object as in the
-`Force 400 error` example below, where an object has been passed to the `body`
-field.
-
-```yaml
-test_steps:
-  - #...
-    test_request_setups:
-      - name: Override request amounts
-        values:
-          body.transferAmount.currency: "USD"
-          body.transferAmount.amount: "399"
-          body.payeeReceiveAmount.currency: "USD"
-          body.payeeReceiveAmount.amount: "398"
-          body.payeeFspFee.currency: "USD"
-          body.payeeFspFee.amount: "1"
-
-    test_response_setups:
-      - name: Force 400 error
-        values:
-          status: 400
-          body:
-            errorCode: "genericError"
-            errorCategory: "businessRule"
-            errorDateTime: "2000-01-01T00:00:00.000Z"
-            errorDescription:
-              "The specified property contents do not conform to the format
-              required for this Property."
-```
-
-### Request and Response Examples
-
-Each test step is also defined by an example request and response. This provides
-guidance for test platform users, to identify what data he needs to send or can
-expect to receive during the test execution. Importantly, the example request
-defined in the first test step is also used by the test platform to trigger the
-start of a test run when the "Execute Test" button is clicked within the test
-platform.
-
-| Name    | Description                                       |
-| :------ | :------------------------------------------------ |
-| method  |                                                   |
-| uri     | An example path or URI for this request/response. |
-| headers | A list of expected headers.                       |
-| body    | An example payload for the request/response.      |
-| status  | Example response status.                          |
-
-#### Model of a request and response example in a YAML file
+#### Example of a request and response
 
 ```yaml
 test_steps:
@@ -235,3 +193,114 @@ test_steps:
         x-date: "2000-01-01T00:00:00.000Z"
         content-type: "application/json"
 ```
+
+## Template variables
+
+:::warning
+
+Using variables in test cases is under active development, and is subject to
+change at very short notice.
+
+:::
+
+It is often useful to include dynamic data within a test case. Some examples of
+this are:
+
+- To send a simulated request with a freshly generated UUID on each test run
+- To include a field in a HTTP response which was dynamically provided in the
+  preceding request
+- To customise the test execution for a particular environment (e.g. to include
+  an authorization token belonging to the owner of the session)
+
+Template variables are a way to achieve the above by injecting values inside any
+string inside the `test_steps[*].request` and `test_steps[*].response` objects.
+Currently, there are two types of template variables although future releases of
+the interoperability test platform will unify both types under "Twig Template
+Variables".
+
+### Environment Variables
+
+Environment variables are primarily used to inject data which is unique to a
+particular session, such as the URLs of the various test components (useful for
+including callback URLs in a request header, for example). The syntax for using
+an environment variable is `${ ENVIRONMENT_VARIABLE_NAME }`. The variables
+available for use are:
+
+| Name                             | Description                                                                                                                                                          |
+| :------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SP_BASE_URI`                    | The url specified during session creation for the service provider component. If the component is simulated, then the simulator URL will be provided instead.        |
+| `MMO1_BASE_URI`                  | The url specified during session creation for the Mobile Money Operator 1 component. If the component is simulated, then the simulator URL will be provided instead. |
+| `MOJALOOP_BASE_URI`              | The url specified during session creation for the Mojaloop component. If the component is simulated, then the simulator URL will be provided instead.                |
+| `MMO2_BASE_URI`                  | The url specified during session creation for the Mobile Money Operator 2 component. If the component is simulated, then the simulator URL will be provided instead. |
+| `CURRENT_TIMESTAMP_ISO8601`      | The current time, formatted as an ISO8601 timestamp.                                                                                                                 |
+| `CURRENT_TIMESTAMP_ISO8601_ZULU` | The current time, formatted as an ISO8601 Zulu timestamp.                                                                                                            |
+| `CURRENT_TIMESTAMP_RFC2822`      | The current time, formatted as an RFC2822 timestamp.                                                                                                                 |
+| `CURRENT_TIMESTAMP_RFC7231`      | The current time, formatted as an RFC7231 timestamp.                                                                                                                 |
+
+Additionally, any variable that the user provides in the session environment may
+be used. If a test case relies on environment variables being provided in this
+way, it should be documented in the test case `preconditions` section.
+
+### Twig Template Variables
+
+[Twig](https://twig.symfony.com/) is a powerful templating language which allows
+sandboxed execution of arbitrary logic within the test case context. This allows
+us to create templates with highly dynamic data - such as including data from
+previous messages, or combining multiple sources of data using arithmetic. The
+syntax for Twig template variables is `{{ twig_expression }}`.
+
+A full description of the twig templating language is beyond the scope of this
+documentation, although a detailed reference is available on the
+[Twig website](https://twig.symfony.com/doc/3.x/).
+
+Within a test case, the following context variables are available for use (in
+addition to all of Twig's built-in functions and variables):
+
+#### `steps`
+
+The `steps` variable contains a reference to all previously executed test steps
+in the test case. In the following example, we use `steps` in combination with
+twig's ability to perform arithmetic to simulate a constant fee of 1 USD being
+applied to the amount requested in a previous step:
+
+```yaml
+body:
+  transferAmount:
+    currency: "USD"
+    amount: "{{ steps.7.request.body.amount.amount + 1 }}"
+```
+
+#### `uuidv4`
+
+The `uuidv4()` function can be used to generate a unique UUID for a request. It
+can be used in conjunction with `steps` as described above to correlate a UUID
+across several steps:
+
+```yaml
+request:
+  # ...
+  body:
+    serverCorrelationId: "{{ uuidv4() }}"
+response:
+  # ...
+  body:
+    requestId: "{{ steps.4.request.body.serverCorrelationId }}"
+```
+
+#### `"now"`
+
+Parsing the string `"now"` is a builtin feature of Twig, but it is documented
+here separately as a useful tool in building test cases. Using Twig filters, you
+can avoid the use of the static environment variables described above for
+formatting dates, and instead format a date using any format string:
+
+```yaml
+headers:
+  X-Date: '{{ "now" | date("F j, Y, g:i a") }}'
+```
+
+## Using the Test Case visual Editor
+
+Although test cases are often quicker to produce using the YAML syntax, it is
+also possible for users with the Test Case Creator role to edit test cases
+directly through the web interface.
