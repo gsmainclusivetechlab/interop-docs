@@ -1,41 +1,25 @@
 module.exports = {
   someSidebar: {
-    Introduction: [
-      'home',
-      'docsguide'
-    ],
+    Introduction: ["home", "docsguide"],
     Architecture: [
       "architecture/overview",
       "architecture/connections",
       "architecture/matching",
     ],
-    Installation: [
-      "installation/introduction",
-      "installation/itp",
-      "installation/mmo",
-      "installation/sp",
-      "installation/mojaloop",
-    ],
+    Installation: ["installation"],
     "Use Cases": [
-      "usecases/intro", 
-      "usecases/list", 
-      "usecases/creation"
+      "testcases/intro",
+      "testcases/uclist",
+      "testcases/tclist",
+      "testcases/creating-tc",
+      "testcases/proposing-uc",
     ],
-    "Test Cases": [
-      "testcases/list", 
-      "testcases/creation"
-    ],
-    "User Manual": [
-      "manual/quickguide", 
-      "manual/session", 
-      "manual/postman-sut", 
-      "manual/results"
-    ],
+    "User Manual": ["manual/quickguide", "manual/session", "manual/results"],
     "Contributor's Guide": [
       "contributors-guide/contributing",
       "contributors-guide/tools",
       "contributors-guide/new-code",
-      "contributors-guide/bugs"
-    ]
+      "contributors-guide/bugs",
+    ],
   },
 };

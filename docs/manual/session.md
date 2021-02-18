@@ -4,42 +4,22 @@ sidebar_label: Test Sessions
 ---
 
 The execution of tests in the Interoperability Test Platform (ITP) is performed
-through the creation of sessions. Sessions are a selection of use cases and test
-cases with a validation purpose and possibly a common scope. During the creation
-of a session, the user sets the address of the SUT, defines information related
-to the session and selects the test cases to be included. After creation, it is
-possible to run tests by changing parameters for each test case. The created
-session is available on the home screen of the ITP (as shown in the picture
-below), allowing the user to consult previously run tests, delete and run new
-tests.
+through the creation of sessions. Sessions are defined by a selection of test
+cases. During the creation of a session, the user selects the test cases to be
+included, selects any SUTs and configures their address and encryption details.
+After creation, it is possible to run tests by clicking the "Run Test Case"
+button. The newly-created session is available on the home screen of the ITP (as
+shown in the picture below), allowing the user to consult previously run tests,
+delete and run new tests.
 
 Home screen with the user sessions: ![ITP Home](/img/itphome.png)
 
 ## Creating a Test Session
 
-To create a session you must perform three main steps: SUT Selection, Session
-Setup and SUT Configuration.
+To create a session you must perform three main steps: Session Setup, SUT
+Selection and SUT Configuration.
 
-### Step 1: SUT Selection
-
-In this step, you must enter basic information about the system under test (SUT)
-by the platform: the type of the **SUT** and its **URL**.
-
-**SUT:** The currently supported SUT types are `Service Provider`,
-`Mobile Money Operator 1` and `Mobile Money Operator 2`.
-
-**URL:** To test your system, it must be accessible from the test platform.
-Enter the URL of your SUT, which the test platform will use to send requests as
-part of test execution.
-
-If you do not currently have a SUT, but still wish to explore the
-interoperability test platform, you can simulate a Service Provider SUT using
-the instructions [here](postman-sut).
-
-Step 01 - Selecting the system under test:
-![ITP Session SUT Selection](/img/itpselectsut.png)
-
-### Step 2: Session Setup
+### Step 1: Session Setup
 
 In this step, you can add information about the session you are creating:
 
@@ -49,13 +29,30 @@ dashboard.
 **Description:** Information about the session, to help explain the purpose of
 the session.
 
-**Use Cases:** All use case and test cases which are relevant for the
+**Test Cases:** All use case and test cases which are relevant for the
 currently-selected SUT type are displayed here. You can select any set of test
 cases to run during this session.
 
-Step 2 - Session Setup form: ![ITP Session Info](/img/itpsessioninfo.png)
+Step 1 - Session Setup form: ![ITP Session Info](/img/itpsessioninfo.png)
 
-### Step 3: Configure SUT
+### Step 2: SUT Selection
+
+In this step, you may select any number of SUTs to take part in the test. If you
+select no components, the test will be fully simulated by the platform, and you
+will be able to view an end-to-end execution of the test case without any
+external systems. On the other hand, if you select all components as SUTs, the
+platform will simply act as a proxy layer between the components, with no
+behaviour simulated at all.
+
+For each SUT selected, you will need to enter a URL which the test platform will
+use to send requests. If you wish to use an mTLS encrypted connection to your
+system, you should select "Use Encryption" and provide a client certificate
+signed by a certificate authority trusted by your system.
+
+Step 2 - Selecting the system under test:
+![ITP Session SUT Selection](/img/itpselectsut.png)
+
+### Step 3: Configure components
 
 During the execution of the tests, your SUT will need to communicate with other
 components (such as FSP simulators). In step 3 of the session creation wizard,
@@ -66,6 +63,22 @@ created from the session results page.
 Step 3 - Component URLs:
 ![ITP Session Configure Components](/img/itpsessionconfigure.png)
 
+In the screenshot above, DFSP 1 is a SUT, and it should use the URL provided to
+send any requests intended for Mowali Hub.
+
+As described in [Connections](../architecture/connections), the URLs provided at
+this stage are dynamic, and include the session UUID. If your user is a member
+of a group, you can select the session as the default session for your group
+instead, which will provide a static group URL at this stage instead.
+
+Finally, this page is also where environment variables are configured for the
+session. These environment variables will affect the behaviour of the test
+cases, so it is important to match the variable names that are used in the test
+case. These are normally documented in the test case preconditions, and it is
+possible to adjust the session environment variables at any time. If you are a
+member of a user group, you can also select group environments which are
+preconfigured within your group.
+
 After the session has been created, you will be able to see the test cases
 selected during creation. From there, it is possible to select a specific test
 case and proceed with the test execution.
@@ -75,12 +88,15 @@ Example of session main screen after its creation:
 
 ## Running Tests
 
-Once your test session has been created, there are two ways to trigger test
-execution, depending on the flow under test. For flows which begin with a
-request from the SUT, simply trigger this request on your SUT. For flows which
-begin with a request from another component, a button will be visible on the
-test case results page labelled "Run Test Case". Clicking the button will send
-this initial request, and the remainder of the test flow will proceed according
-to the test case definition.
+Once your test session has been created, you can trigger the execution of a test
+by clicking the "Run Test Case" button. If the flow begins with a request from a
+simulator, the first steps will automatically be executed. If the flow begins
+with a request from a SUT, the platform will listen for the incoming request
+from the component.
 
-![Run Test Case](/img/run-test-case.png)
+In the case that the flow begins with a SUT, it is also possible to trigger
+execution of a test case implicitly by sending the first test request without
+first clicking on the "Run Test Case" button. If you do this, it is important to
+ensure that all selected test cases in the session are unambiguous in terms of
+path and trigger, otherwise the request may be associated with a different test
+case than the one you were expecting.

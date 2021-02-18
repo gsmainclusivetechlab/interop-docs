@@ -3,8 +3,8 @@ title: Test Results
 sidebar_label: Test Results
 ---
 
-After running tests using the API Client Tool, all results are stored and
-available to the user in the test session on the Interoperability Test Platform.
+After executing a test, all results are stored and available to the user in the
+test session on the Interoperability Test Platform.
 
 ## Session Results
 
@@ -17,21 +17,21 @@ then, a brief description of these elements is shown.
 Session screen elements: ![ITP Session Info](/img/testsmainscreen.png)
 
 1. Summary of the number of passed test cases. Failed tests are shown in red,
-   passed tests in green, and un-executed tests, in grey.
-2. Information about the execution of test cases. The information is grouped by
-   date.
-3. The user can choose the use cases and the test cases through this part of the
-   interface.
-4. When expanding option three, the user has an overview of test cases organized
-   by use case and by happy flow and unhappy flow.
+   passed tests in green, and non-executed tests, in grey.
+2. Information about the recent execution of test cases. The information is
+   grouped by date.
+3. Link to the session Message Log, where _all_ requests to the platform are
+   recorded. This is often useful in debugging, when a request is not matched
+   with a test case.
+4. An overview of test cases selected for this session, organized by use case
+   and by happy / unhappy flow.
 5. In this area, you can view the latest tests run and its information such as:
-   - Test Case Name: Name given to the test case extracted from the information
-     in the YAML file.
-   - Run ID: Identifier created by the platform to differentiate this execution
-     from the others. For the same test case executed more than once, the
-     platform will assign different Run ID for each execution.
-   - Status: Indicates the state of the test case execution and may contain the
-     following values: pass, fail or un-executed.
+   - Execution ID: Identifier created by the platform to differentiate this
+     execution from the others. For the same test case executed more than once,
+     the platform will assign different Run ID for each execution.
+   - Test Case Name
+   - Status: Indicates the state of the test case execution (pass, fail or
+     incomplete)
    - Duration: Time in milliseconds that the execution of this test consumed
      <sup>[1](#testduration)</sup>.
    - Date: Describes when the test was performed.
@@ -48,42 +48,42 @@ Executions for a test case: ![List of Executed Tests](/img/runlist.png)
 
 ## Test Information
 
-Each test case has relevant information for its execution. In the configuration
-field it is possible to access the addresses of the simulated modules that are
-necessary to run the test case. In the example in the previous figure, we can
-see that the links to the Service Provider and Mojaloop are available in this
-field, for the user to view or copy. The **description** contains the general
-purpose of the test, describing the scenario under simulation. The
-**preconditions** help in understanding how the tests should be performed and
-state the existing decisions and rules that must be met for a correct execution
-of the test.
+Each test case displays its basic information on the left of the screen. Under
+"configuration," the base URLs are listed for each component addressed by the
+chosen SUTs. In the figure above, we see the URL that the component called
+"Client" (which is a SUT in this test session) should use to reach the component
+called "Server". Underneath, the **description** contains a general purpose of
+the test, describing the scenario under simulation. Finally, some test cases
+describe test **preconditions** which help in understanding how the tests should
+be performed. For example, a test case may require a particular "amount" to be
+set in order to trigger certain behaviour within the simulators.
 
 ### Test Runs
 
-In the **Test Runs** tab are all the executions performed for the test case.
-Each run contains information such as the test run identifier, the state, the
-duration and how long ago the run was performed. This information is the same as
-found in the latest tests run, shown in topic 5 of the figure of session screen
-elements.
+In the **Test Runs** tab are all the historic executions of the test case. Each
+run contains information such as the test run ID, the status, the duration and
+how long ago the run was performed.
 
-When selecting a run, the user can navigate through the steps that were taken
-when the test was run. For each step it is possible to see the status, every
-test performed for the step, and a log of the request and response messages. By
-clicking on the performed test items list, you can see the information of the
-request message that was sent and the expected message for the request. This
-information is very useful to understand how the step works and the test case as
-a whole, being notoriously relevant in situations of failure in one of the
-steps.
+After clicking on a test run ID, the user can navigate through the steps
+involved in the test case. For each step it is possible to see the overall
+status, every assertion performed for the test step, and a log of the request
+and response messages. By clicking on a test assertion, you can see both the
+details of the request or response as well as the "expected" state when this is
+different. This information is very useful to understand how the step works and
+the test case as a whole, especially in the case of unexplained failure in one
+of the steps.
 
 Information of Test Runs tab: ![Example of Test Runs](/img/testruns.png)
 
 ### Test Steps
 
-When choosing the **Test Steps** tab, it is possible to see a more detailed view
-of each expected step when executing the test case. In each row of the table you
-can see the method used, the endpoint and the source and destination modules
-involved in the step being executed. In addition, an example of the request and
-response for each step is also available.
+Under the **Test Steps** tab, it is possible to see a more detailed view of each
+of the scripted steps in the test case. In each row of the table you can see the
+method used, the endpoint, and the source and destination components for the
+request. Clicking on the Request or Response buttons will show an example
+request or response, which can be useful in designing your implementation. A
+button to copy the request in `cURL` format is also available, which can be a
+convenient way to execute or debug a test case.
 
 Information of Test Steps tab: ![Example of Test Steps](/img/teststeps.png)
 
@@ -91,13 +91,11 @@ Information of Test Steps tab: ![Example of Test Steps](/img/teststeps.png)
 
 The **test flow** consists of a sequence diagram showing the messages exchanged
 between the components involved in the test. Through the flow diagram it is
-possible to understand how the objects presented in the test collaborate with
-each other and what is their behaviour over time. This information can also be
-found in the test steps tab, however the diagram provides a simpler and more
-objective view of the steps performed, while the steps view provides more
-detailed information, such as data contained in the header and in the body of
-the requests. The figure below displays a test flow for the same test mentioned
-before.
+possible to understand how the different components interact over time. This
+information can also be found in the test steps tab, however the diagram
+provides a simpler and more directed view of the steps performed, while the
+steps view provides more detailed information, such as data contained in the
+header and in the body of the requests.
 
 If the user wishes, the test flow can be exported or edited. By clicking on the
 Diagram Editor option, the code generated for the test flow is opened on the
@@ -110,9 +108,32 @@ Information of Test Flow tab: ![Example of Test Flow](/img/testflow.png)
 
 ---
 
+### Message Log
+
+The **Test Results** tab described above lists the execution of every _expected_
+request and response to reach the platform. However it can be the case that
+messages do not arrive at the platform in quite the way expected. For example, a
+happy test case may expect a message to be sent to the `/callback` endpoint, but
+in reality the SUT sends a message to the `/error` callback. The same problem
+may happen in reverse for an unhappy test case, where an `/error` request is
+expected but a `/callback` request is sent instead.
+
+These messages will not be displayed in the **Test Results** tab, because they
+are not recognised as part of the test case. Instead, they will be displayed in
+the Message Log view, which is accessible by clicking on the "Log" button in the
+top right.
+
+On this page, every request which reached the platform is displayed. Where a
+test case is identified for the request, the matching test step is included.
+Where a test case is not identified, the request details are nonetheless
+displayed for debugging purposes, along with any error messages that were
+generated by the platform on receipt.
+
+Message log: ![Message Log](/img/testmessagelog.png)
+
 ##### Footnotes
 
 - <a name="testduration">1</a>: This duration is directly related to the
   Interoperability Test Platform. The performance of the system under test is
   not evaluated here, since part of the test execution comes from simulated
-  components.
+  components, which may involve artificial simulated delays.

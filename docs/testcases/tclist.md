@@ -3,13 +3,13 @@ title: ITP Test Cases
 sidebar_label: List of Test Cases
 ---
 
-Where an ITP [Use Case](/usecases/intro) represents the different goals that
+Where an ITP [Use Case](/testcases/intro) represents the different goals that
 actors within the system might have, a _test case_ represents a specific path
 taken to achieve a goal. Test cases are separated into "_happy_" and "_unhappy_"
 so that they cover all the possibilities for a use case. Tests typically include
 several alternative paths that evaluate the exceptions and errors in the use
 case. It is also possible that there are several happy paths, addressing
-different business rules that result in different intended outcomes.
+different business rules that result in different expected outcomes.
 
 All test cases currently available on the Interoperability Test Platform are
 listed below. As new test cases are created, the documentation, and therefore
@@ -46,19 +46,19 @@ after receiving a quote.
 
 ### Merchant-Initiated Merchant Payment <a name="mimp"></a>
 
-|                                                                                 Test Case                                                                                 | Test Scenario                                 |                  Results                  | Status | Error |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --------------------------------------------- | :---------------------------------------: | :----: | :---: |
-|          [MC0100](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/authorized-transaction.yaml)           | Authorized Transaction                        |                 Approved                  |  Pass  |   -   |
-|      [MC0200](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/authorized-with-account-lookup.yaml)       | Authorized Transaction w/ Account Lookup      |                 Approved                  |  Pass  |   -   |
-|        [MC0300](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/authorized-with-authorizationcode.yaml)         | Authorized Transaction w/ Authorisation Codes |                 Approved                  |  Pass  |   -   |
-|       [MC0400](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-400.yaml)       | Declined Transacation                         |                 Declined                  |  Fail  |  400  |
-|       [MC0500](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-401.yaml)       | Declined Transacation                         |                 Declined                  |  Fail  |  401  |
-|       [MC0600](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-404.yaml)       | Declined Transacation                         |                 Declined                  |  Fail  |  404  |
-|       [MC0700](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-500.yaml)       | Declined Transacation                         |                 Declined                  |  Fail  |  500  |
-|       [MC0800](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-503.yaml)       | Declined Transacation                         |                 Declined                  |  Fail  |  503  |
-|        [MC5001](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/rejected-quote-by-payee-fsp.yaml)        | Rejected Quote                                |          Quote Rejected by Payee          |  Fail  | 5103  |
+|                                                                                 Test Case                                                                                 | Test Scenario                                 |                  Results                   | Status | Error |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --------------------------------------------- | :----------------------------------------: | :----: | :---: |
+|          [MC0100](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/authorized-transaction.yaml)           | Authorized Transaction                        |                  Approved                  |  Pass  |   -   |
+|      [MC0200](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/authorized-with-account-lookup.yaml)       | Authorized Transaction w/ Account Lookup      |                  Approved                  |  Pass  |   -   |
+|     [MC0300](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/authorized-with-authorizationcode.yaml)     | Authorized Transaction w/ Authorisation Codes |                  Approved                  |  Pass  |   -   |
+|       [MC0400](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-400.yaml)       | Declined Transacation                         |                  Declined                  |  Fail  |  400  |
+|       [MC0500](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-401.yaml)       | Declined Transacation                         |                  Declined                  |  Fail  |  401  |
+|       [MC0600](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-404.yaml)       | Declined Transacation                         |                  Declined                  |  Fail  |  404  |
+|       [MC0700](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-500.yaml)       | Declined Transacation                         |                  Declined                  |  Fail  |  500  |
+|       [MC0800](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/decline-transaction-error-503.yaml)       | Declined Transacation                         |                  Declined                  |  Fail  |  503  |
+|        [MC5001](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/rejected-quote-by-payee-fsp.yaml)        | Rejected Quote                                |          Quote Rejected by Payee           |  Fail  | 5103  |
 |     [MC5002](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/rejected-transaction-by-payer-fsp.yaml)     | Rejected Transaction                          | Transaction Request Rejected Late by Payer |  Fail  | 4101  |
-| [MC5003](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/rejected-transaction-request-by-payer-fsp.yaml) | Rejected Transaction Request                  |   Transaction Request Rejected by Payer   |  Fail  | 4101  |
+| [MC5003](https://github.com/gsmainclusivetechlab/interop-test-platform/blob/master/src/database/seeds/test-cases/merchant/rejected-transaction-request-by-payer-fsp.yaml) | Rejected Transaction Request                  |   Transaction Request Rejected by Payer    |  Fail  | 4101  |
 
 ### Customer-Initiated Merchant Payment <a name="cimp"></a>
 

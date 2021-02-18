@@ -6,12 +6,12 @@ title: Introduction
 
 For code contributions (bug fixes, new features, etc), jump in here:
 
-1. Read through the [Architecture Guide](../architecture/overview) to understand how the
-   ITP code is structured across multiple projects. environment.
+1. Read through the [Architecture Guide](../architecture/overview) to understand
+   how the ITP code is structured across multiple projects. environment.
 
 2. Ensure you are familiar with our recommended [tools](./tools).
 
-3. Read through the [Installation Guide](../installation/introduction) to set up a
+3. Read through the [Installation Guide](../installation) to set up a
    development environment.
 
 4. Browse through the project board and find a
@@ -20,9 +20,9 @@ For code contributions (bug fixes, new features, etc), jump in here:
 5. Check the [Writing New Code](./new-code) page to understand more about our
    development workflow.
 
-For new test-cases or use cases, you may not need to read the architecture or
-installation guides. Instead, review the [Use Case](../usecases/creation) and
-[Test Case](../testcases/creation) creation guides.
+For new test cases or use cases, you may not need to read the architecture or
+installation guides. Instead, review the [Use Case](../testcases/proposing-uc)
+and [Test Case](../testcases/creating-tc) creation guides.
 
 ## What needs doing?
 
@@ -53,6 +53,6 @@ accept the contribution once it's ready.
 
 ## Where do I send bugs, questions, and feedback?
 
-For bugs, see the ["Reporting bugs" page](./bugs). If you have any other questions, or
-need support in getting started, send an email to
+For bugs, see the ["Reporting bugs" page](./bugs). If you have any other
+questions, or need support in getting started, send an email to
 [inclusivetechlab@gsma.com](mailto:inclusivetechlab@gsma.com).

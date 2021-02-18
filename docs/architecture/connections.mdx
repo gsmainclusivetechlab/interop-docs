@@ -10,7 +10,7 @@ this, the ITP acts as a transparent proxy between all components. By configuring
 endpoint URLs within component A to point at the ITP instead of directly to
 component B, the ITP can store all messages and forward them onto component B.
 
-import {DelayedGraphviz} from "../../src/components/DelayedGraphviz";
+import { DelayedGraphviz } from "../../src/components/DelayedGraphviz";
 
 <DelayedGraphviz
   timeout={1000}
@@ -61,59 +61,106 @@ import {DelayedGraphviz} from "../../src/components/DelayedGraphviz";
 `}
 />
 
-## Component IDs
-
-In order to recognise the sender and intended recipient of each message received
-by the test platform, this information must be embedded within the message.
-Specifically, the test platform expects that the base URL for each request will
-contain a UUID corresponding to both the sender and intended recipients of the
-message. Normally, the test platform will insert these UUIDs transparently so
-that it is not necessary to know which component corresponds to which UUID, but
-it can be helpful for debugging to know which UUID is which:
-
-- **SP**: 114511be-74e9-49d5-b93e-b4a461e01626
-- **MMO1**: e5f5e817-94d6-4a43-a7ec-f7274b6d85c2
-- **Mojaloop**: b2a85076-b748-4d93-8df1-2b39844e6d4b
-- **MMO2**: e602a859-a25f-4d37-9abe-0ac09fb734af
-
 ## SUT URLs
 
 Within a SUT, the base URL of each component should be configured according to
 the following scheme:
 
 ```handlebars
-https://{itp_url}/testing/{session_uuid}/{my_uuid}/{recipient_uuid}/sut/
+https://{itp_url}/testing/{my_component}/{recipient_component}/{session_uuid}
 ```
 
-The `session_uuid` corresponds to a unique ID for each testing session, and
-helps the test platform to validate incoming messages to ensure that the
-expected test-cases are being correctly matched. `itp_url` is the base URL of
-the test platform (e.g. `interop.gsmainclusivetechlab.io`). `my_uuid` is the
-UUID of the component which is being tested, and `recipient_uuid` is the UUID of
-the component to which the request will be made.
+`itp_url` is the base URL of the test platform (e.g.
+`interop.gsmainclusivetechlab.io`). The `session_uuid` corresponds to a unique
+ID for each testing session, and helps the test platform to validate incoming
+messages to ensure that the correct test case is being executed. `my_component`
+is the id of the component which is being tested, and `recipient_component` is
+the id of the component to which the request will be made.
 
-Thus, the URL that an MMO1 test subject should use to send messages to Mojaloop
-(through the test platform) would be:
+Thus, the base URL that an MMO1 test subject should use to send messages to
+Mojaloop (through the test platform) would be:
 
 ```
-https://interop.gsmainclusivetechlab.io/testing/41a2e8d5-3ce4-459b-a6eb-1a1e2988c357/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/b2a85076-b748-4d93-8df1-2b39844e6d4b/sut/
+https://interop.gsmainclusivetechlab.io/testing/mmo-1/mojaloop/b2a85076-b748-4d93-8df1-2b39844e6d4b/
 ```
 
-## Simulator URLs
+It is not necessary to construct these URLs manually, as they will be displayed
+within the test platform once a test session has been created.
 
-Since the simulators are within the control of the test platform, we can
-slightly simplify the request URLs compared to SUTs. In particular, the
-simulators use a `traceparent` header in place of the `session_uuid` from above.
-For this reason base URLs used by each simulator have a simpler structure
-without the `session_uuid`.
+## Insecure URLs
+
+By default, all connections within ITP are assumed to be encrypted via mTLS. If
+an encrypted connection is not possible, alternative insecure connections are
+also available. These use the following format:
 
 ```handlebars
-https://{itp_url}/testing/{my_uuid}/{recipient_uuid}/simulator/
+http://{itp_url}/testing-insecure/{my_component}/{recipient_component}/{session_uuid}
 ```
 
-Thus, the URL that an MMO1 simulator should use to send messages to Mojaloop
-(through the test platform) would be:
+Thus, the base URL that an MMO1 test subject should use to send messages to
+Mojaloop (through an unencrypted connection with the test platform) would be:
 
 ```
-https://interop.gsmainclusivetechlab.io/testing/e5f5e817-94d6-4a43-a7ec-f7274b6d85c2/b2a85076-b748-4d93-8df1-2b39844e6d4b/simulator/
+http://interop.gsmainclusivetechlab.io/testing-insecure/mmo-1/mojaloop/b2a85076-b748-4d93-8df1-2b39844e6d4b/
+```
+
+## Group URLs
+
+Since a session UUID is encoded within the URL, it is necessary to use a new URL
+every time a new session is created. This can be inconvenient in cases where a
+SUT's URL is not easy to regularly reconfigure. In these situations, it is
+possible to use a "Group URL" instead. A group URL is unique for a particular
+user group, and a group administrator can remap the URL to point to a different
+test session at any time. Group URLs use the following format:
+
+```handlebars
+https://{itp_url}/testing-group/{my_component}/{recipient_component}/{group_id}
+http://{itp_url}/testing-insecure-group/{my_component}/{recipient_component}/{group_id}
+```
+
+Thus, the base URL that an MMO1 test subject should use to send messages to
+Mojaloop (through a group URL belonging to the group with ID 99) would be:
+
+```
+https://interop.gsmainclusivetechlab.io/testing-group/mmo-1/mojaloop/99
+```
+
+This URL will not need reconfiguring inside the SUT when a new session is
+created, since the group administrator can select a new default test session for
+the group at any time.
+
+## Implicit SUTs
+
+Platform administrators may operate a system centrally for multiple users to use
+in their tests. For example, a live Mojaloop switch may be operated by platform
+administrators, for operators to test their connections.
+
+In this case, it can be inconvenient for users to enter the details of the
+shared system themselves - especially regarding encrypted connection details. To
+solve this problem, the system can be designated as an "Implicit SUT". When the
+system is selected for use in a test session, the connection details are
+automatically configured in the test session.
+
+Since the implicit SUT is expected to be used as part of multiple test
+sessions - even as part of multiple groups - it is impossible to set a static
+URL using any of the schemes above. In this case, a small modification is
+required to the system, to ensure that an HTTP `traceparent` header is forwarded
+for all related requests. In the case of Mojaloop, for example, no changes are
+required because all HTTP headers are automatically forwarded to the request
+recipient.
+
+Using this HTTP header, the session and group IDs are no longer required inside
+the component URL. As such, base URLs used by implicit SUTs have a simpler
+structure:
+
+```handlebars
+https://{itp_url}/testing/{my_component}/{recipient_component}
+http://{itp_url}/testing-insecure/{my_component}/{recipient_component}
+```
+
+Thus, the URL that a Mojaloop system configured as an Implicit SUT should use to
+send messages to MMO 1 (through the test platform) would be:
+
+```
+https://interop.gsmainclusivetechlab.io/testing/mojaloop/mmo-1
 ```

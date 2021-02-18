@@ -5,12 +5,12 @@ sidebar_label: Test Case Matching
 
 A single testing session will contain tests for multiple use cases, each of
 which may contain multiple test cases. This is useful for rapid testing under a
-variety of conditions, but means the platform must identify which test case is
-being executed when a request arrives at the platform. For example, a session
-may contain two flows which differ only in whether a quote is accepted or
-rejected by a remote DFSP. In this case, the test platform must identify which
-flow is being executed, in order to instruct the remote DFSP simulator to accept
-or reject the quote.
+variety of conditions, but means the platform must automatically identify which
+test case is being executed when a request arrives at the platform. For example,
+a session may contain two flows which differ only in whether a quote is accepted
+or rejected by a remote DFSP. In this case, the test platform must identify
+which flow is being executed, in order validate the requests and instruct the
+remote DFSP simulator to accept or reject the quote.
 
 For every test case within the session, the first unmatched step is selected to
 compare against the incoming request. For test cases which have not yet been
@@ -24,7 +24,7 @@ match. These characteristics are:
   `Service Provider`, `DFSP1`, etc)
 
 It is frequently the case that multiple test steps will still be possible
-matches at this stage, since many test-cases test fairly similar flows. In the
+matches at this stage, since many test cases test fairly similar flows. In the
 example given above for example, these characteristics would be identical for
 both the accepted and rejected cases, since both follow the same basic flow of
 requests. To disambiguate between them, a further check is required, known as
@@ -62,12 +62,12 @@ However, a request with this body would not be considered a match:
 ```
 
 In this way, multiple test cases can be defined unambiguously while sharing
-almost identical flows. Returning the example above, the accepted case may be
+almost identical flows. Returning to the example above, the accepted case may be
 defined with a trigger of `{"amount": 20.03}` while the rejected case is defined
 with a trigger of `{"amount": 20.04}`. The two test cases can then be executed
 in any order (or even simultaneously) with no conflict between them.
 
-### Requests without a body
+## Requests without a body
 
 Some requests (such as `GET` requests) do not have a payload body with which a
 trigger could be set up. In this case, it may be possible to write a test case
@@ -91,13 +91,19 @@ test_steps:
 	# ...
 ```
 
-In the case that the request path does not contain any data which may be used as
-a trigger, it is not currently possible to disambiguate any further. In a future
-version of the test platform, it may be possible to use a custom request header
-as a test trigger.
+## Identical Requests
 
-It is also worth noting that these test triggers are only required in the case
-of ambiguity between multiple steps in different test cases. This is most
-important for the first step of each test case, since it is generally possible
-to avoid ambiguity in later steps by simply running each test case one at a
-time.
+In the case that neither the request body nor the request path contain any data
+which may be used as a trigger, it is not currently possible to disambiguate any
+further. As a result, it is not possible to execute multiple test cases
+simultaneously, since the platform will not be able to determine which test case
+is under execution.
+
+To allow testing such similar scenarios, ITP defines an option
+`FORCE_SEQUENTIAL_TESTS` which is false by default. When the option is enabled,
+test executions are expected to be sequential - so a single session should never
+have two parallel test runs. By making this assumption, it becomes possible to
+unambiguously select one of several identical test cases by simply clicking the
+"Run Test Case" button for the desired test case. This will initiate the test
+case execution, and any requests received by the platform will be automatically
+matched to the current test case until the test run is complete.

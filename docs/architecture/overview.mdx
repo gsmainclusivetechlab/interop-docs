@@ -5,7 +5,7 @@ sidebar_label: Overview
 
 This section describes the high-level architecture of the Interoperability Test
 Platform. The platform was designed to be scalable and integrate with novel
-simulators in future, and so it was designed around a flexible architecture
+systems in future, and so it was designed around a flexible architecture
 consisting of three sections:
 
 - Core Test Platform
@@ -16,51 +16,45 @@ consisting of three sections:
 
 ## Core Test Platform
 
-The core test platform provides an interface to manage users, sessions and test
-cases, and intercepts and validates every message between simulators and SUTs.
-The platform uses [Laravel](https://laravel.com/), a web application framework
-built with PHP. The test platform can be further subdivided into four main
-blocks: Frontend, Backend, Test Manager and Proxy.
+The core test platform presents a frontend interface to manage users, sessions
+and test cases. In addition, it presents a proxy layer which is capable of
+intercepting and validating every message between simulators and SUTs. The
+platform uses [Laravel](https://laravel.com/), a web application framework built
+with PHP.
 
 ### Frontend
 
 The frontend is responsible for rendering the user interface and uses two main
 technologies: [Vue.js](https://vuejs.org/) and [Tabler](https://tabler.io/).
 
-- Vue.js: Used to build a single page application.
+- Vue.js: Used to build a single page application, rendered through
+  [Inertia.js](https://inertiajs.com/).
 - Tabler: Provides the admin and dashboard layout to build the UI, using
   [Bootstrap](https://getbootstrap.com/) internally.
 
-### Backend
-
-The backend is responsible for providing data to the Frontend, and interacts
-with the database. In addition to Laravel, the backend uses
-[Inertia.js](https://inertiajs.com/) to allow the creation of a single page
-application without the need for a dedicated API.
-
 ### Test Manager
 
-This is the core of the test platform, containing test case management, test
-runners and validators. The test manager supports 2 types of validation: Schema
-validation and Business Rule validations. Business rule validations are
-controlled by custom logic defined within the test case specification, while
-schema validation is powered by the
-[OpenAPI PSR-7 Message Validator](https://github.com/thephpleague/openapi-psr7-validator),
-which leverages the power of OpenAPI specifications to automatically validate
-all messages (requests & responses) within the platform.
+The core of the test platform is the test manager. Test cases define the
+execution flow of tests, as well as defining schema validation and business rule
+validations. Schema validation is performed automatically bsed on an OpenAPI
+Specification (powered by
+[OpenAPI PSR-7 Message Validator](https://github.com/thephpleague/openapi-psr7-validator)),
+while business rule validations are controlled by custom logic defined inside
+the test case definition.
 
 ### Proxy
 
 In order to provide an end-to-end test, the platform must be able to follow all
-messages exchanged between entities. The proxy layer was created for this
-purpose. All messages within the system pass through this proxy layer where the
-platform is able to store and validate messages before forwarding them to the
-correct simulator, and subsequently validate the response.
+messages exchanged between entities. All messages within the system pass through
+a proxy layer, allowing the platform to store and validate messages before
+forwarding them to the correct recipient. When the receiver sends an HTTP
+response, that too will be validated before forwarding back to the original
+sender.
 
 This diagram illustrates communication through the proxy layer. More details
 about these connections are available [here](/architecture/connections).
 
-import {DelayedGraphviz} from "../../src/components/DelayedGraphviz";
+import { DelayedGraphviz } from "../../src/components/DelayedGraphviz";
 
 <DelayedGraphviz
   timeout={1000}
@@ -100,61 +94,18 @@ import {DelayedGraphviz} from "../../src/components/DelayedGraphviz";
 
 ## Simulators
 
-The simulators are an important part of the system and hold specific knowledge
-of messages and how the flow should happen. Each simulator represents a entity
-from the real scenario, and any of them can be replaced to be the SUT.
-
-### Service Provider Simulator
-
-Acts as a mock service provider (SP) such as a utility company or supermarket
-checkout to simulate their role in a transaction.<br /> This simulator can
-receive and send messages through the GSMA Mobile Money API and has a connection
-to Mobile Money Operator 1.
-
-### Mobile Money Operator 1
-
-Acts as a mock financial services provider (FSP) such as a Mobile Money Operator
-or Bank to simulate their role in a transaction. Mobile Money Operator 1 will
-always act as the initiator of a transaction.<br /> This simulator can perform
-two types of actions:
-
-- Receive messages through the GSMA Mobile Money API and map them to a Mojaloop
-  API.<br /> This simulates a scenario when a Mobile Money Operator receives a
-  request from a Service Provider to perform a transaction, acting as the payee.
-  For more details, see the [Merchant-Initiated Merchant Payment](/usecases/list#mimp)
-  use case.
-- Initiate messages directly through Mojaloop API.<br /> This simulates a
-  scenario when an FSP starts a transaction to a Mojaloop network, acting as
-  payer. For more details, see the [P2P](/usecases/list#p2p) use case.
-
-### Mobile Money Operator 2
-
-Acts as a mock financial services provider (FSP) such as a Mobile Money Operator
-or Bank to simulate their role in a transaction. While Mobile Money Operator 1
-always acts as the _initiator_ of a transaction, Mobile Money Operator 2 always
-acts as the recipient of a transaction. Note that the recipient of a transaction
-may be the sender of funds, as in the case of a merchant-initiated transaction
-request.<br /> This simulator can perform one action:
-
-- Send and receive messages through the Mojaloop API.<br /> This simulates a
-  scenario when an FSP receives a request to initiate a transaction
-  (`transactionRequest`) to a Mojaloop network, acting as payer. For more
-  details, see the [Merchant-Initiated Merchant Payment](/usecases/list#mimp) use case.
-  The same flow simulates a scenario when an FSP replies to a transaction from a
-  Mojaloop network, acting as payee. For more details, see the
-  [P2P](/usecases/list#p2p) use case.
-
-### Mojaloop
-
-Mojaloop is the interoperability hub, which links two or more FSPs and enables
-interoperability. To ensure confidence in our test results, Mojaloop is not
-simulated within the test platform, and we instead use a vanilla version of the
-real [Mojaloop software](https://mojaloop.io/).
+Every component in the system may be either a simulated component, or a real
+component known as a SUT. The behaviour of simulated components is entirely
+defined within the test case file. Within the file, a series of test steps is
+defined, with each step including a sample `request` and `response`. By playing
+back these requests and responses in sequence, a full system flow can be
+simulated.
 
 ## System Under Test
 
-A System Under Test (SUT) is the entity which is being tested. Currently the
-test platform can handle two types of System Under Test: Service Providers and
-Financial Service Providers.<br /> Once a SUT is selected in the platform, it
-replaces the simulator representing the same entity for the duration of the
-test, so we can ensure that the SUT is properly tested.
+Any of the simulated requests and responses can be replaced by a real message
+generated by a live system. This live system is known as a "System Under Test"
+(SUT). When creating a test session, any component can be selected to be a SUT
+for the duration of this session. Once it is selected, it replaces the simulator
+representing that component for the duration of the test, and becomes
+responsible for generating all requests and responses from that component.

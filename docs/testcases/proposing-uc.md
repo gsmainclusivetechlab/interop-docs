@@ -1,16 +1,13 @@
 ---
-title: Creating New Use Cases
-sidebar_label: Creating a Use Case
+title: Proposing New Use Cases
+sidebar_label: Proposing a Use Case
 ---
 
-The creation of new Use Cases (UC) should take into account the modules and
-features pre-existing on the platform. If the modules needed for a UC creation
-are already present, the inclusion of the use cases and test cases may occur
-quickly or even immediately. However, if a use case involves other components
-besides those that already exist, the
-[GSMA Inclusive Tech Lab](https://www.gsma.com/lab) is on hand to accept
-suggestions, and incorporate them into future Interoperability Test Platform
-updates.
+The [GSMA Inclusive Tech Lab](https://www.gsma.com/lab) is on hand to accept use
+case proposals and assist in their development. The creation of new Use Cases
+(UC) should take into account the modules and features pre-existing on the
+platform. If the features needed for a UC creation are already present, the
+inclusion of the use cases and test cases may occur quickly or even immediately.
 
 In order to create these new cases and submit them to our team, it is necessary
 to understand and detail the scenario that will be simulated. Below we provide
@@ -20,8 +17,8 @@ test cases.
 ### List of Steps
 
 1. **Definition of a Scenario:** Firstly, it is necessary to understand the
-   scenario in which the use case is inserted, as well as the actors and
-   entities involved.
+   scenario which the use case represents, as well as the actors and entities
+   involved.
 2. **Creating a User Story:** As a way of exemplifying the use case scenario,
    User Stories can be used to give examples of real events where the use case
    may be applied.
@@ -32,8 +29,8 @@ test cases.
    considered.
 4. **Sequence Diagram:** If possible, the creation of a sequence diagram for the
    different paths will ease the test cases definition. You can also use the
-   section [Creating a Test Case](/testcases/creation) to learn how to create a
-   Test Case YAML file directly.
+   section [Creating a Test Case](/testcases/creating-tc) to learn how to create
+   a Test Case YAML file directly.
 
 ### Use Case Description
 

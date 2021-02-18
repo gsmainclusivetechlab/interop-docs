@@ -12,21 +12,15 @@ dynamic and is constantly evolving to suit those changes.
 This documentation is divided into 5 main parts:
 
 1. **Architecture:** This section contains information on how the platform is
-   structured, its components and relationships, and how the performed tests are
-   addressed by each component.
+   structured, its components and connections, and how the tests are performed.
 
-2. **Installation:** This section contains the steps required for local
-   installation of the platform and simulators, as well as the configuration of
-   components that will be used as System Under Test.
+2. **Installation:** This section describes the steps required for installation
+   of the platform and simulators.
 
-3. **Use Cases:** This section contains a guide on how Use Cases are approached,
-   which ones are currently available in the platform, and how to create or
-   propose new use cases. This section also shows the use cases currently under
-   development.
+3. **Test Cases:** This section contains a list of the use cases and test cases
+   currently available on the platform, and also includes guidance on proposing
+   new use cases and creating new test cases.
 
-4. **Test Cases:** This section lists all test cases available on the platform
-   grouped by use case and test path (happy and unhappy flows).
-
-5. **User Manual:** This section aims to help those who wish to use the platform
+4. **User Manual:** This section aims to help those who wish to use the platform
    using a lower technical approach. It contains instructions on how to create
    sessions and run tests using sample screens to improve user orientation.
