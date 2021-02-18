@@ -6,10 +6,10 @@ sidebar_label: Quick Guide for Tests
 ### Creating a Session
 
 1. [**Click** the **New Session** Button](session)
-2. [**Add** the **Session Information**](session#step-2-session-setup)
-3. [**Choose** the **Test Cases** for the session](session#step-2-session-setup)
-4. [**Select** the System Under Test(s) (**SUT**) and add its **URL**(s)](session#step-1-sut-selection)
-5. [**Configure** the SUT](session#step-3-configure-sut)
+2. [**Add** the **Session Information**](session#step-1-session-setup)
+3. [**Choose** the **Test Cases** for the session](session#step-1-session-setup)
+4. [**Select** the System Under Test(s) (**SUT**) and add its **URL**(s)](session#step-2-sut-selection)
+5. [**Configure** the Session](session#step-3-configure-components)
 6. [**Check out** the **Created Session**](session#)
 7. [**Send** a **Test Request** to the Interoperability Test Platform](session#running-tests)
 
