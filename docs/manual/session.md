@@ -48,7 +48,7 @@ For each SUT selected, you will need to enter a URL which the test platform will
 use to send requests. If you wish to use an mTLS encrypted connection to your
 system, you should select "Use Encryption" and provide appropriate certificates.
 For more details on the certificate upload process, please see
-[mTLS configuration](./mtls).
+[mTLS configuration](./security).
 
 Step 2 - Selecting the system under test:
 ![ITP Session SUT Selection](/img/itpselectsut.png)
