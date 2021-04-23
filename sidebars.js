@@ -14,7 +14,13 @@ module.exports = {
       "testcases/creating-tc",
       "testcases/proposing-uc",
     ],
-    "User Manual": ["manual/quickguide", "manual/session", "manual/results"],
+    "User Manual": [
+      "manual/quickguide",
+      "manual/session",
+      "manual/results",
+      "manual/security",
+      "manual/groups",
+    ],
     "Contributor's Guide": [
       "contributors-guide/contributing",
       "contributors-guide/tools",
