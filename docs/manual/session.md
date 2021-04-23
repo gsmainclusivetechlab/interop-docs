@@ -46,8 +46,9 @@ behaviour simulated at all.
 
 For each SUT selected, you will need to enter a URL which the test platform will
 use to send requests. If you wish to use an mTLS encrypted connection to your
-system, you should select "Use Encryption" and provide a client certificate
-signed by a certificate authority trusted by your system.
+system, you should select "Use Encryption" and provide appropriate certificates.
+For more details on the certificate upload process, please see
+[mTLS configuration](./mtls).
 
 Step 2 - Selecting the system under test:
 ![ITP Session SUT Selection](/img/itpselectsut.png)
@@ -74,10 +75,12 @@ instead, which will provide a static group URL at this stage instead.
 Finally, this page is also where environment variables are configured for the
 session. These environment variables will affect the behaviour of the test
 cases, so it is important to match the variable names that are used in the test
-case. These are normally documented in the test case preconditions, and it is
-possible to adjust the session environment variables at any time. If you are a
-member of a user group, you can also select group environments which are
-preconfigured within your group.
+case. The environment variable _names_ which are used in the selected test cases
+will be set up automatically. These should be further documented in the test
+case preconditions, and it is possible to adjust the session environment
+variables at any time. If you are a member of a [user group](./groups), you can
+also "merge" the currently configured environment with a group environment which
+is preconfigured within your group.
 
 After the session has been created, you will be able to see the test cases
 selected during creation. From there, it is possible to select a specific test
