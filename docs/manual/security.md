@@ -23,7 +23,7 @@ versa).
 Note that in the code samples below, `openssl` is used. Similar operations can
 be performed with any appropriate tool.
 
-### 2. Proxy → Server
+### Proxy → Server
 
 In this leg, ITP is acting as an application client, and your SUT is the
 application server. Although this is the second leg of the connection, it needs
@@ -71,7 +71,7 @@ possible for the Client → Proxy leg to continue to use the original secure url
 A test failure will be logged on the test results, to indicate that an insecure
 connection was used when a secure one was expected.
 
-### 1. Client → Proxy
+### Client → Proxy
 
 In this direction, ITP is acting as an application server. ITP will present a
 server certificate (signed by its own private certificate authority), and will
@@ -119,3 +119,44 @@ A test failure will be logged on the test results, to indicate that an insecure
 connection was used when a secure one was expected.
 
 ## JSON Web Signatures (JWS)
+
+Test cases can be defined with configuration to support
+[JWS signatures](../testcases/creating-tc#jws-signatures). This configuration
+reads values from a session's
+[environment](./session#step-3-configure-components). As a result, selecting a
+test case with a JWS configuration will add entries to a session's file
+environments:
+
+![JWS File Environments](/img/jws-environments.png)
+
+Although the names of these variables may differ, there will generally always be
+two variables for each component which uses JWS signatures - a private key and a
+public key. As with all environment variables, it is possible to provide these
+through a [user group](./groups) environment instead of entering them separately
+for each new test session.
+
+The public key should always be provided. ITP will use this to validate the JWS
+signature of the request when it is made. If the signature is malformed, a test
+failure will be logged.
+
+The private key only needs to be provided if the component is being simulated by
+ITP. In this case, ITP needs to generate the signature itself, and it will use
+the given private key to do so. It is important that the private key matches the
+public key, otherwise the signature will be malformed when it is validated.
+
+If you need to generate a new public/private key pair, you can do so using
+`openssl` or many other tools:
+
+```bash
+openssl genrsa -out private.key 2048
+openssl rsa -in private.key -out public.key -pubout -outform PEM
+```
+
+If you already have a pair of keys, and you wish to verify that they correspond
+to one another, you can also do this with `openssl`. The output of the following
+two commands will be identical if the keys are a matching pair.
+
+```bash
+openssl rsa -in private.key -noout -modulus | openssl md5
+openssl rsa -pubin -in public.key -noout -modulus | openssl md5
+```
