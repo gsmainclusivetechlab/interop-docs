@@ -8,9 +8,9 @@ which may contain multiple test cases. This is useful for rapid testing under a
 variety of conditions, but means the platform must automatically identify which
 test case is being executed when a request arrives at the platform. For example,
 a session may contain two flows which differ only in whether a quote is accepted
-or rejected by a remote DFSP. In this case, the test platform must identify
+or rejected by a remote MMO. In this case, the test platform must identify
 which flow is being executed, in order validate the requests and instruct the
-remote DFSP simulator to accept or reject the quote.
+remote MMO simulator to accept or reject the quote.
 
 For every test case within the session, the first unmatched step is selected to
 compare against the incoming request. For test cases which have not yet been
@@ -21,7 +21,7 @@ match. These characteristics are:
 - The request **method** (`GET`, `POST`, `PUT`, etc)
 - The request **path** (`/transactions`, `quotes/{ID}`)
 - The request **source and destination components** (`Mojaloop Hub`,
-  `Service Provider`, `DFSP1`, etc)
+  `Service Provider`, `MMO1`, etc)
 
 It is frequently the case that multiple test steps will still be possible
 matches at this stage, since many test cases test fairly similar flows. In the
