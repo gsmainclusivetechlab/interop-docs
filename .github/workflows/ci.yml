@@ -1,0 +1,19 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install modules & build  
+        run: |
+          yarn
+          yarn build
+        env: # Or as an environment variable
+          API_HOST_GB: ${{ secrets.API_HOST_GB }}
+          API_HOST_PK: ${{ secrets.API_HOST_PK }}
+      - name: Deploy
+        with:
+          branch: gh-pages
+          folder: build
