@@ -31,10 +31,6 @@ repositories. These are:
 
 - [interop-test-platform](https://github.com/gsmainclusivetechlab/interop-test-platform)
 - [interop-docs](https://github.com/gsmainclusivetechlab/interop-docs)
-- [interop-mm-simulator](https://github.com/gsmainclusivetechlab/interop-mm-simulator)
-- [interop-sp-simulator](https://github.com/gsmainclusivetechlab/interop-sp-simulator)
-- [interop-mojaloop-simulator](https://github.com/gsmainclusivetechlab/interop-mojaloop-simulator)
-  (forked from [mojaloop/simulator](https://github.com/mojaloop/simulator) )
 
 Github issues from all of these repositories are collected on our
 [Github project board](https://github.com/orgs/gsmainclusivetechlab/projects/1).
