@@ -11,6 +11,7 @@ module.exports = {
       "testcases/intro",
       "testcases/uclist",
       "testcases/tclist",
+      "testcases/template-tc",
       "testcases/creating-tc",
       "testcases/proposing-uc",
     ],
