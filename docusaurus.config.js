@@ -1,7 +1,7 @@
 module.exports = {
   title: "GSMA Interoperability Test Platform Documentation",
   tagline: "",
-  url: "https://docs.interop.gsmainclusivetechlab.io",
+  url: "https://docs.itp.gsmainclusivetechlab.io",
   baseUrl: "/",
   favicon: "img/favicon.ico",
   organizationName: "gsmainclusivetechlab", // Usually your GitHub org/user name.
