@@ -9,7 +9,7 @@ As a Test Case is defined in a YAML file, it is recommended to use a text editor
 
 ## Use Case
 
-We are going to use a [Disbursement Use Case](https://developer.mobilemoneyapi.io/1.2/content/disbursements) and create a new Test Case for the Use Case Scenario where an Organisation wants to obtain a disbursement balance from their account in a given Mobile Money Operador - MMO. The definition of the Use Case can be found at [Developer's Portal](https://developer.mobilemoneyapi.io/content/obtain-disbursement-organisation-balance) for Mobile Money API.
+We are going to use the [Disbursement Use Case](https://developer.mobilemoneyapi.io/1.2/content/disbursements) and create a new Test Case for the Use Case Scenario where an organisation wants to obtain a disbursement balance from their account in a given Mobile Money Operador (MMO). The definition of the Use Case can be found at the [Developer's Portal](https://developer.mobilemoneyapi.io/content/obtain-disbursement-organisation-balance) for Mobile Money API.
 
 ### Use Case Scenario
 
@@ -27,7 +27,7 @@ First we have to capture the information presented in the Sequence Diagram that 
 A Test Case is basically defined in three sections in the YAML file, as described in the documentation [Test Case Template](https://docs.interop.gsmainclusivetechlab.io/testcases/template-tc). This three sections contains fields that has the same hierarchy in the YAML file. 
 
 - **Information** - acts as a header that provides information about the Test Case itself, like name, description, etc. It has the following fields: `name, slug, use_case, behavior, description, precondition`
-- **Components** - defines the acting parts, like an organisation, a mobile money operador, a mojaloop hub, into `components` that will interact in the Test Case.
+- **Components** - defines the acting parts, like an organisation, a mobile money operator, a mojaloop hub, into `components` that will interact in the Test Case.
 - **Test Steps** - holds the definition of each step that needs to be executed by a Test Case on the field `test_steps`. It's related to the API Calls defined by the Mobile Money API.
 
 Now we can see a YAML file of a Test Case like the following stub:
@@ -52,11 +52,11 @@ test_steps: ...
 
 ```
 
-The next steps are how we should analyse the Use Case, Use Case Scenario and Sequence Diagram to extract the information needed to create a Test Case. For that, we'll use the stub and fill in the fields and values associated.
+The next steps are how we should analyse the Use Case, Use Case Scenario and Sequence Diagram to extract the information needed to create a Test Case. For that, we'll use the stub above and fill in the fields and values associated.
 
 ### Information (Header)
 
-The values for the fields of the header section can be extracted from the textual definition of the Use Case as `use_case`and Use Case Scenario as`name`. Also we notice that for this scenario the Organisation is expecting to receive a balance, so the `behavior` is for a correct execution flow, in other words, a `positive` behavior. The `description` should present the Test Case in a more detailed way and `precondition`should state any requirements or constrains to run the test case. Translating into the YAML file, we have the following header:
+The values for the fields of the header section can be extracted from the textual definition of the Use Case as `use_case` and Use Case Scenario as `name`. Also we notice that for this scenario, the organisation is expecting to receive a balance so the `behavior` is for a correct execution flow. In other words, we are creating a Test Case with a `positive` behavior. The `description` should present the Test Case in a more detailed way and `precondition` should state any requirements or constrains to run the test case. Translating into the YAML file, we have the following header:
 
 ```yaml
 # Start Information Header
@@ -96,7 +96,7 @@ components:
     slug: org
 ```
 
-The field `slug` will be used to run the Test Case and `name` will be used by the Interoperability Test Platform to show a more user-friendly name in the UI for the Parties/Actors involved in the Test Case.
+The field `slug` is used internally by the the Interoperability Test Platform to execute the Test Case and `name` is used to show a more user-friendly name in the UI for the Parties/Actors involved in the Test Case.
 
 ### Test Steps
 
@@ -114,9 +114,9 @@ test_steps:
     api_spec: 'MM v1.1.2'
 ```
 
-A `test_steps` has a `path` field which can be mapped directly from the GET method in the Sequence Diagram. The `pattern` will enforce the test matching if there is another Test Case with the same path but different values for the variables. The `method` stores which HTTP method should be used by the test. The Parties/Actors mapped as `components` should be used in `source` and `target` specifing what is the test flow, in this case it starts from the Organisation to Mobile Money Operator. The last mapping is the `api_spec` field which defines the Mobile Money API spec that is being used to run the Test Case.
+A `test_steps` has a `path` field which can be mapped directly from the GET method in the Sequence Diagram. The `pattern` will enforce the test matching if there is another Test Case with the same path but different values for the variables. The `method` stores which HTTP method should be used by the test. The Parties/Actors mapped as `components` should be used in `source` and `target` specifing the direction of the test flow. In this case it starts from the Organisation and is directed to the Mobile Money Operator. The last mapping is the `api_spec` field which defines the Mobile Money API spec that is being used to run the Test Case.
 
-So far we are only defining the fields and values in the YAML file that we can extract directly from the Use Case, the Use Case Scenario and the Sequence Diagram as well from Mobile Money API spec itself. Now we start to define how the Test Case should be run. For this, we have to look into a few more fields inside the `test_steps` section:
+So far we are only defining the fields and values in the YAML file that we can extract directly from the Use Case, the Use Case Scenario and the Sequence Diagram as well from Mobile Money API spec itself. Now we start to define how the Test Case should run. For this, we have to look into a few more fields inside the `test_steps` section:
 
 - **Scripts**
 
@@ -135,11 +135,11 @@ test_response_scripts:
       body.currency: 'required|regex:/^[A-Z]{3}/'
 ```
 
-In our example, we do not have business rules for `test_request_scripts` because the request type is a GET method and no parameter is passed in the body of the TTP message. But we do have business rules for `test_response_scripts` since we want to check if the response message is the HTTP 200 and if the currency field n the body is composed by 3 letters.
+In our example, we do not have business rules for `test_request_scripts` because the request type is a GET method and no parameter is passed in the body of the HTTP message. But we do have business rules for `test_response_scripts` since we want to check if the response message is the HTTP 200 code and if the currency field in the body is composed by 3 letters represeting a currency.
 
 - **Requests and Responses**
 
-The last part of the Test Case is the definition of the `request` and `response` messages to be simulated and tested by the Interoperability Test Platform. Below e have the structure for define this components of the Test Case:
+The last part of the Test Case is the definition of the `request` and `response` messages to be simulated and tested by the Interoperability Test Platform. Below we have the structure for define this components of the Test Case:
 
 ```yaml
 request:
@@ -163,9 +163,9 @@ response:
       currency": "USD"
 ```
 
-This part is strictly dependent of the Mobile Money API API that is being used. The requests and responses must contain all the field that is mandatory by the API, like X-Date, content-type and fields in the body. For this test case, you can check the mandatory values directly in the MM API definition here: [https://developer.mobilemoneyapi.io/1.2/oas3/22537#/operations/Accounts/accountsIdentifierTypeIdentifierGET](https://developer.mobilemoneyapi.io/1.2/oas3/22537#/operations/Accounts/accountsIdentifierTypeIdentifierGET)
+This part is strictly dependent of the Mobile Money API API that is being used. The requests and responses must contain all the field that is mandatory by the API, like X-Date, content-type and fields in the body. For this test case, you can check the mandatory values directly in the Mobile Money API definition here: [https://developer.mobilemoneyapi.io/1.2/oas3/22537#/operations/Accounts/accountsIdentifierTypeIdentifierGET](https://developer.mobilemoneyapi.io/1.2/oas3/22537#/operations/Accounts/accountsIdentifierTypeIdentifierGET)
 
-Also here we can make default values for the Test Case or rely on environment variables making the tests more dynamic. For example, the uri definition can use values from environment variables **IDENTIFYERTYPE** and **IDENTIFIER** if they are provided or just use the default values **accountid** and **2000**.
+Also here we can make default values for the Test Case or rely on environment variables making the tests more dynamic. For example, the URI definition can use values from environment variables **IDENTIFYERTYPE** and **IDENTIFIER** if they are provided or just use the default values **accountid** and **2000**.
 
 ## Putting all Together
 
