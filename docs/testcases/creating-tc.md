@@ -1,6 +1,6 @@
 ---
-title: Creating Test Case
-sidebar_label: Creating Test Case
+title: Creating a Test Case
+sidebar_label: Creating a Test Case
 ---
 
 This tutorial shows how to create a Test Case for the [Interoperability Test Platform](https://interop.gsmainclusivetechlab.io). The premise is to guide the creation of a Test Case considering a Sequence Diagram for a particular Use Case Scenario already defined. You can know more about Use Cases accessing [Proposing New Use Case](https://docs.interop.gsmainclusivetechlab.io/testcases/proposing-uc) documentation.
