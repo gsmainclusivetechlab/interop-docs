@@ -80,6 +80,14 @@ module.exports = {
       // ],
       copyright: `Copyright © 2020 GSMA . All rights reserved.`,
     },
+    announcementBar: {
+      id: 'archive_notice',
+      content:
+          'This project has been archived as of the 31st of March 2024. Please contact inclusivetechlab@gsma.com for more information.',
+      backgroundColor: '#EBDDAD',
+      textColor: '#000000',
+      isCloseable: false,
+    },
   },
   presets: [
     [
